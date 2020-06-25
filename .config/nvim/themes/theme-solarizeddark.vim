@@ -1,0 +1,10 @@
+syntax enable
+set background=dark
+colorscheme solarized8_dark
+let g:solarized8_dark_termcolors=256
+let g:solarized8_dark_bold=1
+let g:solarized8_dark_underline=1
+let g:solarized8_dark_italic=1
+let g:solarized8_dark_contrast='high'
+let g:airline_theme='solarized'
+call togglebg#map("<F5>")

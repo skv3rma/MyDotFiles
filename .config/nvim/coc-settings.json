@@ -1,0 +1,62 @@
+{
+  "suggest.echodocSupport": true,
+  "suggest.maxCompleteItemCount": 20,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "typescript.tsx","java"],
+  "diagnostic.errorSign": "×",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "¡",
+
+  "java.home":"/home/sunil_arc/DevTools/jdk/jdk-11.0.6+10",
+  "java.jdt.ls.vmargs": "-javaagent:/home/sunil_arc/.config/nvim/lombok.jar -Xbootclasspath/a:/home/sunil_arc/.config/nvim/lombok.jar",
+  "java.errors.incompleteClasspath.severity": "warning",
+  "java.signatureHelp.enabled":true,
+
+  "java.format.enabled": true,
+  "java.format.settings.url":"/home/sunil_arc/.config/nvim/MyEclipseFormatter.xml",
+  "java.format.settings.profile": "MyEclipse",
+  "java.format.onType.enabled": true,
+
+  "java.completion.guessMethodArguments":true,
+  "java.completion.enabled":true,
+  "java.foldingRange.enabled":true,
+  "java.progressReports.enabled": true,
+
+  "java.maven.downloadSources":true,
+  "java.autobuild.enabled":true,
+  "java.configuration.updateBuildConfiguration": "automatic",
+
+  "java.codeGeneration.useBlocks":true,
+  "java.codeGeneration.generateComments":true,
+  "java.referencesCodeLens.enabled":true,
+
+  "xml.format.enabled": true,
+  "xml.completion.autoCloseTags":true,
+  "xml.format.joinCommentLines":true,
+  "xml.format.preserveEmptyContent":true,
+  "xml.format.splitAttributes":false,
+  "python.jediEnabled": false,
+  "languageserver": {
+     "intelephense": {
+       "command": "intelephense",
+       "args": ["--stdio"],
+         "filetypes": ["php"],
+           "initializationOptions": { "storagePath": "/tmp/intelephense" }
+         },
+     "haskell": {
+       "command": "hie-wrapper",
+       "rootPatterns": ["stack.yaml", "cabal.config", "package.yaml"],
+       "filetypes": ["hs","lhs","haskell"],
+       "initializationOptions": {
+         "languageServerHaskell": {"hlintOn": true}
+       }
+     }
+  },
+
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings": {
+    "<cr>":["expandable?", "expand", "open"]
+  }
+}
+
