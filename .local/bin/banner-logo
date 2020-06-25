@@ -1,0 +1,4 @@
+#!/bin/sh
+
+figlet -f ~/.figlet-fonts/Speed.flf "kodecamp"
+

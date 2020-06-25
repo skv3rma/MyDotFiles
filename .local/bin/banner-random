@@ -1,0 +1,6 @@
+#!/bin/bash
+fonts=(Speed.flf drpepper.flf Digital.flf Bulbhead.flf Avatar.flf Slant.flf Script.flf Chunky.flf Ogre.flf smslant.flf)
+len=${#fonts[@]}
+index=$(( $RANDOM % len ));
+figlet -ctk -f ~/.figlet-fonts/${fonts[$index]} $1
+# figlet -ctk -f ~/.figlet-fonts/Speed.flf $1 | lolcat

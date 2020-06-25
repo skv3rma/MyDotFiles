@@ -1,0 +1,7 @@
+#!/bin/bash
+# fonts : mono9, mono12,basic,broadway,slant,script,Electornic,Doh,3-D,3D-ASCII
+#figlet -ctk -f ~/.figlet-fonts/mono9.tlf $1 | lolcat
+#figlet -ctk -f ~/.figlet-fonts/mono12.tlf $1 | lolcat
+#figlet -ctk -f slant $1 | lolcat
+figlet -ctk -f broadway $1 | lolcat
+figlet -ctk -f electronic $1 | lolcat

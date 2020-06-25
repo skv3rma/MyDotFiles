@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#!/bin/bash
+if [ -z "$1" ]
+then
+      prjname="demo-webapp"
+      echo "????????????? WARNING : Project name not specified."
+      echo "---------------------------------------------------"
+      echo "///////////// CREATING PROJECT $prjname ///////////"
+else
+      prjname=$1
+      echo "///////////// CREATING PROJECT '$1' ///////////////"
+fi
+  mvn archetype:generate \
+  -DgroupId=in.kodecamp \
+  -DartifactId=$prjname \
+  -Dversion=1.0-SNAPSHOT \
+  -Dpackage=in.kodecamp.app \
+  -DarchetypeArtifactId=maven-archetype-webapp \
+  -DarchetypeVersion=LATEST \
+  -DinteractiveMode=false
+

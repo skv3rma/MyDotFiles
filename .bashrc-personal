@@ -1,0 +1,231 @@
+### profile related settings
+set -o vi
+shopt -s autocd # Allows to cd into directories merely by typing the dir name.
+
+export MYVIMRC="$HOME/.config/nvim/init.vim"
+### fuzzy finder
+export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+### exports
+export DEVTOOLS="$HOME/DevTools"
+export ECLIPSE_HOME="$HOME/DevTools/IDES/eclipse/eclipse"
+export PATH=$PATH:$ECLIPSE_HOME
+
+export JDK8="/usr/lib/jvm/java-8-openjdk"
+export JDK11="/usr/lib/jvm/java-11-openjdk"
+export JDK11_DCEVM="${HOME}/DevTools/dcevm-11.0.5+5"
+### jdk j9
+export JDK8_J9="$DEVTOOLS/jdk/jdk8u242-b08"
+export JDK11_J9="$DEVTOOLS/jdk/jdk-11.0.6+10"
+export JRE11_J9="$DEVTOOLS/jdk/jdk-11.0.6+10-jre"
+### jdk zulu
+export JDK8_ZULU="$DEVTOOLS/jdk/zulu8.44.0.11-ca-jdk8.0.242-linux_x64"
+export JDK11_ZULU="$DEVTOOLS/jdk/zulu11.37.17-ca-jdk11.0.6-linux_x64"
+
+
+export JAVA_HOME=$JDK8
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin
+
+### ANDROID#####
+export ANDROID_HOME=$HOME/DevTools/android-sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+
+### GRADLE ##############
+
+export PATH=$PATH:$HOME/DevTools/gradle-4.3/bin
+
+### JAVA
+
+###export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+### GRAAL VM
+#export JAVA_HOME=/home/kcamp/DevTools/graalvm-ce-1.0.0-rc11
+#export JAVA_HOME=/opt/jdk/jdk-10.0.2
+export PATH=$PATH:$JAVA_HOME/bin
+
+### ACTIVE-MQ
+export ACTIVEMQ_HOME=${HOME}/DevTools/apache-activemq-5.15.11
+export PATH=$PATH:$ACTIVEMQ_HOME/bin
+
+export IMQ_HOME=${HOME}/DevTools/mq
+export PATH=$PATH:$IMQ_HOME/bin
+
+
+export PATH_TO_FX=/usr/lib/jvm/javafx-sdk-11.0.2/lib
+export PATH=$PATH:$PATH_TO_FX
+## JBOSS FORGE HOME
+export FORGE_HOME=$HOME/DevTools/forge-distribution-3.9.6.Final
+export PATH=$PATH:$FORGE_HOME/bin
+### H2DB
+export H2_HOME=$HOME/DevTools/h2
+export H2=$H2_HOME
+export PATH=$PATH:$H2_HOME/bin
+
+####################### SERVERS ############################################
+### TOMCAT
+# export CATALINA_HOME=/home/kcamp/DevTools/SERVERS/apache-tomcat-9.0.14
+# export PATH=$PATH:$CATALINA_HOME/bin
+
+export GLASSFISH_HOME=${HOME}/DevTools/SERVERS/glassfish5
+export PAYARA_HOME=${HOME}/DevTools/SERVERS/payara5
+export TOMEE_HOME=${HOME}/DevTools/SERVERS/tomee
+export LIBERTY_HOME=${HOME}/DevTools/SERVERS/open-liberty
+export VISUALVM=${HOME}/DevTools/visualvm_20
+export PATH=$PATH:$VISUALVM/bin
+
+### MAVEN
+export M2_HOME=$HOME/DevTools/apache-maven-3.6.0
+export M2=$M2_HOME
+export PATH=$PATH:$M2_HOME/bin
+
+export jvmOptions="-Xmx1g -Xms1g -XXaltjvm=dcevm -javaagent:$HOME/DevTools/hotswap-agent.jar -XX:+UnlockDiagnosticVMOptions -XX:+EnableInvokeDynamic"
+
+#export MAVEN_OPTS=$jvmOptions
+
+export PATH=$PATH:$HOME/bin
+
+### LARAVEL PATH
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
+
+
+export PATH="$PATH":"~/.pub-cache/bin"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+#### VS Code ####
+export CODE_HOME="$HOME/DevTools/VSCode-linux-x64"
+export PATH=$CODE_HOME/bin:$PATH
+
+#### db credentials ####
+export DB_SOURCE_NAME="mysql:host=localhost;dbname=collegedb"
+export DB_USER="root"
+export DB_PASSWORD="kodecamp"
+
+### web service credentials ####
+export REST_API_URL="http://mydemoapi.com/api"
+export REST_API_USER="admin"
+export REST_API_PASSWORD="admin"
+
+################################ aliases ####################################
+
+### jvm change
+alias jdk8="export JAVA_HOME="$JDK8""
+alias jdk11="export JAVA_HOME="$JDK11""
+
+alias jdk8J9="export JAVA_HOME="$JDK8_J9""
+alias jdk11J9="export JAVA_HOME="$JDK11_J9""
+
+alias jdk11patched="export JAVA_HOME="$JDK11_DCEVM""
+alias jre11J9="export JRE_HOME="$JRE11_J9""
+
+alias mcp="mvn clean package"
+alias mtr="mvn clean package tomee:run"
+
+################################# configs ###################################
+alias confbash="vim $HOME/.bashrc-personal"
+alias confst="vim $HOME/software_sources/st/config.h"
+alias confalacritty="vim $HOME/.config/alacritty/alacritty.yml"
+alias confsurf="vim $HOME/software_sources/surf/config.h"
+alias confvim="vim $HOME/.config/nvim/init.vim"
+alias confcoc="vim $HOME/.config/nvim/coc-settings.json"
+alias confvimtheme="vim $HOME/.config/nvim/themes.vim"
+alias confvimplug="vim $HOME/.config/nvim/plugins.vim"
+alias confi3="vim $HOME/.config/i3/config"
+alias confpoly="vim $HOME/.config/polybar/config"
+alias conftmux="vim $HOME/.tmux.conf"
+alias confwall="nitrogen $HOME/Pictures/wall"
+alias confwallnord="nitrogen $HOME/Pictures/nord-compat"
+alias confwallnordsyntax="nitrogen $HOME/Pictures/nord-compat/syntax"
+alias confwallnordanime="nitrogen $HOME/Pictures/nord-compat/anime"
+alias confwallgruvbox="nitrogen $HOME/Pictures/gruvbox-compat"
+alias confqute="vim $HOME/.config/qutebrowser/config.py"
+alias conftermite="vim $HOME/.config/termite/config"
+alias confrofitheme="vim $HOME/.config/rofi/mytheme.rasi"
+alias confdevilspie="vim $HOME/.devilspie/transparency.ds"
+alias confvifm="vim $HOME/.config/vifm/vifmrc"
+
+############# db tools
+
+export DB_URL="jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase"
+export DB_USERNAME="kodecamp"
+export DB_PASSWORD="kodecamp"
+
+currentDbName="cmsDatabase.trace.db"
+
+export DB_HOME=$HOME/DevTools/Databases
+export CURRENT_DB_PATH=$DB_HOME/$currentDbName
+
+export H2Shell="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.Shell"
+export H2Server="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.Server"
+export H2RunScript="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript"
+
+alias connect2UserDbShell="$H2Shell -user kodecamp -password kodecamp
+                          \ -url jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase"
+
+alias connect2AppDbShell="$H2Shell -user kodecamp -password kodecamp
+                          \ -url jdbc:h2:tcp://localhost:9092/~/DevTools/Databases/cmsDatabase;TRACE_LEVEL_FILE=3;"
+
+alias runh2AppDbServer="$H2Server -tcp -tcpPort 9092 -tcpAllowOthers"
+
+alias runh2UserDbServer="$H2Server -tcp -tcpPort 9091 -tcpAllowOthers"
+
+alias showh2Logs="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.ConvertTraceFile
+                 \ -traceFile $CURRENT_DB_PATH -script $DB_HOME/log.sql"
+
+alias runh2Script="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript
+                  \ -url jdbc:h2:tcp://localhost/~/DevTools/Databases/cmsDatabase
+                  \ -script ./script.sql"
+
+
+alias runeclipse="eclipse > /dev/null &"
+alias deployWar="cp $HOME/Projects/java/services/apps.tomee/services/target/services.war
+                \ $HOME/Projects/java/services/apps.tomee/tomee/webapps"
+
+############ project directoris
+alias dirservices="cd $HOME/Projects/java/services"
+alias dirtomee="cd $HOME/Projects/java/services/apps.tomee"
+alias dirpayara="cd $HOME/Projects/java/services/apps.payara"
+alias dirpayaraser="cd $HOME/Projects/java/services/apps.payara/services"
+alias dirliberty="cd $HOME/Projects/java/services/apps.openliberty"
+alias dirjava="cd $HOME/Projects/java"
+alias dirjavatrain="cd $HOME/Projects/java/trainings"
+alias dirspring="cd $HOME/Projects/java/ws_spring"
+alias dirrust="cd $HOME/Projects/rust"
+alias dirsoftware="cd $HOME/software_sources"
+alias dirtest="cd $HOME/Projects/testing"
+alias dirut="cd $HOME/Videos/utube"
+alias dirwebsite="cd $HOME/Projects/websites"
+alias dirjavappt="cd $HOME/Projects/java/trainings/ppts"
+alias dirshortcuts="cd /usr/share/applications"
+
+########### aliases for maven ########
+
+alias mcc="mvn clean compile"
+alias mccst="mvn clean compile -Dmvn.test.skip=true"
+alias mcpack="mvn clean package"
+alias mcpackst="mvn clean package -Dmaven.test.skip=true"
+alias mcinstall="mvn clean install -Dmaven.test.skip=true"
+alias mcinstallst="mvn clean install -Dmaven.test.skip=true"
+alias run="find target/ | entr $M2_HOME/bin/mvn -q exec:java"
+alias runst="find target/ | entr $M2_HOME/bin/mvn -q test"
+
+########### aliases for System command
+alias lsd="lsd -Flart"
+alias vim="nvim"
+alias vime="nvim '+CocCommand explorer --sources=file+'"
+alias tree="tree | lolcat"
+alias vifmg="~/.config/vifm/scripts/vifmimg"
+alias vifmr="~/.config/vifm/scripts/vifmrun"
+alias ..="cd .."
+alias ...="cd ../../"
+alias brh="br -h"
+alias brf="br -f"
+alias brd="br -d"
+alias bra="br -hfds"
+alias mv="mv -i"
+alias rm="rm -i"
+
+

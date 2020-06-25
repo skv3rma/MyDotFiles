@@ -1,0 +1,11 @@
+#!/bin/sh
+
+notify-send -i task-past-due -u normal "Task Pooler" "Job finished. See tsp"
+# while getopts jobid:error:outfile:command: option; do
+#   case $option in
+#     (jobid) echo "jobid=> $OPTARG";;
+#     (error) echo "error=> $OPTARG";;
+#     (outfile) echo "outfile=> $OPTARG";;
+#     (command) echo "command=> $OPTARG";;
+#   esac
+# done

@@ -1,0 +1,48 @@
+#!/bin/sh
+
+gen_key() {
+  prefixes=""
+  parts=$1
+  parts=`echo $parts | tr '/' ' ' | tr '[:upper:]' '[:lower:]'`
+
+  for part in $(printf "%s" ${parts# })
+  do
+    prefixes=$prefixes$(echo $part | cut -c 1)
+  done
+  ### This is the way to return from method
+  echo "${prefixes}"
+}
+
+mark() {
+  currentPath=$(pwd)
+  key=$(gen_key "$currentPath")
+  key=$(echo "$key" | sed "s/hs//")
+  existingPath=$(grep -w "^$currentPath | $key$" $HOME/.config/marker/dirmarks)
+  if [ -z "$existingPath" ]
+  then
+    # echo "key ->" $key
+    echo "$currentPath | $key" >> $HOME/.config/marker/dirmarks
+    echo "** Marked -> $key"
+  else
+    echo "Error : Already Marked"
+  fi
+}
+
+show_mark() {
+  selectedDir=$(cat $HOME/.config/marker/dirmarks | fzf)
+
+  if [ -n "$selectedDir" ]
+  then
+    dir=$(echo $selectedDir | awk -F' | ' '{print $1}')
+    cd ${dir# }
+    # ls ${dir# }
+  fi
+  echo "${dir}"
+}
+
+alias m="mark"
+alias sm="show_mark"
+alias confm="vim $HOME/.local/bin/utils"
+
+
+

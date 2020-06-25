@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+      artifactname="com.airhacks:"
+      echo "????????????? WARNING : Artifact not specified."
+      echo "--------------------------------------------------------"
+      echo "///////////// SEARCHING : $artifactname ///////////"
+else
+      artifactname=$1
+      echo "///////////// SEARCHING : $artifactname ///////////"
+fi
+
+mvn archetype:generate -Dfilter=$artifactname
+

@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ -z "$1" ]
+then
+      prjname="demo-jeeapp"
+      echo "///////////// CREATING PROJECT $prjname //////////////////"
+else
+      prjname=$1
+      echo "///////////// CREATING PROJECT '$1' //////////////////////"
+fi
+  mvn archetype:generate \
+  -DgroupId=in.kodecamp \
+  -DartifactId=$prjname \
+  -Dversion=1.0-SNAPSHOT \
+  -Dpackage=in.kodecamp.app \
+  -DarchetypeGroupId=com.airhacks \
+  -DarchetypeArtifactId=javaee8-essentials-archetype \
+  -DinteractiveMode=false
