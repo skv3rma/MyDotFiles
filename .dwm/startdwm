@@ -1,0 +1,40 @@
+
+#!/bin/sh
+
+xset fp rehash &
+xset fp+ /home/$USER/.local/share/fonts &
+xset fp+ /usr/share/fonts/joypixels &
+
+xrdb /home/$USER/.Xresources
+
+# remaps the caps lock to esc
+/usr/local/bin/remaps 
+
+# disables the laptop monitor
+xrandr --output eDP1 --off --output HDMI --primary &
+#nm-applet &
+numlockx on &
+compton --config /home/$USER/.config/compton.conf &
+#xcompmgr &
+
+# notification center
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/xfce4/notifyd/xfce4-notifyd &
+dunst &
+#xfce4-power-manager &
+
+#volumicons &
+nitrogen --restore &
+alacritty &
+slstatus &
+unclutter &
+xset r rate 300 50 &
+
+## to resolve a java related bug
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit 
+# put all user scripts at the path
+export PATH=$PATH:/home/$USER/.local/bin 
+
+wmname LG3D &
+exec dwm > /dev/null

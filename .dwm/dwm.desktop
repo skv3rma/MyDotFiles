@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Name=dwm
+Comment=dynamic tiling window manager
+Exec=/usr/local/bin/startdwm
+#TryExec=i3
+Type=Application
+X-LightDM-DesktopName=dwm
+DesktopNames=dwm
+Keywords=tiling;dwm;windowmanager;window;manager;
