@@ -1,0 +1,5 @@
+colors.scheme=nord
+visualizer.spectrum.bar.width=1
+visualizer.spectrum.falloff.mode=#
+#Available smoothing options are monstercat, sgs, none.
+visualizer.spectrum.smoothing.mode=sgs
