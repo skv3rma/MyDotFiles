@@ -44,5 +44,4 @@ alias m="mark"
 alias sm="show_mark"
 alias confm="vim $HOME/.local/bin/utils"
 
-
-
+### passed wallper is set

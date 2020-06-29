@@ -6,12 +6,15 @@
 # HIST_STAMPS="%d/%m/%y %T"
 # Basic auto/tab complete:
 
+
 ########## DWM Java App Fix
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+
+export XDG_CONFIG_HOME="$HOME/.config"
 ##################### colored man pages
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
@@ -25,18 +28,16 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export WINIT_HIDPI_FACTOR=1.0
 export EDITOR="nvim"
 export READER="zathura"
-export VISUAL="nvim"
-export TERMINAL="alacritty"
+# export TERMINAL="alacritty"
 export BROWSER="brave"
+export POPUP_BROWSER="qutebrowser"
 export VIDEO="mpv"
 export IMAGE="sxiv"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="less"
 export WM="LG3D"
-export BROWSER="firefox"
-export TERM="xterm-256color"
-export EDITOR="nvim"
+# export TERM="xterm-256color"
 
 export ANNOTATED_WALL_HOME="$HOME/Pictures/annotated-wallpapers"
 export CURRENT_TRAINING="$HOME/Projects/trainings/train_java.csv"
@@ -364,12 +365,13 @@ alias runtest="find target/ | entr $M2_HOME/bin/mvn -q test"
 
 ########### aliases for System command
 alias lsd="lsd -Flart"
+alias lsx="sxiv -t ."
 alias tx="tmux"
 alias vim="nvim"
 alias vime="nvim '+CocCommand explorer --sources=file+'"
 alias tree="tree | lolcat"
-alias vifmg="~/.config/vifm/scripts/vifmimg"
-alias vifmr="~/.config/vifm/scripts/vifmrun"
+# alias vifmg="~/.config/vifm/scripts/vifmimg"
+alias vr="~/.config/vifm/scripts/vifmrun"
 alias ..="cd .."
 alias ...="cd ../../"
 alias brh="br -h"
@@ -382,6 +384,8 @@ alias rm="rm -i"
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias newsboat="nb"
+alias ws="weather"
+alias wf="curl wttr.in"
 
 ########## aliases for DotFiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/MyDotFiles --work-tree=$HOME"
