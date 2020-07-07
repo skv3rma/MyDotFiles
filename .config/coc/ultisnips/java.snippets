@@ -1,0 +1,267 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet fmtr "formatter"
+//@formatter:off
+${1}
+//@formatter:on
+endsnippet
+
+snippet restctrl "Spring Rest Controller" b
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.IanaLinkRelations;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+/**
+ * HelloController
+ */
+@RestController
+public class ${1} {
+
+  /**
+   *
+   * @return
+   */
+  @GetMapping("/items")
+  public ResponseEntity<CollectionModel<EntityModel<${2}>>> listAll() {
+    return null;
+  }
+
+}
+endsnippet
+
+snippet  rcm_get "Get : Spring Rest Controller" b
+  @GetMapping("/items/{id}")
+  public ResponseEntity<EntityModel<${1}>> getById(@PathVariable long id) {
+    return null;
+  }
+endsnippet
+
+snippet  rcm_new "New : Spring Rest Controller" b
+  @PostMapping("/items")
+  public ResponseEntity<?> newItem(@RequestBody Object entity) {
+     return null;
+  }
+
+endsnippet
+
+snippet  rcm_update "Update : Spring Rest Controller" b
+  @PutMapping("/items/{id}")
+  public ResponseEntity<?> update(@RequestBody Object entityObj, @PathVariable long id) {
+    return null;
+  }
+endsnippet
+
+snippet  rcm_delete "Delete : Spring Rest Controller" b
+  @DeleteMapping("/students/{id}")
+  public ResponseEntity<?> delete(@PathVariable long id) {
+    return null;
+  }
+endsnippet
+
+snippet  rcm_delete_all "Delete All : Spring Rest Controlleri" b
+  @DeleteMapping("/students")
+  public ResponseEntity<?> deleteAll() {
+    return null;
+  }
+endsnippet
+
+
+snippet  restcontroller_sample "Delete All : Spring Rest Controlleri" b
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.afford;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Provider;
+
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.IanaLinkRelations;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import in.kodecamp.spring.hateoas.student.entity.Student;
+import in.kodecamp.spring.hateoas.student.services.IStudentService;
+
+@RestController()
+public class StudentController {
+
+  private Provider<IStudentService> studentServiceProvider;
+
+  @Inject
+  @Named("service")
+  public StudentController(final Provider<IStudentService> studentServiceProvider) {
+    this.studentServiceProvider = studentServiceProvider;
+    System.out.println("######### studentService : " + studentServiceProvider);
+  }
+
+  /**
+   *
+   * @return
+   */
+  @GetMapping("/students")
+  public ResponseEntity<CollectionModel<EntityModel<Student>>> listAll() {
+
+    System.out.println("@@@@@@@@@@@ list");
+    IStudentService service = studentServiceProvider.get();
+
+    // These students are representational models so these objects can contain the
+    // links
+    List<Student> students = service.fetchAll();
+
+    // process each student (RepresentationModel) and convert it into
+    // Entity Model
+    // create link to related collection
+
+    var relatedCollectionLink = linkTo(methodOn(StudentController.class).listAll())
+        .withRel("students");
+    List<EntityModel<Student>> studentEntityModels = students.stream().map(student -> {
+      // create link to self
+      var selfLink = linkTo(methodOn(StudentController.class).getById(student.getId()))
+          .withSelfRel()
+          .andAffordance(afford(methodOn(StudentController.class).update(null, student.getId())))
+          .andAffordance(afford(methodOn(StudentController.class).delete(student.getId())));
+
+      var entityModel = new EntityModel<Student>(student, selfLink, relatedCollectionLink);
+      return entityModel;
+    }).collect(Collectors.toList());
+
+
+    return ResponseEntity.ok(new CollectionModel<>( //
+        studentEntityModels, //
+        linkTo(methodOn(StudentController.class).listAll()).withSelfRel()
+            .andAffordance(afford(methodOn(StudentController.class).newStudent(null))).withName("create")
+            .andAffordance(afford(methodOn(StudentController.class).deleteAll())).withName("deleteAll")
+        ));
+
+  }
+
+  @PostMapping("/students")
+  ResponseEntity<?> newStudent(@RequestBody Student student) {
+
+    // newly created data
+    var newStudent = studentServiceProvider.get().create(student);
+
+    // We have to create this uri for this resource with the status
+    // 201: created
+
+    var linkToSelf = linkTo(methodOn(StudentController.class).getById(newStudent.getId()))
+        .withSelfRel();
+    var relatedLink = linkTo(methodOn(StudentController.class).listAll()).withRel("students");
+    var entityModel = new EntityModel<>(newStudent, linkToSelf,relatedLink);
+    ResponseEntity<?> responseEntity = null;
+    try {
+      responseEntity = ResponseEntity
+          .created(new URI(entityModel.getRequiredLink(IanaLinkRelations.SELF).getHref()))
+          .body(entityModel);
+
+    } catch (URISyntaxException ex) {
+      responseEntity = ResponseEntity.badRequest().body("Unable to create : " + student);
+    }
+    return responseEntity;
+
+  }
+
+  @GetMapping("/students/{id}")
+  public ResponseEntity<EntityModel<Student>> getById(@PathVariable long id) {
+    System.out.println("getById : id : " + id);
+    Optional<Student> optionalStudent = this.studentServiceProvider.get().getById(id);
+
+    return optionalStudent.map(student -> new EntityModel<>(student, //
+        linkTo(methodOn(StudentController.class).getById(student.getId())).withSelfRel(), //
+        linkTo(methodOn(StudentController.class).listAll()).withRel("students"))) //
+        .map(ResponseEntity::ok) //
+        .orElse(ResponseEntity.notFound().build());
+  }
+
+  @PutMapping("/students/{id}")
+  ResponseEntity<?> update(@RequestBody Student student, @PathVariable long id) {
+
+    var studentEntity = new EntityModel<>(student,
+        linkTo(methodOn(StudentController.class).getById(student.getId())).withSelfRel()
+            .andAffordance(afford(methodOn(StudentController.class).delete(student.getId()))),
+        linkTo(methodOn(StudentController.class).listAll()).withRel("students"));
+
+    try {
+      return ResponseEntity.noContent()
+          .location(new URI(studentEntity.getRequiredLink(IanaLinkRelations.SELF).getHref()))
+          .build();
+    } catch (URISyntaxException e) {
+      return ResponseEntity.badRequest().body("Unable to update " + student);
+    }
+  }
+
+  @DeleteMapping("/students/{id}")
+  ResponseEntity<?> delete(@PathVariable long id) {
+    Optional<Student> deletedStudentOpt = studentServiceProvider.get().delete(id);
+
+    return deletedStudentOpt.map((stu -> {
+      return ResponseEntity.ok(new EntityModel<Student>(stu,
+          linkTo(methodOn(StudentController.class).listAll()).withRel("students")
+          ));
+    })).get();
+//    return ResponseEntity.noContent().build();
+  }
+
+  @DeleteMapping("/students")
+  ResponseEntity<?> deleteAll() {
+    studentServiceProvider.get().deleteAll();
+    return ResponseEntity.ok("All records deleted successfully.");
+  }
+
+}
+endsnippet
+
+snippet fstr "private final String" b
+private static final String ${1} = "${2}";
+endsnippet
+
+

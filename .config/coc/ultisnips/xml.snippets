@@ -1,0 +1,221 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+###################################################
+#             MAVEN DEPENDENCIES                  #
+###################################################
+
+snippet prop-essentials "Description" b
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<maven.compiler.source>1.11</maven.compiler.source>
+<maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
+
+<version.h2db>1.4.200</version.h2db>
+
+<version.junit>5.6.2</version.junit>
+endsnippet
+
+snippet prop-complete "dependency version" b
+<properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <maven.compiler.source>1.11</maven.compiler.source>
+  <maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
+
+  <version.jpa>2.2</version.jpa>
+  <version.eclipselink>2.7.6</version.eclipselink>
+
+  <version.cdi>2.0</version.cdi>
+  <version.weld>3.1.1.Final</version.weld>
+
+  <version.h2db>1.4.200</version.h2db>
+
+  <version.junit>5.6.2</version.junit>
+</properties>
+endsnippet
+
+snippet dep-h2db "H2 Dependency" b
+<dependency>
+  <groupId>com.h2database</groupId>
+  <artifactId>h2</artifactId>
+  <version>1.4.200</version>
+</dependency>
+endsnippet
+
+snippet dep-jpa "JPA Standard Api" b
+
+<!-- JPA Standard API -->
+<!-- visit : https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
+<dependency>
+  <groupId>javax.persistence</groupId>
+  <artifactId>javax.persistence-api</artifactId>
+  <version>${version.jpa}</version>
+  <!-- <version>2.2</version> -->
+  <scope>compile</scope>
+</dependency>
+endsnippet
+
+snippet dep-jpa-eclipselink "Eclipse Link Dependency" b
+<dependency>
+  <groupId>org.eclipse.persistence</groupId>
+  <artifactId>eclipselink</artifactId>
+  <version>${version.eclipselink}</version>
+  <scope>runtime</scope>
+</dependency>
+endsnippet
+
+
+snippet dep-cdi-se "Description" b
+<!-- CDI Standard API -->
+<!-- visit :  https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->
+<dependency>
+  <groupId>javax.enterprise</groupId>
+  <artifactId>cdi-api</artifactId>
+  <version>${version.cdi}</version>
+  <scope>compile</scope>
+</dependency>
+endsnippet
+
+snippet dep-cdi-impl-weld "CDI Implementation : Weld"
+<!-- CDI Reference Implementation -->
+<!-- visit : https://mvnrepository.com/artifact/org.jboss.weld.se/weld-se-core -->
+<dependency>
+  <groupId>org.jboss.weld.se</groupId>
+  <artifactId>weld-se-core</artifactId>
+  <version>3.1.1.Final</version>
+  <scope>runtime</scope>
+</dependency>
+endsnippet
+
+
+
+
+snippet dep-junit5 "Junit 5 Dependencies" b
+<!-- JUnit 5 test dependencies -->
+<dependency>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter-api</artifactId>
+  <version>${version.junit}</version>
+  <scope>test</scope>
+</dependency>
+
+<dependency>
+  <groupId>org.junit.jupiter</groupId>
+  <artifactId>junit-jupiter-engine</artifactId>
+  <version>${version.junit}</version>
+  <scope>test</scope>
+</dependency>
+endsnippet
+
+snippet depjee8-platform "Jakarta EE Standard Api" b
+<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api -->
+<dependency>
+  <groupId>jakarta.platform</groupId>
+  <artifactId>jakarta.jakartaee-api</artifactId>
+  <version>8.0.0</version>
+  <scope>provided</scope>
+</dependency>
+endsnippet
+
+snippet depjee8-web "Jakarta EE Web Api"
+<!-- https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-web-api -->
+<dependency>
+  <groupId>jakarta.platform</groupId>
+  <artifactId>jakarta.jakartaee-web-api</artifactId>
+  <version>8.0.0</version>
+</dependency>
+endsnippet
+
+###################################################
+#             MAVEN PLUGINS                       #
+###################################################
+snippet finalname "name of the application as artifact id" b
+<finalName>${project.artifactId}</finalName>
+endsnippet
+
+snippet plugin-mvnsurefire "Description" b
+
+<!-- running junit 5 tests -->
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-surefire-plugin</artifactId>
+  <version>2.22.0</version>
+</plugin>
+
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-failsafe-plugin</artifactId>
+  <version>2.22.0</version>
+</plugin>
+
+endsnippet
+
+snippet plugin-mvnexec "Description" b
+<!-- for running java command -->
+<plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>exec-maven-plugin</artifactId>
+  <version>1.6.0</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>java</goal>
+      </goals>
+    </execution>
+  </executions>
+  <configuration>
+    <!-- class to be executed(main method) : fully qualified class name -->
+    <mainClass>in.kodecamp.App</mainClass>
+    <!-- optional -->
+    <!--
+    <arguments>
+    </arguments>
+    <systemProperties>
+      <systemProperty>
+        <key>myproperty</key>
+        <value>myvalue</value>
+      </systemProperty>
+    </systemProperties>
+    -->
+  </configuration>
+</plugin>
+endsnippet
+
+snippet plugin-mvncompiler "maven compiler plugin" b
+
+<!-- maven-compiler-plugin -->
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <version>3.8.0</version>
+  <configuration>
+    <release>11</release>
+      <!-- only compiles the changed files -->
+    <useIncrementalCompilation>false</useIncrementalCompilation>
+  </configuration>
+</plugin>
+
+endsnippet
+
