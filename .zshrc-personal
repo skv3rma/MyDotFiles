@@ -37,6 +37,7 @@ export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="less"
 export WM="LG3D"
+export BAT_THEME="Nord"
 # export TERM="xterm-256color"
 
 export ANNOTATED_WALL_HOME="$HOME/Pictures/annotated-wallpapers"
@@ -340,6 +341,7 @@ alias cdliberty="cd $HOME/Projects/java/services/apps.openliberty"
 alias cdjava="cd $HOME/Projects/java"
 alias cdjavatrain="cd $HOME/Projects/java/trainings"
 alias cdjavajdbc="cd $HOME/Projects/java/trainings/jdbc-concepts"
+alias cdpytrain="cd $HOME/Projects/python"
 alias cdspring="cd $HOME/Projects/java/ws_spring"
 alias cdrust="cd $HOME/Projects/rust"
 alias cdbash="cd $HOME/Projects/bash"
@@ -360,16 +362,27 @@ alias mcpack="mvn clean package"
 alias mcpackst="mvn clean package -Dmaven.test.skip=true"
 alias mcins="mvn clean install"
 alias mcinsst="mvn clean install -Dmaven.test.skip=true"
-alias runexec="find target/ | entr $M2_HOME/bin/mvn -q exec:java"
-alias runtest="find target/ | entr $M2_HOME/bin/mvn -q test"
+alias runjava="find target/ | entr $M2_HOME/bin/mvn -q exec:java"
+alias runjavatest="find target/ | entr $M2_HOME/bin/mvn -q test"
+
+########## aliases for python ########
+
+runpytest() {
+  find . | entr $(pipenv --venv)/bin/python test.py
+}
+
+runpy() {
+  find . | entr $(pipenv --venv)/bin/python $1
+}
 
 ########### aliases for System command
 alias lsd="lsd -Flart"
-alias lsx="sxiv -t ."
+alias li="sxiv -t ."
 alias tx="tmux"
 alias vim="nvim"
 alias vime="nvim '+CocCommand explorer --sources=file+'"
 alias tree="tree | lolcat"
+alias cat="bat --italic-text always"
 # alias vifmg="~/.config/vifm/scripts/vifmimg"
 alias vr="~/.config/vifm/scripts/vifmrun"
 alias ..="cd .."
@@ -386,6 +399,12 @@ alias mv="mv -iv"
 alias newsboat="nb"
 alias ws="weather"
 alias wf="curl wttr.in"
+alias dad="dragon-drag-and-drop -a -x"
+
+mkcd() {
+  mkdir $1
+  cd $1
+}
 
 ########## aliases for DotFiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/MyDotFiles --work-tree=$HOME"
@@ -407,5 +426,4 @@ alias lets_discuss="banner-bg \"Java Enterprise Edition 8\" | lolcat; banner kod
 alias -s {png,jpg}="sxiv"
 alias -s {md,txt,csv,h,c,java,html,css,js,ts}="nvim"
 alias -s {mkv,mp4,avi}="celluloid"
-
 # pfetch
