@@ -4,7 +4,7 @@ let g:signify_sign_delete = '-'
 
 
 " Change vertical split character to be a space (essentially hide it)
-"set fillchars+=vert:.
+" set fillchars=vert:.
 
 " Call method on window enter
 augroup WindowManagement

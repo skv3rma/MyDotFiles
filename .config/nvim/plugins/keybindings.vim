@@ -7,7 +7,7 @@
 " noremap   <Right>  <NOP>
 
 " format file
-noremap <C-A-i> :Format<CR>
+noremap <silent><leader>i :Format<CR>
 noremap r <C-r>
 
 
@@ -45,6 +45,9 @@ cmap w!! w !sudo tee %
 vnoremap <leader>p "_dP
 " Change to normal mode from inser mode
 inoremap ii <ESC>
+
+" yanking from current position to end
+nnoremap Y y$
 " yanking and pasting to and from system clipboard and vim
 nnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
@@ -55,7 +58,18 @@ nnoremap <silent> <leader>dl :set colorcolumn=0<CR>
 " display colorcolumn (el = enable line)
 nnoremap <silent> <leader>el :set colorcolumn=101<CR>
 " Makes the background transparent
-nnoremap <silent> <leader>o  :hi Normal ctermbg=NONE guibg=NONE<CR>
+"
+function! MakeTransparent()
+    highlight Normal ctermbg=NONE guibg=NONE
+    " split separator
+    highlight VertSplit guibg=NONE guifg=#1e2132
+    highlight EndOfBuffer guibg=NONE guifg=#1e2132
+    " highlight CursorLine cterm=NONE ctermbg=black guibg=#2a3158
+    highlight LineNr guibg=NONE
+endfunction
+
+" nnoremap <silent> <leader>o  :hi Normal ctermbg=NONE guibg=NONE<CR>
+nnoremap <silent> <leader>o  :call MakeTransparent()<CR>
 " buffer switching fuzzy finder
 " Switch to buffer by providing unique keyword of file name
 nnoremap <leader>b :b<Space>
@@ -79,7 +93,7 @@ nmap <silent> <leader>bo :BufOnly<CR>
 nnoremap <silent> <leader>z :w<CR>
 
 " Save all files
-nnoremap <silent> <leader>zz :wa<CR>
+" nnoremap <silent> <leader>zz :wa<CR>
 
 nnoremap <silent> <F3> :set hlsearch!<CR>
 
@@ -97,7 +111,7 @@ noremap <silent><leader>j :wincmd j<CR>
 noremap <silent><leader>k :wincmd k<CR>
 noremap <silent><leader>l :wincmd l<CR>
 
-"toggle background
+" toggle background
 nnoremap <silent> <C-d>   :set background=dark<CR>
 nnoremap <silent> <C-A-d> :set background=light<CR>
 
@@ -111,3 +125,82 @@ nnoremap <leader>ss :SSave<CR>
 
 " `SPC l l` - list sessions / switch to different project
 nnoremap <leader>sc :SClose<CR>
+
+" latin Symbols
+
+nnoremap <leader><leader>l i+----------+<SPACE><ESC>
+nnoremap <leader><leader>sl :normal 12i<SPACE><CR>
+nnoremap <leader><leader>bl i+----------+<ESC>o+----------+<SPACE><ESC>
+nnoremap <leader><leader>lo i✓ <SPACE> <ESC>
+nnoremap <leader><leader>lx i✗ <SPACE> <ESC>
+nnoremap <leader><leader>lh i♯ <SPACE> <ESC>
+nnoremap <leader><leader>xn iαxⁿ + βxⁿ-¹ + ... + c <SPACE> <ESC>
+nnoremap <leader><leader>x2 ix² + x +c  <SPACE> <ESC>
+nnoremap <leader><leader>lr i ─────────-> <SPACE> <ESC>
+nnoremap <leader><leader>la iα <SPACE> <ESC>
+nnoremap <leader><leader>lb iβ <SPACE> <ESC>
+nnoremap <leader><leader>lg iγ <SPACE> <ESC>
+
+" line draw commands
+nnoremap <leader><leader>- :normal 20i─<CR> <ESC>
+nnoremap <leader><leader>= :normal 20i=<CR> <ESC>
+
+" Toilet text in vim
+" Plug 'gyim/vim-boxdraw' ->
+nnoremap <leader><leader>ts :.!toilet -w 200 -f small<CR> <ESC>
+nnoremap <leader><leader>tb :.!toilet -w 200 -f slant<CR> <ESC>
+
+" box draw around text
+nnoremap <leader><leader>tr :.!toilet -w 200 -f term -F border<CR>
+
+nmap <leader>ll <Plug>(Limelight)
+xmap <leader>ll <Plug>(Limelight)
+
+" activate limelight with goyo
+nnoremap <silent><leader>g :Goyo<CR>
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+
+function! ToggleWindowHorizontalVerticalSplit()
+  if !exists('t:splitType')
+    let t:splitType = 'vertical'
+  endif
+
+  if t:splitType == 'vertical' " is vertical switch to horizontal
+    windo wincmd K
+    let t:splitType = 'horizontal'
+
+  else " is horizontal switch to vertical
+    windo wincmd H
+    let t:splitType = 'vertical'
+  endif
+endfunction
+
+nnoremap <silent> <leader><leader>wt :call ToggleWindowHorizontalVerticalSplit()<cr>
+
+" Prompt for a command to run
+map <leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+map <leader>vi :VimuxInspectRunner<CR>
+" Zoom the tmux runner pane
+map <leader>vz :VimuxZoomRunner<CR>
+
+" Run the current file with rspec
+map <leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+
+" Close vim tmux runner opened by VimuxRunCommand
+map <leader>vq :VimuxCloseRunner<CR>
+
+" Interrupt any command running in the runner pane
+map <leader>vx :VimuxInterruptRunner<CR>
+
+" Removing pythonsense keys // creating problems after removing the plugin
+map ac <Nop>
+map af <Nop>
+map ic <Nop>
+map if <Nop>
+
+

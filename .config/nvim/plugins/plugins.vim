@@ -134,7 +134,6 @@ Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'haishanh/night-owl.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rakr/vim-one'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'jacoborus/tender.vim'
@@ -143,17 +142,20 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'tomasiser/vim-code-dark'
 Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
+Plug 'rakr/vim-one'
+Plug 'drewtempelmeyer/palenight.vim'
 " Activate Nord Vim when toggling the NERDTree.
 Plug 'arcticicestudio/nord-vim', { 'on':  'NERDTreeToggle' }
-Plug 'cocopon/iceberg.vim'
+" Plug 'cocopon/iceberg.vim'
+Plug 'gkeep/iceberg-dark'
+Plug 'mhartington/oceanic-next'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mhinz/vim-janah'
-
+Plug 'psf/black', { 'branch': 'stable' }
 " autosave files when focus is lost
 Plug 'sapphirecat/blursave-vim'
 " limelight plugin
 Plug 'junegunn/limelight.vim'
-" markdown support
-Plug 'plasticboy/vim-markdown'
 
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
@@ -162,6 +164,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Icons
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
 
 
 
@@ -173,6 +176,7 @@ Plug 'mboughaba/i3config.vim'
 Plug 'terryma/vim-multiple-cursors'
 
 " Markdown related plugins
+Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'voldikss/vim-floaterm'
@@ -188,6 +192,20 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 " Fade inactive window/buffer
 Plug 'TaDaa/vimade'
+Plug 'chrisbra/unicode.vim'
+
+Plug 'junegunn/goyo.vim'
+
+" Async task support
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
+
+" running vim command in tmux pane
+Plug 'benmills/vimux'
+
+Plug 'jeetsukumaran/vim-pythonsense'
+Plug 'shmup/vim-sql-syntax'
+
 
 " Initialize plugin system
 call plug#end()
