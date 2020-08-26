@@ -1,0 +1,64 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet cls "Clears the Terminal" b
+" clear the terminal "
+import os
+os.system('clear')
+print("-"*100)
+
+endsnippet
+
+
+snippet fstrp "print with f string" b
+print(f'{${1}=}')
+endsnippet
+
+snippet fstr "f string" b
+f'{${1}=${2}}'
+endsnippet
+
+
+snippet sep "Separator" b
+print('='*20,'${1}', '='*20)
+endsnippet
+
+snippet type1 "Common Typing" b
+from typing import List,Tuple,NamedTuple,Dict,DefaultDict,Set
+endsnippet
+
+snippet type2 "Advanced Typing" b
+from typing import FrozenSet, Iterator, Optional, Union
+endsnippet
+
+snippet timeit "Time the fn" b
+t = Timer(stmt=lambda : ${1}).timeit(number = 1)
+endsnippet
+
+snippet pobj "prop_obj properties" b
+f'${1} = {self.${2}}, ${3} = {self.${4}}, ${5} = {self.${6}}, ${7} = {self.${8}}'
+endsnippet
+
