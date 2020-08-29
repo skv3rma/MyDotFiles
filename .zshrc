@@ -298,4 +298,4 @@ ex ()
 # pfetch
 
 
-# source ~/.zsh_spaceship.sh
+source ~/.zsh_spaceship.sh

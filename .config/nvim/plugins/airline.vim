@@ -1,3 +1,5 @@
+" set encoding=utf8
+" set guifont=DroidSansMono\ Nerd\ Font\ 12
 " Wrap in try/catch to avoid errors on initial install before plugin is available
 try
 
@@ -20,12 +22,8 @@ let g:airline#extensions#bookmark#enabled = 1
 let g:airline#extensions#ctrlp#enabled = 1
 let g:airline#extensions#quickfix#enabled = 1
 
-let g:airline_left_sep = "\uE0B8"
-let g:airline_right_sep = "\uE0B9"
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
-" let g:airline#extensions#tabline#left_sep = '\uE0b8'
-" let g:airline#extensions#tabline#left_alt_sep = '\uE0b9'
 
 let g:airline#extensions#capslock#enabled = 1
 let g:airline#extensions#capslock#symbol = 'CAPS'
@@ -56,10 +54,14 @@ if !exists('g:airline_symbols')
 endif
 
 " airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_left_sep = ' ⮀'
+let g:airline_left_alt_sep = ' ⮁'
+let g:airline_right_sep = '⮂ '
+let g:airline_right_alt_sep = '⮃ '
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''

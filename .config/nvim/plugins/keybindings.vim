@@ -198,9 +198,14 @@ map <leader>vq :VimuxCloseRunner<CR>
 map <leader>vx :VimuxInterruptRunner<CR>
 
 " Removing pythonsense keys // creating problems after removing the plugin
-map ac <Nop>
-map af <Nop>
-map ic <Nop>
-map if <Nop>
+
+" select whole class
+" map ac <Nop>
+" select whole function
+" map af <Nop>
+" select inside class or class body
+" map ic <Nop>
+" select inside function or function body
+" map if <Nop>
 
 

@@ -15,20 +15,32 @@ filetype plugin on
 " save files on buffer change
 set autowrite
 " Set relative line number
-" set mouse=nicr
 set mouse=a
+
 " Disable line numbers
 set nonumber
+
+" Display relative line no
 set relativenumber
+
 "set wildmenu
 set cursorline
-set scrolloff=5
+
+" scroll offset -> scroll 3 lines at a time
+set scrolloff=3
+
+" auto indent the input
 set autoindent
+
+" start the indent on new line
 set smartindent
+
+" line width in characters
 set colorcolumn=100
 
 " Don't show last command
 set noshowcmd
+
 " Yank and paste with the system clipboard
 set clipboard=unnamed
 
@@ -38,23 +50,22 @@ set clipboard=unnamed
 " === TAB/Space settings === "
 " Insert spaces when TAB is pressed.
 set expandtab
+
 " Change number of spaces that a <Tab> counts for during editing ops
 set softtabstop=2
+
 " Indentation amount for < and > commands.
 set shiftwidth=2
 
 " do not wrap long lines by default
 set nowrap
 
-" Don't highlight current cursor line
-" set nocursorline
-
-" Disable line/column number in status line
 " Shows up in preview window when airline is disabled if not
 set noruler
 
 " Only one line for command line
 set cmdheight=1
+set lcs+=space:·
 
 " === Completion Settings === "
 
@@ -65,19 +76,28 @@ set shortmess+=c
 " === Search === "
 " ignore case when searching
 set ignorecase
+
 " if the search string has an upper case letter in it, the search will be case sensitive
 set smartcase
+
 " Automatically re-read file if a change was detected outside of vim
 set autoread
+
 " Enable line numbers
-set number
+" set number
+
 " Set preview window to appear at bottom
 set splitbelow
+set splitright
+
 " Don't dispay mode in command line (airilne already shows it)
 set noshowmode
+
 " Set floating window to be slightly transparent
 set winbl=0
+
 set nobackup
+
 set noswapfile
 
 " Set backups

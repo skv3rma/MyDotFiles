@@ -1,7 +1,7 @@
 env:
-  # TERM: xterm-256color
+  TERM: xterm-256color
   # TERM: screen-256color
-  TERM: alacritty-256color
+  # TERM: alacritty-256color
 
 # Font configuration (changes require restart)
 font:
@@ -49,7 +49,7 @@ font:
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     x: -1
-    y: -1
+    y: 0
 
 
   # Glyph offset determines the locations of the glyphs within their cells with
@@ -119,7 +119,7 @@ window:
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
   # disable scrolling.
-  history: 100
+  history: 1000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -130,7 +130,7 @@ scrolling:
 draw_bold_text_with_bright_colors: true
 
 # Background opacity
-background_opacity: 0.20
+background_opacity: 0.40
 # Colors (Gruvbox dark)
 # colors:
 #   # Default colors
@@ -164,36 +164,64 @@ background_opacity: 0.20
 #     cyan:    '#8ec07c'
 #     white:   '#ebdbb2'
 
-# Colors (Nord)
+# Colors (Nord) : Start
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#2E3440'
+#     foreground: '#D8DEE9'
+
+#   # Normal colors
+#   normal:
+#     black:   '#3B4252'
+#     red:     '#BF616A'
+#     green:   '#A3BE8C'
+#     yellow:  '#EBCB8B'
+#     blue:    '#81A1C1'
+#     magenta: '#B48EAD'
+#     cyan:    '#88C0D0'
+#     white:   '#E5E9F0'
+
+#   # Bright colors
+#   bright:
+#     black:   '#4C566A'
+#     red:     '#BF616A'
+#     green:   '#A3BE8C'
+#     yellow:  '#EBCB8B'
+#     blue:    '#81A1C1'
+#     magenta: '#B48EAD'
+#     cyan:    '#8FBCBB'
+#     white:   '#ECEFF4'
+
+
+# Colors (Iceberg Dark)
 colors:
   # Default colors
   primary:
-    background: '#2E3440'
-    foreground: '#D8DEE9'
+    background: '#161821'
+    foreground: '#d2d4de'
 
   # Normal colors
   normal:
-    black:   '#3B4252'
-    red:     '#BF616A'
-    green:   '#A3BE8C'
-    yellow:  '#EBCB8B'
-    blue:    '#81A1C1'
-    magenta: '#B48EAD'
-    cyan:    '#88C0D0'
-    white:   '#E5E9F0'
+    black:   '#161821'
+    red:     '#e27878'
+    green:   '#b4be82'
+    yellow:  '#e2a478'
+    blue:    '#84a0c6'
+    magenta: '#a093c7'
+    cyan:    '#89b8c2'
+    white:   '#c6c8d1'
 
   # Bright colors
   bright:
-    black:   '#4C566A'
-    red:     '#BF616A'
-    green:   '#A3BE8C'
-    yellow:  '#EBCB8B'
-    blue:    '#81A1C1'
-    magenta: '#B48EAD'
-    cyan:    '#8FBCBB'
-    white:   '#ECEFF4'
-
-
+    black:   '#6b7089'
+    red:     '#e98989'
+    green:   '#c0ca8e'
+    yellow:  '#e9b189'
+    blue:    '#91acd1'
+    magenta: '#ada0d3'
+    cyan:    '#95c4ce'
+    white:   '#d2d4de'
 # Key bindings
 #
 # Key bindings are specified as a list of objects. Each binding will specify a

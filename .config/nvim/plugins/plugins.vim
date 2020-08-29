@@ -160,6 +160,7 @@ Plug 'junegunn/limelight.vim'
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
