@@ -5,6 +5,7 @@ source ~/.config/nvim/plugins/general-settings.vim
 source ~/.config/nvim/plugins/coc.vim
 " source ~/.config/nvim/plugins/coc-explorer.vim
 source ~/.config/nvim/plugins/file-explorer.vim
+" source ~/.config/nvim/plugins/fern-explorer.vim
 
 " ============================================
 
@@ -46,6 +47,7 @@ source ~/.config/nvim/plugins/startify.vim
 
 " python object for motion
 source ~/.config/nvim/plugins/pythonsense.vim
+
 
 " keybindings file
 source ~/.config/nvim/plugins/keybindings.vim

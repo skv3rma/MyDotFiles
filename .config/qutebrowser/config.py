@@ -1,5 +1,5 @@
 
-c.tabs.padding = {'bottom': 5, 'left': 5, 'right': 5, 'top': 5}
+c.tabs.padding = {'bottom': 3, 'left': 3, 'right': 3, 'top': 3}
 
 c.tabs.position = 'top'
 
@@ -18,8 +18,12 @@ config.bind(',tt','set tabs.position top')
 config.bind(',m','hint links spawn mpv --ytdl-format=18 {hint-url}')
 config.bind(',d','hint links spawn st -e youtube-dl --all-subs --output "~/Videos/utube/%(title)s.%(ext)s" {hint-url}')
 config.bind(',f','spawn --userscript ~/.config/qutebrowser/scripts/format_json')
+
+config.bind('xx', 'config-cycle tabs.show always switching')
+config.bind('xz', 'config-cycle statusbar.show always in-mode')
+config.bind('xc', 'config-cycle statusbar.show always in-mode;; config-cycle tabs.show always switching')
 nord = {
-    'base03': '#252931',
+    'base03': '#161821',
     'base02': '#252931',
     'base01': '#e5e9f0',
     'base00': '#d8dee9',

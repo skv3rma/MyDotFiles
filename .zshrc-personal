@@ -100,38 +100,39 @@ bindkey '^e' edit-command-line
 
 ############################# End : Luke Smith
 ZSH_THEME="spaceship"
+source ~/.zsh_spaceship.sh
 
-SPACESHIP_PROMPT_ADD_NEWLINE=true
-SPACESHIP_PROMPT_SEPARATE_LINE=true
+# SPACESHIP_PROMPT_ADD_NEWLINE=true
+# SPACESHIP_PROMPT_SEPARATE_LINE=true
 # SPACESHIP_CHAR_SYMBOL=❯
-SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_HG_SHOW=false
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_RUBY_SHOW=false
-SPACESHIP_ELM_SHOW=false
-SPACESHIP_ELIXIR_SHOW=false
-SPACESHIP_XCODE_SHOW_LOCAL=false
-SPACESHIP_SWIFT_SHOW_LOCAL=false
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_PHP_SHOW=false
-SPACESHIP_JAVA_SHOW=true
-SPACESHIP_MAVEN_SHOW=true
-SPACESHIP_RUST_SHOW=false
-SPACESHIP_JULIA_SHOW=false
-SPACESHIP_DOCKER_SHOW=false
-SPACESHIP_DOCKER_CONTEXT_SHOW=false
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_CONDA_SHOW=false
-SPACESHIP_VENV_SHOW=false
-SPACESHIP_PYENV_SHOW=false
-SPACESHIP_DOTNET_SHOW=false
-SPACESHIP_EMBER_SHOW=false
-SPACESHIP_KUBECONTEXT_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_TERRAFORM_SHOW=false
-SPACESHIP_VI_MODE_SHOW=false
-SPACESHIP_JOBS_SHOW=false
+# SPACESHIP_CHAR_SUFFIX=" "
+# SPACESHIP_HG_SHOW=false
+# SPACESHIP_PACKAGE_SHOW=false
+# SPACESHIP_NODE_SHOW=false
+# SPACESHIP_RUBY_SHOW=false
+# SPACESHIP_ELM_SHOW=false
+# SPACESHIP_ELIXIR_SHOW=false
+# SPACESHIP_XCODE_SHOW_LOCAL=false
+# SPACESHIP_SWIFT_SHOW_LOCAL=false
+# SPACESHIP_GOLANG_SHOW=false
+# SPACESHIP_PHP_SHOW=true
+# SPACESHIP_JAVA_SHOW=true
+# SPACESHIP_MAVEN_SHOW=true
+# SPACESHIP_RUST_SHOW=false
+# SPACESHIP_JULIA_SHOW=false
+# SPACESHIP_DOCKER_SHOW=false
+# SPACESHIP_DOCKER_CONTEXT_SHOW=false
+# SPACESHIP_AWS_SHOW=false
+# SPACESHIP_CONDA_SHOW=false
+# SPACESHIP_VENV_SHOW=true
+# SPACESHIP_PYENV_SHOW=true
+# SPACESHIP_DOTNET_SHOW=false
+# SPACESHIP_EMBER_SHOW=false
+# SPACESHIP_KUBECONTEXT_SHOW=false
+# SPACESHIP_TERRAFORM_SHOW=false
+# SPACESHIP_TERRAFORM_SHOW=false
+# SPACESHIP_VI_MODE_SHOW=false
+# SPACESHIP_JOBS_SHOW=false
 
 #################### End : Luke Smith ####################
 
@@ -219,6 +220,8 @@ export jvmOptions="-Xmx1g -Xms1g -XXaltjvm=dcevm -javaagent:$HOME/DevTools/hotsw
 #export MAVEN_OPTS=$jvmOptions
 
 export PATH=$PATH:$HOME/bin
+export JULIA_HOME="${HOME}/DevTools/julia-1.4.2"
+export PATH=$PATH:$JULIA_HOME/bin
 
 ### LARAVEL PATH
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
@@ -262,7 +265,7 @@ alias mkdwm="sudo make install"
 ################################# configs ###################################
 alias confbash="vim $HOME/.bashrc-personal"
 alias confzsh="vim $HOME/.zshrc-personal"
-alias sourcezsh="source $HOME/.zshrc"
+alias szsh="source $HOME/.zshrc"
 alias confst="vim $HOME/software_sources/st/config.h"
 alias confkitty="vim $HOME/.config/kitty/kitty.conf"
 alias confalacritty="vim $HOME/.config/alacritty/alacritty.yml"
@@ -276,13 +279,13 @@ alias confi3="vim $HOME/.config/i3/config"
 alias confqtile="vim $HOME/.config/qtile/config.py"
 alias confpoly="vim $HOME/.config/polybar/config"
 alias conftmux="vim $HOME/.tmux.conf"
-alias confwall="nitrogen $HOME/Pictures/wall"
-alias confwallnord="nitrogen $HOME/Pictures/nord-compat"
-alias confwallnordsyntax="nitrogen $HOME/Pictures/nord-compat/syntax"
-alias confwallnordanime="nitrogen $HOME/Pictures/nord-compat/anime"
-alias confwallnordmountains="nitrogen $HOME/Pictures/nord-compat/mountains"
-alias confwallgruvbox="nitrogen $HOME/Pictures/gruvbox-compat"
-alias confconwall="nitrogen ~/Pictures/annotated-wallpapers"
+alias confwall="sxiv -t $HOME/Pictures/annotated-wallpapers"
+alias confwallnord="sxiv -t $HOME/Pictures/nord-compat"
+alias confwallnordsyntax="sxiv -t $HOME/Pictures/nord-compat/syntax"
+alias confwallnordanime="sxiv -t $HOME/Pictures/nord-compat/anime"
+alias confwallnordmountains="sxiv -t $HOME/Pictures/nord-compat/mountains"
+alias confwallgruvbox="sxiv -t $HOME/Pictures/gruvbox-compat"
+alias confconwall="sxiv -t ~/Pictures/annotated-wallpapers"
 alias confqute="vim $HOME/.config/qutebrowser/config.py"
 alias conftermite="vim $HOME/.config/termite/config"
 alias confrofitheme="vim $HOME/.config/rofi/mytheme.rasi"
@@ -310,27 +313,21 @@ export H2RunScript="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript"
 export TS_ONFINISH="tsp_finish"
 export TS_ENV="tsp_start"
 
-alias connect2UserDbShell="$H2Shell -user kodecamp -password kodecamp
-                          \ -url jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase"
+alias connect2UserDbShell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase"
 
-alias connect2AppDbShell="$H2Shell -user kodecamp -password kodecamp
-                          \ -url jdbc:h2:tcp://localhost:9092/~/DevTools/Databases/cmsDatabase;TRACE_LEVEL_FILE=3;"
+alias connect2AppDbShell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9092/~/DevTools/Databases/cmsDatabase;TRACE_LEVEL_FILE=3;"
 
 alias runh2AppDbServer="$H2Server -tcp -tcpPort 9092 -tcpAllowOthers"
 
 alias runh2UserDbServer="$H2Server -tcp -tcpPort 9091 -tcpAllowOthers"
 
-alias showh2Logs="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.ConvertTraceFile
-                 \ -traceFile $CURRENT_DB_PATH -script $DB_HOME/log.sql"
+alias showh2Logs="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.ConvertTraceFile -traceFile $CURRENT_DB_PATH -script $DB_HOME/log.sql"
 
-alias runh2Script="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript
-                  \ -url jdbc:h2:tcp://localhost/~/DevTools/Databases/cmsDatabase
-                  \ -script ./script.sql"
+alias runh2Script="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript -url jdbc:h2:tcp://localhost/~/DevTools/Databases/cmsDatabase -script ./script.sql"
 
 
 alias runeclipse="eclipse > /dev/null &"
-alias deployWar="cp $HOME/Projects/java/services/apps.tomee/services/target/services.war
-                \ $HOME/Projects/java/services/apps.tomee/tomee/webapps"
+alias deployWar="cp $HOME/Projects/java/services/apps.tomee/services/target/services.war $HOME/Projects/java/services/apps.tomee/tomee/webapps"
 
 ############ project directoris
 alias cdservices="cd $HOME/Projects/java/services"
@@ -339,9 +336,9 @@ alias cdpayara="cd $HOME/Projects/java/services/apps.payara"
 alias cdpayaraser="cd $HOME/Projects/java/services/apps.payara/services"
 alias cdliberty="cd $HOME/Projects/java/services/apps.openliberty"
 alias cdjava="cd $HOME/Projects/java"
-alias cdjavatrain="cd $HOME/Projects/java/trainings"
+alias cdjt="cd $HOME/Projects/java/trainings"
 alias cdjavajdbc="cd $HOME/Projects/java/trainings/jdbc-concepts"
-alias cdpytrain="cd $HOME/Projects/python"
+alias cdpyt="cd $HOME/Projects/python/training"
 alias cdspring="cd $HOME/Projects/java/ws_spring"
 alias cdrust="cd $HOME/Projects/rust"
 alias cdbash="cd $HOME/Projects/bash"
@@ -367,12 +364,15 @@ alias runjavatest="find target/ | entr $M2_HOME/bin/mvn -q test"
 
 ########## aliases for python ########
 
-runpytest() {
-  find . | entr $(pipenv --venv)/bin/python test.py
-}
+alias esh="pipenv shell"
+alias runpymain="find ./* | entr python main.py"
+
+# runpymain() {
+#   find ./* | entr $(pipenv --venv)/bin/python main.py
+# }
 
 runpy() {
-  find . | entr $(pipenv --venv)/bin/python $1
+  find ./* | entr python $1
 }
 
 ########### aliases for System command
@@ -400,6 +400,7 @@ alias newsboat="nb"
 alias ws="weather"
 alias wf="curl wttr.in"
 alias dad="dragon-drag-and-drop -a -x"
+alias sf="surf ~/.surf/html/homepage.html"
 
 mkcd() {
   mkdir $1
@@ -424,6 +425,7 @@ alias lets_discuss="banner-bg \"Java Enterprise Edition 8\" | lolcat; banner kod
 
 #################### Suffix aliases ##########################
 alias -s {png,jpg}="sxiv"
-alias -s {md,txt,csv,h,c,java,html,css,js,ts}="nvim"
+alias -s {md,txt,csv,h,c,html,css,js,ts}="nvim"
 alias -s {mkv,mp4,avi}="celluloid"
+
 # pfetch

@@ -1,6 +1,7 @@
 " ============================================================================ "
 " ===                             KEY MAPPINGS                             === "
 " ============================================================================ "
+" Disable arrow keys if you want
 " noremap   <Up>     <NOP>
 " noremap   <Down>   <NOP>
 " noremap   <Left>   <NOP>
@@ -8,7 +9,16 @@
 
 " format file
 noremap <silent><leader>i :Format<CR>
+
+" Redo -> Reverse undo
 noremap r <C-r>
+
+" Open Vim Config
+noremap <silent><leader>1 :e ~/.config/nvim/init.vim<CR>
+noremap <silent><leader>2 :e ~/.config/nvim/plugins/plugins.vim<CR>
+noremap <silent><leader>3 :e ~/.config/nvim/plugins/keybindings.vim<CR>
+noremap <silent><leader>4 :e ~/.config/nvim/themes/themes.vim<CR>
+
 
 
 "   <Space> - PageDown
@@ -62,9 +72,10 @@ nnoremap <silent> <leader>el :set colorcolumn=101<CR>
 function! MakeTransparent()
     highlight Normal ctermbg=NONE guibg=NONE
     " split separator
-    highlight VertSplit guibg=NONE guifg=#1e2132
-    highlight EndOfBuffer guibg=NONE guifg=#1e2132
-    " highlight CursorLine cterm=NONE ctermbg=black guibg=#2a3158
+    highlight VertSplit guibg=NONE guifg=#2e3440
+    highlight EndOfBuffer guibg=#1e2132 guifg=#1e2132
+    highlight CursorLine cterm=NONE ctermbg=black guibg=#2e3440
+    " highlight CursorLine cterm=NONE ctermbg=black guibg=#616f55
     highlight LineNr guibg=NONE
 endfunction
 
