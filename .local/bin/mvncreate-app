@@ -18,3 +18,5 @@ fi
   -DarchetypeArtifactId=maven-archetype-quickstart \
   -DinteractiveMode=false
 
+  cd "./$prjname"
+  git init
