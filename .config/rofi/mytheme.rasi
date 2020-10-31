@@ -21,25 +21,21 @@
     selected-urgent-foreground: @background-alt;
 
     background-color: transparent;
-    /* background: #eeeeeeaf; */
-    /* background-alt: #ffffff; */
-    /* foreground:#00ACC1; */
-    /* foreground-alt: #00ACC1; */
 
-    /* =========gruvbox light theme ======= */
-    /* background: #ebdbb2af; */
-    /* background-alt:#c1b93e; */
-    /* foreground: #282828; */
-    /* foreground-alt:#434343; */
+    /* =========gruvbox dark theme ======= */
+    foreground: #ebdbb2;
+    background-alt:#98971a;
+    background: #1d2021af;
+    foreground-alt:#98971a;
 
     /* ======= nord theme ============*/
-    background: #4c566a44;
-    /* background: transparent; */
-    background-alt:#8fbbbc;
-    foreground: #d8dee9;
-    foreground-alt:#2e3440;
+    /* background: #4c566a44; */
+    /* background-alt:#8fbbbc; */
+    /* foreground: #d8dee9; */
+    /* foreground-alt:#2e3440; */
 
-    border-color: @background-alt;
+    /* border-color: @background-alt; */
+    border-color: #434343;
     spacing: 3;
 }
 
@@ -58,7 +54,7 @@
 #mainbox {
     background-color: @background;
     expand: false;
-    border: 0px;
+    border: 2px;
     border-radius: 0px;
     padding: 0px;
 }

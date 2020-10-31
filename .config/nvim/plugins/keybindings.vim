@@ -11,22 +11,18 @@
 noremap <silent><leader>i :Format<CR>
 
 " Redo -> Reverse undo
-noremap r <C-r>
+noremap U <C-r>
 
-" Open Vim Config
+" Open Vim Related Configs
 noremap <silent><leader>1 :e ~/.config/nvim/init.vim<CR>
 noremap <silent><leader>2 :e ~/.config/nvim/plugins/plugins.vim<CR>
 noremap <silent><leader>3 :e ~/.config/nvim/plugins/keybindings.vim<CR>
 noremap <silent><leader>4 :e ~/.config/nvim/themes/themes.vim<CR>
 
-
-
 "   <Space> - PageDown
 "   -       - PageUp
 " noremap <Space> <PageDown>
 " noremap - <PageUp>
-
-
 
 " === vim-better-whitespace === "
 "   <leader>y - Automatically remove trailing whitespace
@@ -38,9 +34,6 @@ nmap <leader>yy :StripWhitespace<CR>
 map <leader>f :%s///<left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-" === Easy-motion shortcuts ==="
-"   <leader>w - Easy-motion highlights first word letters bi-directionally
-map <leader>w <Plug>(easymotion-bd-w)
 
 " Allows you to save files you opened without write permissions via sudo
 cmap w!! w !sudo tee %
@@ -55,8 +48,26 @@ cmap w!! w !sudo tee %
 vnoremap <leader>p "_dP
 " Change to normal mode from inser mode
 inoremap ii <ESC>
+" mathematical symbols
+inoremap ,p +
+inoremap ,m -
+inoremap ,x *
+inoremap ,d /
+inoremap ,c {}<ESC>i
+inoremap ,s []<ESC>i
+inoremap ,b ()<ESC>i
+inoremap ,h #
+inoremap ,a &
+inoremap ,e !
 
-" yanking from current position to end
+" Rust Related Binding in insert mode
+inoremap ,tt #[test]<CR>
+inoremap ,pp println!("");<ESC>2hi
+inoremap ,fn fn test(){}<ESC>hi
+
+
+
+" yanking from current position to end of line
 nnoremap Y y$
 " yanking and pasting to and from system clipboard and vim
 nnoremap <leader>y "+y
@@ -69,30 +80,59 @@ nnoremap <silent> <leader>dl :set colorcolumn=0<CR>
 nnoremap <silent> <leader>el :set colorcolumn=101<CR>
 " Makes the background transparent
 "
+function TokyoNight()
+    highlight EndOfBuffer guibg=#191c29 guifg=#191c29
+    " highlight CursorLine cterm=NONE ctermbg=black guibg=#191c29
+    highlight CursorLine cterm=NONE ctermbg=black guibg=#161821
+    highlight Visual guibg=#161821
+    " highlight CursorLine cterm=NONE ctermbg=black guibg=#2e3440
+    highlight LineNr guibg=NONE guifg=#616f55
+endfunction
+
+function Gruvbox()
+    highlight CursorLine cterm=NONE ctermbg=black guibg=#282828
+    highlight VertSplit ctermbg=NONE guibg=#434343 guifg=#434343
+    highlight EndOfBuffer guibg=#282828 guifg=#282828
+    highlight Visual guibg=#434343
+    highlight LineNr guibg=NONE guifg=#616f55
+endfunction
+
 function! MakeTransparent()
+    " makes the background transparent
     highlight Normal ctermbg=NONE guibg=NONE
-    " split separator
-    highlight VertSplit guibg=NONE guifg=#2e3440
-    highlight EndOfBuffer guibg=#1e2132 guifg=#1e2132
-    highlight CursorLine cterm=NONE ctermbg=black guibg=#2e3440
-    " highlight CursorLine cterm=NONE ctermbg=black guibg=#616f55
-    highlight LineNr guibg=NONE
+    :call Gruvbox()
+
 endfunction
 
 " nnoremap <silent> <leader>o  :hi Normal ctermbg=NONE guibg=NONE<CR>
 nnoremap <silent> <leader>o  :call MakeTransparent()<CR>
+
+let t:is_transparent = 0
+function! Toggle_transparent_background()
+  if t:is_transparent == 0
+    hi Normal guibg=#161821 ctermbg=black
+    let t:is_transparent = 1
+  else
+    hi Normal guibg=NONE ctermbg=NONE
+    let t:is_transparent = 0
+  endif
+endfunction
+nnoremap <C-x><C-t> :call Toggle_transparent_background()<CR>
+
 " buffer switching fuzzy finder
 " Switch to buffer by providing unique keyword of file name
 nnoremap <leader>b :b<Space>
+nnoremap <leader>q :q<CR>
 
 " quit buffer
 nmap <silent> <leader>bd :bd<CR>
 " quit buffer without saving changes
 nmap <silent> <leader>bq :bd!<CR>
 " next buffer
-nmap <silent> <leader>bn :bn<CR>
+nmap <silent> <leader><leader>n :bn<CR>
 " previous buffer
-nmap <silent> <leader>bp :bp<CR>
+nmap <silent> <leader><leader>p :bp<CR>
+nmap <silent> <leader><leader> :bp<CR>
 " first buffer
 nmap <silent> <leader>bf :bfirst<CR>
 " last buffer
@@ -109,7 +149,6 @@ nnoremap <silent> <leader>z :w<CR>
 nnoremap <silent> <F3> :set hlsearch!<CR>
 
 " Split Resizing
-
 noremap <silent> <C-Home>  :vertical resize 30<CR>
 noremap <silent> <C-Right> :vertical resize +3<CR>
 noremap <silent> <C-Left>  :vertical resize -3<CR>
@@ -129,8 +168,6 @@ nnoremap <silent> <C-A-d> :set background=light<CR>
 " Quickly open/reload vim
 nnoremap <silent> <A-r> :source $MYVIMRC<CR>
 
-
-
 " `SPC l s` - save current session
 nnoremap <leader>ss :SSave<CR>
 
@@ -138,7 +175,6 @@ nnoremap <leader>ss :SSave<CR>
 nnoremap <leader>sc :SClose<CR>
 
 " latin Symbols
-
 nnoremap <leader><leader>l i+----------+<SPACE><ESC>
 nnoremap <leader><leader>sl :normal 12i<SPACE><CR>
 nnoremap <leader><leader>bl i+----------+<ESC>o+----------+<SPACE><ESC>
@@ -164,14 +200,30 @@ nnoremap <leader><leader>tb :.!toilet -w 200 -f slant<CR> <ESC>
 " box draw around text
 nnoremap <leader><leader>tr :.!toilet -w 200 -f term -F border<CR>
 
-nmap <leader>ll <Plug>(Limelight)
-xmap <leader>ll <Plug>(Limelight)
+" nmap <leader>ll <Plug>(Limelight)
+" xmap <leader>ll <Plug>(Limelight)
+
+function! ToggleVisualHighlight()
+    " hi Visual  guibg=#101010 gui=none
+    " hi Visual  guibg=#214c5a guifg=NONE
+    " highlight CursorLine cterm=NONE ctermbg=NONE guibg=#3c3836
+    highlight CursorLine cterm=NONE ctermbg=NONE guibg=#161821
+    " highlight LineNr guibg=#1A237E
+    :Limelight!!
+endfunction
+
+" nmap <silent>` :Limelight!!<CR>
+" xmap <silent>` :Limelight!!<CR>
+
+nmap <silent>` :call ToggleVisualHighlight()<CR>
+xmap <silent>` :call ToggleVisualHighlight()<CR>
 
 " activate limelight with goyo
 nnoremap <silent><leader>g :Goyo<CR>
+
+" Activate limelight with goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
-
 
 function! ToggleWindowHorizontalVerticalSplit()
   if !exists('t:splitType')
@@ -189,24 +241,20 @@ function! ToggleWindowHorizontalVerticalSplit()
 endfunction
 
 nnoremap <silent> <leader><leader>wt :call ToggleWindowHorizontalVerticalSplit()<cr>
-
 " Prompt for a command to run
-map <leader>vp :VimuxPromptCommand<CR>
+map <silent><leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-map <leader>vl :VimuxRunLastCommand<CR>
+map <silent><leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-map <leader>vi :VimuxInspectRunner<CR>
+map <silent><leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
-map <leader>vz :VimuxZoomRunner<CR>
-
+map <silent><leader>vz :VimuxZoomRunner<CR>
 " Run the current file with rspec
-map <leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
-
+map <silent><leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
 " Close vim tmux runner opened by VimuxRunCommand
-map <leader>vq :VimuxCloseRunner<CR>
-
+map <silent><leader>vq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane
-map <leader>vx :VimuxInterruptRunner<CR>
+map <silent><leader>vx :VimuxInterruptRunner<CR>
 
 " Removing pythonsense keys // creating problems after removing the plugin
 
@@ -218,5 +266,3 @@ map <leader>vx :VimuxInterruptRunner<CR>
 " map ic <Nop>
 " select inside function or function body
 " map if <Nop>
-
-

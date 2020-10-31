@@ -298,4 +298,12 @@ ex ()
 # pfetch
 
 
-source ~/.zsh_spaceship.sh
+# source ~/.zsh_spaceship.sh
+
+[[ -s "/home/sunil_arc/.gvm/scripts/gvm" ]] && source "/home/sunil_arc/.gvm/scripts/gvm"
+
+[ -s "/home/sunil_arc/.jabba/jabba.sh" ] && source "/home/sunil_arc/.jabba/jabba.sh"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/sunil_arc/.sdkman"
+[[ -s "/home/sunil_arc/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sunil_arc/.sdkman/bin/sdkman-init.sh"

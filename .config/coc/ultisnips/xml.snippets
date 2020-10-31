@@ -219,3 +219,76 @@ snippet plugin-mvncompiler "maven compiler plugin" b
 
 endsnippet
 
+
+snippet pomjdk15 "JDK 15 Related POM Configuration" b
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.15</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
+
+    <version.jpa>2.2</version.jpa>
+    <version.eclipselink>2.7.6</version.eclipselink>
+
+    <version.cdi>2.0</version.cdi>
+    <version.weld>3.1.1.Final</version.weld>
+
+    <version.h2db>1.4.200</version.h2db>
+
+    <version.junit>5.6.2</version.junit>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+
+  </dependencies>
+  <build>
+    <plugins>
+      <!-- maven-compiler-plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <release>15</release>
+          <!-- only compiles the changed files -->
+          <useIncrementalCompilation>false</useIncrementalCompilation>
+        </configuration>
+      </plugin>
+
+        <!-- for running java command -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.6.0</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>java</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <!-- class to be executed(main method) : fully qualified class name -->
+            <mainClass>in.kodecamp.app.App</mainClass>
+            <!-- optional -->
+            <!--
+            <arguments>
+            </arguments>
+            <systemProperties>
+              <systemProperty>
+                <key>myproperty</key>
+                <value>myvalue</value>
+              </systemProperty>
+            </systemProperties>
+            -->
+          </configuration>
+        </plugin>
+    </plugins>
+  </build>
+endsnippet

@@ -1,20 +1,20 @@
-scriptencoding utf-8
 "these files should be loaded in the sequence
 source ~/.config/nvim/plugins/plugins.vim
 source ~/.config/nvim/plugins/general-settings.vim
+source ~/.config/nvim/plugins/limelight.vim
 source ~/.config/nvim/plugins/coc.vim
 " source ~/.config/nvim/plugins/coc-explorer.vim
 source ~/.config/nvim/plugins/file-explorer.vim
+" source ~/.config/nvim/plugins/seiya.vim
 " source ~/.config/nvim/plugins/fern-explorer.vim
 
 " ============================================
 
 source ~/.config/nvim/plugins/better-whitespace.vim
 source ~/.config/nvim/plugins/easy-motion.vim
-
 source ~/.config/nvim/ext_plugins/restore_view.vim
 
-"load bufonly plugin
+" load bufonly plugin
 source ~/.config/nvim/plugins/BufOnly.vim
 
 "load nerdtree settings
@@ -25,10 +25,10 @@ source ~/.config/nvim/plugins/BufOnly.vim
 
 source ~/.config/nvim/plugins/indent-lines.vim
 
-"load themes
+" load themes
 source ~/.config/nvim/themes/themes.vim
 
-"load airline settings
+" load airline settings
 source ~/.config/nvim/plugins/airline.vim
 
 " load markdown settings
@@ -52,7 +52,7 @@ source ~/.config/nvim/plugins/pythonsense.vim
 " keybindings file
 source ~/.config/nvim/plugins/keybindings.vim
 source ~/.config/nvim/plugins/async.vim
-"==================== Language Specific Settings ======
+" ==================== Language Specific Settings ======
 source ~/.config/nvim/plugins/java-script.vim
 source ~/.config/nvim/plugins/misc.vim
 

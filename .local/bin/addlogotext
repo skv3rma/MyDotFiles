@@ -1,17 +1,18 @@
 #!/bin/bash -
 # convert -font "$HOME/.local/share/fonts/lasercorpsacadital.ttf" -fill "#eeeeee" -pointsize 120 -gravity southeast -draw "text 60,60 'KODECAMP'" "$1" "converted-$1"
 # convert -font "$HOME/.local/share/fonts/Alice.ttf" -fill "#000000" -pointsize 120 -gravity southeast -draw "text 60,60 'KODECAMP'" "$1" "converted-$1"
-# convert -gravity southeast \
+
+convert -gravity northeast \
+	-font "$HOME/.local/share/fonts/COOPBL.TTF" \
+	-pointsize 25 -fill "#2e3440" \
+        -stroke "#4c566a" -strokewidth 6 -draw "text 60,60 'kodecamp'" \
+        -stroke none                      -draw "text 60,60 'kodecamp'" \
+	"$1" "${ANNOTATED_WALL_HOME}/converted-$1"
+
+
+# convert -gravity center \
 # 	-font "$HOME/.local/share/fonts/COOPBL.TTF" \
 # 	-pointsize 40 -fill "#2e3440" \
-#         -stroke "#4c566a" -strokewidth 10 -draw "text 100,100 'kodecamp'" \
-#         -stroke none                      -draw "text 100,100 'kodecamp'" \
+#         -stroke "#4c566a" -strokewidth 10 -draw "text 0,0 'kodecamp'" \
+#         -stroke none                      -draw "text 0,0 'kodecamp'" \
 # 	"$1" "${ANNOTATED_WALL_HOME}/converted-$1"
-
-
-convert -gravity center \
-	-font "$HOME/.local/share/fonts/COOPBL.TTF" \
-	-pointsize 40 -fill "#2e3440" \
-        -stroke "#4c566a" -strokewidth 10 -draw "text 0,0 'kodecamp'" \
-        -stroke none                      -draw "text 0,0 'kodecamp'" \
-	"$1" "${ANNOTATED_WALL_HOME}/converted-$1"

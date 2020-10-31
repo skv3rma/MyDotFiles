@@ -14,12 +14,10 @@
 " #################################################################
 source ~/.config/nvim/plugins/fzf.vim
 " Search For file in project dir
-noremap <C-p>              :ProjectFiles<CR>
+" noremap <C-p>              :ProjectFiles<CR>
 " Search For file in sibling dir and current dir
-nnoremap <silent><C-f>     :Files<CR>
+nnoremap <silent><C-f>     :History<CR>
 nnoremap <silent><leader>. :Files<CR>
-" Search For file in history
-nnoremap <silent> <C-A-f>  :History<CR>
 " Search a keyword in the root folder
 nnoremap <silent><leader>@ :Rg<Cr>
 " Search a workd in currently open buffer

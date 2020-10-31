@@ -144,6 +144,14 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rakr/vim-one'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'sainnhe/sonokai'
+Plug 'ghifarit53/daycula-vim' , {'branch' : 'main'}
+Plug 'cideM/yui'
+Plug 'embark-theme/vim', { 'as': 'embark' }
+Plug 'Brettm12345/moonlight.vim'
+Plug 'phanviet/vim-monokai-pro'
+" Plug 'rust-lang/rust.vim'
+" Plug 'arzg/vim-rust-syntax-ext'
 " Activate Nord Vim when toggling the NERDTree.
 Plug 'arcticicestudio/nord-vim', { 'on':  'NERDTreeToggle' }
 " Plug 'cocopon/iceberg.vim'
@@ -152,6 +160,17 @@ Plug 'mhartington/oceanic-next'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'mhinz/vim-janah'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'Lokaltog/vim-monotone'
+Plug 'sainnhe/forest-night'
+Plug 'AlessandroYorba/Breve'
+Plug 'jsit/toast.vim'
+Plug 'hhsnopek/vim-firewatch'
+" Plug 'roman/golden-ratio'
+" maintains yank history
+" adds (meta + p) and (meta + shift + p)
+" Plug 'maxbrunsfeld/vim-yankstack'
 " autosave files when focus is lost
 Plug 'sapphirecat/blursave-vim'
 " limelight plugin
@@ -160,7 +179,6 @@ Plug 'junegunn/limelight.vim'
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
 
 " file explorer
 " Plug 'lambdalisue/fern.vim'

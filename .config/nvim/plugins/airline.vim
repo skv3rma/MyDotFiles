@@ -14,17 +14,35 @@ let g:airline_skip_empty_sections = 1
 
 " Enable tabline
 " Display buffer number
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 1
+let g:airline#extensions#tabline#close_symbol = 'X'
+
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#bookmark#enabled = 1
 let g:airline#extensions#ctrlp#enabled = 1
 let g:airline#extensions#quickfix#enabled = 1
 
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
+"
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
 
+" let g:airline#extensions#tabline#left_sep = ' » '
+" let g:airline#extensions#tabline#left_alt_sep = ' » '
+"
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
+"
+"" unicode symbols
+"
 let g:airline#extensions#capslock#enabled = 1
 let g:airline#extensions#capslock#symbol = 'CAPS'
 
@@ -54,20 +72,21 @@ if !exists('g:airline_symbols')
 endif
 
 " airline symbols
-let g:airline_left_sep = ' '
-let g:airline_left_alt_sep = ' '
-let g:airline_right_sep = ' '
-let g:airline_right_alt_sep = ' '
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 " let g:airline_left_sep = '⮀ '
-" let g:airline_left_alt_sep = ' ⮁'
-" let g:airline_right_sep = '⮂ '
-" let g:airline_right_alt_sep = '⮃ '
-"
+" let g:airline_left_alt_sep = ' ⮁ '
+" let g:airline_right_sep = ' ⮂ '
+" let g:airline_right_alt_sep = ' ⮃ '
+
 " let g:airline_left_sep = ''
 " let g:airline_right_sep = ''
 " let g:airline_left_alt_sep = ''
 " let g:airline_right_alt_sep = ''
+
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''

@@ -1,6 +1,12 @@
 " Remap leader key to ,
 " This should be the first line show that it can be used by any other key
 " mapping
+
+set encoding=utf-8 nobomb
+set fileencodings=utf-8,gbk,utf-16le,cp1252,iso-8859-15,ucs-bom
+set fileformats=unix,dos,mac
+scriptencoding utf-8
+
 let g:mapleader=','
 
 "search down into subfolders
@@ -36,7 +42,7 @@ set autoindent
 set smartindent
 
 " line width in characters
-set colorcolumn=100
+set colorcolumn=101
 
 " Don't show last command
 set noshowcmd
@@ -94,7 +100,7 @@ set splitright
 set noshowmode
 
 " Set floating window to be slightly transparent
-set winbl=0
+set winbl=10
 
 set nobackup
 
@@ -113,6 +119,7 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 " Hide conceal markers
 let g:neosnippet#enable_conceal_markers = 0
 
+" Tmux cursor shape(on mode change) related fix
 if exists('$TMUX')
     let &t_SI .= "\ePtmux;\e\e[=1c\e\\"
     let &t_EI .= "\ePtmux;\e\e[=2c\e\\"

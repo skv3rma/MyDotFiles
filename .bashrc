@@ -209,3 +209,9 @@ ex ()
 source /home/sunil_arc/.config/broot/launcher/bash/br
 
 neofetch
+
+[ -s "/home/sunil_arc/.jabba/jabba.sh" ] && source "/home/sunil_arc/.jabba/jabba.sh"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/sunil_arc/.sdkman"
+[[ -s "/home/sunil_arc/.sdkman/bin/sdkman-init.sh" ]] && source "/home/sunil_arc/.sdkman/bin/sdkman-init.sh"

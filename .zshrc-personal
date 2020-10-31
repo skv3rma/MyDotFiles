@@ -36,8 +36,8 @@ export IMAGE="sxiv"
 export COLORTERM="truecolor"
 export OPENER="xdg-open"
 export PAGER="less"
-export WM="LG3D"
-export BAT_THEME="Nord"
+# export WM="LG3D"
+export BAT_THEME="1337"
 # export TERM="xterm-256color"
 
 export ANNOTATED_WALL_HOME="$HOME/Pictures/annotated-wallpapers"
@@ -99,40 +99,6 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
 ############################# End : Luke Smith
-ZSH_THEME="spaceship"
-source ~/.zsh_spaceship.sh
-
-# SPACESHIP_PROMPT_ADD_NEWLINE=true
-# SPACESHIP_PROMPT_SEPARATE_LINE=true
-# SPACESHIP_CHAR_SYMBOL=❯
-# SPACESHIP_CHAR_SUFFIX=" "
-# SPACESHIP_HG_SHOW=false
-# SPACESHIP_PACKAGE_SHOW=false
-# SPACESHIP_NODE_SHOW=false
-# SPACESHIP_RUBY_SHOW=false
-# SPACESHIP_ELM_SHOW=false
-# SPACESHIP_ELIXIR_SHOW=false
-# SPACESHIP_XCODE_SHOW_LOCAL=false
-# SPACESHIP_SWIFT_SHOW_LOCAL=false
-# SPACESHIP_GOLANG_SHOW=false
-# SPACESHIP_PHP_SHOW=true
-# SPACESHIP_JAVA_SHOW=true
-# SPACESHIP_MAVEN_SHOW=true
-# SPACESHIP_RUST_SHOW=false
-# SPACESHIP_JULIA_SHOW=false
-# SPACESHIP_DOCKER_SHOW=false
-# SPACESHIP_DOCKER_CONTEXT_SHOW=false
-# SPACESHIP_AWS_SHOW=false
-# SPACESHIP_CONDA_SHOW=false
-# SPACESHIP_VENV_SHOW=true
-# SPACESHIP_PYENV_SHOW=true
-# SPACESHIP_DOTNET_SHOW=false
-# SPACESHIP_EMBER_SHOW=false
-# SPACESHIP_KUBECONTEXT_SHOW=false
-# SPACESHIP_TERRAFORM_SHOW=false
-# SPACESHIP_TERRAFORM_SHOW=false
-# SPACESHIP_VI_MODE_SHOW=false
-# SPACESHIP_JOBS_SHOW=false
 
 #################### End : Luke Smith ####################
 
@@ -158,7 +124,7 @@ export JDK8_ZULU="$DEVTOOLS/jdk/zulu8.44.0.11-ca-jdk8.0.242-linux_x64"
 export JDK11_ZULU="$DEVTOOLS/jdk/zulu11.37.17-ca-jdk11.0.6-linux_x64"
 
 
-export JAVA_HOME=$JDK8
+export JAVA_HOME=$JDK11
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
@@ -228,8 +194,14 @@ export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 
 # export PATH="$PATH":"~/.pub-cache/bin"
-
+#### CARGO Rust ####
 export PATH="$HOME/.cargo/bin:$PATH"
+# export RUST_BACKTRACE="full"
+
+cn() {
+  cargo new $1
+  cd $1
+}
 
 #### VS Code ####
 export CODE_HOME="$HOME/DevTools/VSCode-linux-x64"
@@ -313,6 +285,10 @@ export H2RunScript="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript"
 export TS_ONFINISH="tsp_finish"
 export TS_ENV="tsp_start"
 
+#################### GO Lang
+export GO_HOME=~/DevTools/go
+export PATH=$PATH:$GO_HOME
+
 alias connect2UserDbShell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase"
 
 alias connect2AppDbShell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9092/~/DevTools/Databases/cmsDatabase;TRACE_LEVEL_FILE=3;"
@@ -377,6 +353,8 @@ runpy() {
 
 ########### aliases for System command
 alias lsd="lsd -Flart"
+alias lcd="lsd -Flart | lolcat"
+alias lc="ls -a | lolcat"
 alias li="sxiv -t ."
 alias tx="tmux"
 alias vim="nvim"
@@ -401,6 +379,8 @@ alias ws="weather"
 alias wf="curl wttr.in"
 alias dad="dragon-drag-and-drop -a -x"
 alias sf="surf ~/.surf/html/homepage.html"
+alias lvim="/usr/local/bin/vis"
+alias po="poweroff"
 
 mkcd() {
   mkdir $1
@@ -418,7 +398,7 @@ source ~/.config/broot/launcher/bash/br
 ### m and sm command availability
 source ~/.local/bin/utils
 
-banner "kodecamp" | lolcat
+# banner "kodecamp" | lolcat
 
 #################### temp aliases
 alias lets_discuss="banner-bg \"Java Enterprise Edition 8\" | lolcat; banner kodecamp"
@@ -428,4 +408,21 @@ alias -s {png,jpg}="sxiv"
 alias -s {md,txt,csv,h,c,html,css,js,ts}="nvim"
 alias -s {mkv,mp4,avi}="celluloid"
 
+eval "$(lua ~/.config/z.lua/z.lua --init zsh)"
+
+alias zi="z -I"
+alias z..="z -b"
+alias z.="z -c"
+alias zl="z -l"
+alias zr="z -t"
+alias t="tldr"
+alias tm="dvtm -m ^a"
+
+# ZSH_THEME="spaceship"
+# source ~/.zsh_spaceship.sh
+eval "$(starship init zsh)"
 # pfetch
+alias nf="neofetch"
+
+export DOOMDIR="$HOME/.doom.d"
+export PATH=$PATH:"$HOME/.emacs.d/bin"

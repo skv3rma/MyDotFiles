@@ -38,9 +38,13 @@ set t_ZR=^[[23m
 " source ~/.config/nvim/themes/theme-one.vim
 " source ~/.config/nvim/themes/themes-palenight.vim
 " source ~/.config/nvim/themes/theme-oceanicnext.vim
-source ~/.config/nvim/themes/theme-iceberg-dark.vim
+" source ~/.config/nvim/themes/theme-iceberg-dark.vim
+" source ~/.config/nvim/themes/theme-tokyo.vim
 " source ~/.config/nvim/themes/theme-minimalist.vim
 " source ~/.config/nvim/themes/theme-zenburn.vim
+" source ~/.config/nvim/themes/theme-sonokai.vim
+" source ~/.config/nvim/themes/theme-monokai-pro.vim
+" source ~/.config/nvim/themes/theme-moonlight.vim
 " ==================== Dark & Light Themes ==============
 "
 " ==================== AYU THEMES          ==============
@@ -48,12 +52,19 @@ source ~/.config/nvim/themes/theme-iceberg-dark.vim
 " source ~/.config/nvim/themes/theme-ayulight.vim
 
 " =================== SOLARIZED THEMES
+" source ~/.config/nvim/themes/theme-solarized.vim
 " source ~/.config/nvim/themes/theme-solarizeddark.vim
 " source ~/.config/nvim/themes/theme-solarizedlight.vim
+" source ~/.config/nvim/themes/theme-toast.vim
 
 " =================== GRUVBOX THEMES
 " source ~/.config/nvim/themes/theme-gruvbox.vim
-" source ~/.config/nvim/themes/theme-gruvboxmaterial.vim
+source ~/.config/nvim/themes/theme-gruvboxmaterial.vim
+" source ~/.config/nvim/themes/theme-github.vim
+" source ~/.config/nvim/themes/theme-paper.vim
+" source ~/.config/nvim/themes/theme-breve.vim
+" source ~/.config/nvim/themes/theme-embark.vim
+
 "
 " source ~/.config/nvim/themes/theme-nightowl.vim
 " source ~/.config/nvim/themes/theme-predawn.vim
