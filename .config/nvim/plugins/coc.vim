@@ -1,3 +1,36 @@
+" Global coc extensions
+" let g:coc_global_extensions = [
+"   \ 'coc-snippets',
+"   \ 'coc-actions',
+"   \ 'coc-sh',
+"   \ 'coc-java-debug',
+"   \ 'coc-java',
+"   \ 'coc-lists',
+"   \ 'coc-emmet',
+"   \ 'coc-tasks',
+"   \ 'coc-pairs',
+"   \ 'coc-tsserver',
+"   \ 'coc-floaterm',
+"   \ 'coc-fzf-preview',
+"   \ 'coc-html',
+"   \ 'coc-css',
+"   \ 'coc-cssmodules',
+"   \ 'coc-stylelintplus',
+"   \ 'coc-emoji',
+"   \ 'coc-bookmark',
+"   \ 'coc-yaml',
+"   \ 'coc-pyright',
+"   \ 'coc-explorer',
+"   \ 'coc-svg',
+"   \ 'coc-prettier',
+"   \ 'coc-vimlsp',
+"   \ 'coc-xml',
+"   \ 'coc-yank',
+"   \ 'coc-json',
+"   \ 'coc-marketplace',
+"   \ ]
+  " \ 'coc-tabnine',
+  " \ 'coc-highlight',
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
@@ -9,6 +42,8 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -25,7 +60,6 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OverrideMethod   :call     CocAction('runCommand', 'source.overrideMethods')
-
 
 nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>cr <Plug>(coc-references)
@@ -44,13 +78,24 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -72,9 +117,9 @@ nmap <silent> <leader>qf  <Plug>(coc-fix-current)<CR>
 
 " === NeoSnippet === "
 " Map <C-k> as shortcut to activate snippet if available
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -86,3 +131,19 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 hi! link CocErrorSign WarningMsg
 hi! link CocWarningSign Number
 hi! link CocInfoSign Type
+
+" Snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<C-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<C-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)

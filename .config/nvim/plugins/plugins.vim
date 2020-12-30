@@ -60,6 +60,7 @@ Plug 'Shougo/neosnippet-snippets'
 
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
+Plug 'Shougo/deol.nvim'
 Plug 'airblade/vim-rooter'
 
 
@@ -150,6 +151,7 @@ Plug 'cideM/yui'
 Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'Brettm12345/moonlight.vim'
 Plug 'phanviet/vim-monokai-pro'
+Plug 'alirezabashyri/molokai-italic'
 " Plug 'rust-lang/rust.vim'
 " Plug 'arzg/vim-rust-syntax-ext'
 " Activate Nord Vim when toggling the NERDTree.
@@ -166,15 +168,11 @@ Plug 'Lokaltog/vim-monotone'
 Plug 'sainnhe/forest-night'
 Plug 'AlessandroYorba/Breve'
 Plug 'jsit/toast.vim'
-Plug 'hhsnopek/vim-firewatch'
-" Plug 'roman/golden-ratio'
-" maintains yank history
-" adds (meta + p) and (meta + shift + p)
-" Plug 'maxbrunsfeld/vim-yankstack'
 " autosave files when focus is lost
 Plug 'sapphirecat/blursave-vim'
 " limelight plugin
 Plug 'junegunn/limelight.vim'
+Plug 'frazrepo/vim-rainbow'
 
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
@@ -227,6 +225,13 @@ Plug 'benmills/vimux'
 
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'shmup/vim-sql-syntax'
+
+" bazel build system support
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
+
+" My Plugins
+" Plug '/home/sunil_arc/.config/nvim/plugins/neovim-calculator'
 
 
 " Initialize plugin system

@@ -15,7 +15,7 @@
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "¡",
 
-  "java.home": "/home/sunil_arc/DevTools/jdk/jdk-15",
+  "java.home": "/usr/lib/jvm/java-11-j9",
   "java.jdt.ls.vmargs": "-javaagent:/home/sunil_arc/.config/nvim/lombok.jar -Xbootclasspath/a:/home/sunil_arc/.config/nvim/lombok.jar",
   "java.errors.incompleteClasspath.severity": "warning",
   "java.signatureHelp.enabled": true,

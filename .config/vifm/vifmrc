@@ -65,12 +65,14 @@ set norunexec
 " Selected color scheme
 
 " colorscheme Default
-" colorscheme gruvbox
-colorscheme dracula
+colorscheme gruvbox
+" colorscheme molokai
+" colorscheme zenburn
+" colorscheme dracula
 " colorscheme iceberg
 " colorscheme nord
 " colorscheme snowwhite
-"colorscheme palenight
+" colorscheme palenight
 " colorscheme onedark
 
 " Format for displaying time in file list. For example:
@@ -123,8 +125,6 @@ set statusline="  Hint: %z%= %A %10u:%-7g %15s %20d  "
 
 " :mark mark /full/directory/path [filename]
 
-mark b ~/bin/
-mark h ~/
 
 " ------------------------------------------------------------------------------
 
@@ -427,7 +427,7 @@ nnoremap w :view<cr>
 " vnoremap w :view<cr>gv
 
 " Open file in existing instance of gvim
-" nnoremap o :!gvim --remote-tab-silent %f<cr>
+" nnoremap l :!vim --remote-tab-silent %f<cr>
 " Open file in new instance of gvim
 " nnoremap O :!gvim %f<cr>
 
@@ -467,10 +467,11 @@ nnoremap . za
 
 " Open console in current directory
 " Terminal
-nnoremap ,t :!st &<cr>
+nnoremap ,t :!alacritty &<cr>
 
 " Open in new tab
-nnoremap O :tabnew %f<cr>
+nnoremap T :tabnew %f<cr>
+nnoremap ,q :tabclose<cr>
 " VSplit
 nnoremap ,s :vsplit<cr>
 " Toggle View
@@ -487,7 +488,7 @@ nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
 " nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
 
 " Toggle wrap setting on ,w key
-" nnoremap ,w :set wrap!<cr>
+nnoremap ,w :set wrap!<cr>
 
 " Example of standard two-panel file managers mappings
 nnoremap <f3> :!less %f<cr>
@@ -503,7 +504,7 @@ nnoremap <f8> :delete<cr>
 
 " Use ag (the silver searcher) instead of grep
 "
-" set grepprg='ag --line-numbers %i %a %s'
+set grepprg='ag --line-numbers %i %a %s'
 
 " Add additional place to look for executables
 "
@@ -529,10 +530,14 @@ set classify=' :dir:/, :exe:, :reg:, :link:'
 " various file names
 set classify+=' ::..::, ::*.sh::, ::*.[hc]pp::, ::*.[hc]::, ::/^copying|license$/::, ::.git,,*.git::, ::*.epub,,*.fb2,,*.djvu::, ::*.pdf::, ::*.htm,,*.html,,**.[sx]html,,*.xml::'
 " archives
-set classify+=' ::*.7z,,*.ace,,*.arj,,*.bz2,,*.cpio,,*.deb,,*.dz,,*.gz,,*.jar,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.rz,,*.tar,,*.taz,,*.tb2,,*.tbz,,*.tbz2,,*.tgz,,*.tlz,,*.trz,,*.txz,,*.tz,,*.tz2,,*.xz,,*.z,,*.zip,,*.zoo::'
+set classify+=' ::*.7z,,*.ace,,*.arj,,*.bz2,,*.cpio,,*.deb,,*.dz,,*.gz,,*.jar,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.rz,,*.tar,,*.taz,,*.tb2,,*.tbz,,*.tbz2,,*.tgz,,*.tlz,,*.trz,,*.txz,,*.tz,,*.tz2,,*.xz,,*.z,,*.zip,,*.jar,,*.war,,*.zoo::'
 " images
 set classify+=' ::*.bmp,,*.gif,,*.jpeg,,*.jpg,,*.ico,,*.png,,*.ppm,,*.svg,,*.svgz,,*.tga,,*.tif,,*.tiff,,*.xbm,,*.xcf,,*.xpm,,*.xspf,,*.xwd::'
 " office files
 set classify+=' ::*.doc,,*.docx::, ::*.xls,,*.xls[mx]::, ::*.pptx,,*.ppt::'
+
+" programming files
+set classify+='☕ ::*.java,,*.class::,⬢ ::*.js,,*.json::,🐘 ::*.php,,*.cson::'
+set classify+=' ::*.py,,*.pip::,🦀 ::*.rs,,*.json::, ::*.go::'
 
 " End : Icon support

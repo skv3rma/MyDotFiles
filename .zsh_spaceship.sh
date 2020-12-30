@@ -14,7 +14,6 @@ SPACESHIP_PROMPT_ORDER=(
   swift         # Swift section
   golang        # Go section
   php           # PHP section
-  java          # Java section
   rust          # Rust section
   haskell       # Haskell Stack section
   julia         # Julia section
@@ -117,6 +116,6 @@ SPACESHIP_PYENV_SUFFIX=") "
 # SPACESHIP_PYENV_SYMBOL="🐍"
 
 # JAVA
-SPACESHIP_PYENV_PREFIX="java:("
-SPACESHIP_PYENV_SUFFIX=") "
+# SPACESHIP_PYENV_PREFIX="java:("
+# SPACESHIP_PYENV_SUFFIX=") "
 # SPACESHIP_PYENV_SYMBOL="🐍"

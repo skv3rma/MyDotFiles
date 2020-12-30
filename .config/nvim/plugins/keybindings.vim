@@ -53,12 +53,24 @@ inoremap ,p +
 inoremap ,m -
 inoremap ,x *
 inoremap ,d /
+inoremap ,dd $
 inoremap ,c {}<ESC>i
-inoremap ,s []<ESC>i
-inoremap ,b ()<ESC>i
+inoremap ,b []<ESC>i
+inoremap ,p ()<ESC>i
+inoremap ,ba <><ESC>i
+inoremap ,bd Box<dyn ><ESC>i
+inoremap ,bn = Box::new();<ESC>hi
 inoremap ,h #
 inoremap ,a &
-inoremap ,e !
+inoremap ,aa @
+inoremap ,e =
+inoremap ,ee !
+inoremap ,u _
+inoremap ,uu __
+inoremap ,q ?
+inoremap ,. ->
+
+
 
 " Rust Related Binding in insert mode
 inoremap ,tt #[test]<CR>
@@ -77,7 +89,7 @@ nnoremap <leader>P "+P
 " hide colorcolumn(dl = disable line)
 nnoremap <silent> <leader>dl :set colorcolumn=0<CR>
 " display colorcolumn (el = enable line)
-nnoremap <silent> <leader>el :set colorcolumn=101<CR>
+nnoremap <silent> <leader>el :set colorcolumn=100<CR>
 " Makes the background transparent
 "
 function TokyoNight()
@@ -90,18 +102,18 @@ function TokyoNight()
 endfunction
 
 function Gruvbox()
-    highlight CursorLine cterm=NONE ctermbg=black guibg=#282828
+    highlight CursorLine cterm=NONE ctermbg=black guibg=#434343
     highlight VertSplit ctermbg=NONE guibg=#434343 guifg=#434343
     highlight EndOfBuffer guibg=#282828 guifg=#282828
     highlight Visual guibg=#434343
-    highlight LineNr guibg=NONE guifg=#616f55
+    highlight LineNr guibg=NONE guifg=#434343
 endfunction
 
-function! MakeTransparent()
+function MakeTransparent()
     " makes the background transparent
     highlight Normal ctermbg=NONE guibg=NONE
-    :call Gruvbox()
-
+    " :call Gruvbox()
+    :call TokyoNight()
 endfunction
 
 " nnoremap <silent> <leader>o  :hi Normal ctermbg=NONE guibg=NONE<CR>
@@ -207,7 +219,8 @@ function! ToggleVisualHighlight()
     " hi Visual  guibg=#101010 gui=none
     " hi Visual  guibg=#214c5a guifg=NONE
     " highlight CursorLine cterm=NONE ctermbg=NONE guibg=#3c3836
-    highlight CursorLine cterm=NONE ctermbg=NONE guibg=#161821
+    " highlight CursorLine cterm=NONE ctermbg=NONE guibg=#161821
+    highlight CursorLine cterm=NONE ctermbg=NONE guibg=#434343
     " highlight LineNr guibg=#1A237E
     :Limelight!!
 endfunction
