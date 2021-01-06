@@ -14,8 +14,22 @@
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "¡",
-
-  "java.home": "/usr/lib/jvm/java-11-j9",
+  "java.home": "/usr/lib/jvm/java-15-j9",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-1.8",
+      "path": "/usr/lib/jvm/java-8-adoptopenjdk"
+    },
+    {
+      "name": "JavaSE-11",
+      "path": "/usr/lib/jvm/java-11-j9"
+    },
+    {
+      "name": "JavaSE-15",
+      "path": "/usr/lib/jvm/java-15-j9",
+      "default": true
+    }
+  ],
   "java.jdt.ls.vmargs": "-javaagent:/home/sunil_arc/.config/nvim/lombok.jar -Xbootclasspath/a:/home/sunil_arc/.config/nvim/lombok.jar",
   "java.errors.incompleteClasspath.severity": "warning",
   "java.signatureHelp.enabled": true,
@@ -81,5 +95,7 @@
   "rust.clippy_preference": "on",
   "rust.full_docs": true,
   "rust.show_hover_context": true,
-  "rust-client.channel": "stable"
+  "rust-client.channel": "stable",
+  "bookmark.sign": "🔖",
+  "bookmark.signHl": "Todo"
 }

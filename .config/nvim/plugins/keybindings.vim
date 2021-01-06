@@ -49,7 +49,7 @@ vnoremap <leader>p "_dP
 " Change to normal mode from inser mode
 inoremap ii <ESC>
 " mathematical symbols
-inoremap ,p +
+inoremap ,mm +
 inoremap ,m -
 inoremap ,x *
 inoremap ,d /
@@ -69,6 +69,7 @@ inoremap ,u _
 inoremap ,uu __
 inoremap ,q ?
 inoremap ,. ->
+inoremap ,, \033[H\033[2J
 
 
 
@@ -173,6 +174,11 @@ noremap <silent><leader>j :wincmd j<CR>
 noremap <silent><leader>k :wincmd k<CR>
 noremap <silent><leader>l :wincmd l<CR>
 
+
+" vifm
+noremap <silent><leader>v :Vifm<CR>
+
+
 " toggle background
 nnoremap <silent> <C-d>   :set background=dark<CR>
 nnoremap <silent> <C-A-d> :set background=light<CR>
@@ -253,6 +259,7 @@ function! ToggleWindowHorizontalVerticalSplit()
   endif
 endfunction
 
+" Toggle Split Type
 nnoremap <silent> <leader><leader>wt :call ToggleWindowHorizontalVerticalSplit()<cr>
 " Prompt for a command to run
 map <silent><leader>vp :VimuxPromptCommand<CR>

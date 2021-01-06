@@ -464,19 +464,31 @@ v() {
   display -resize 800x600 $1
 }
 
+# mktouch() {
+#     if [ $# -lt 1 ]; then
+#         echo "Missing argument";
+#         return 1;
+#     fi
+
+#     for f in "$@"; do
+#         mkdir -p -- "$(dirname -- "$f")"
+#         touch -- "$f"
+#         echo "🗇 Created Successfully."
+#     done
+# }
+
 
 # ZSH_THEME="spaceship"
 # source ~/.zsh_spaceship.sh
 
 # start : starship prompt
-# eval "$(starship init zsh)"
-
 # function blastoff(){
 #     echo "🚀"
 # }
-# starship_precmd_user_func="blastoff"
+# precmd_functions+=(blastoff)
+eval $(starship init zsh)
 # end : starship prompt
-source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
+# source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 
 # pfetch

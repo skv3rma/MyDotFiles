@@ -34,7 +34,7 @@ noremap <silent> <space> :CocCommand explorer --sources=file+<CR>
 " create a file at the current file's dir
 noremap <leader>ef :e %:h/
 " create a new directory
-noremap <leader>md :!mkdir -p %:h/
+noremap <leader>md :!mktouch %:h/
 " find new file in current project
 " noremap <leader>f :find %:h/
 " Use preset argument to open it

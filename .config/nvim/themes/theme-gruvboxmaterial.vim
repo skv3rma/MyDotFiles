@@ -31,3 +31,5 @@ let g:gruvbox_material_current_word = 'bold'
 
 colorscheme gruvbox-material
 let g:airline_theme='gruvbox_material'
+
+highlight CursorLine cterm=NONE ctermbg=NONE guibg=#434343
