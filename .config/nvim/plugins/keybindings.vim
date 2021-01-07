@@ -69,7 +69,10 @@ inoremap ,u _
 inoremap ,uu __
 inoremap ,q ?
 inoremap ,. ->
-inoremap ,, \033[H\033[2J
+" Clear console symbol
+inoremap ,,- \033[H\033[2J
+
+
 
 
 

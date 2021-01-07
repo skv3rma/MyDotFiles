@@ -52,18 +52,18 @@ font:
     # family: Hack Nerd Font
     # family: mononoki Nerd Font Mono
     # family: Monofuritalic Nerd Font Mono
-    family: JetBrainsMono Nerd Font
+    # family: JetBrainsMono Nerd Font
     # family: PARAOLE Script Demo
     # family: Script12 BT
     # family: CaskaydiaCove Nerd Font
-    # family: VictorMono Nerd Font
+    family: VictorMono Nerd Font
     # family: Input Mono Narrow
     # family: Cascadia Code iCursive Cg
     # family: TerminessTTF Nerd Font Mono
     # family: Desyrel
     # style: SemiBold Italic
-    # style: Medium Italic
-    style: Italic
+    style: Medium Italic
+    # style: Italic
 
   # Point size of the font
   size: 13.5

@@ -174,6 +174,8 @@ else
 
     " keybindings file
     source ~/.config/nvim/plugins/keybindings.vim
+    " load font characters"
+    source ~/.config/nvim/plugins/symbols.vim
     source ~/.config/nvim/plugins/async.vim
     " ==================== Language Specific Settings ======
     source ~/.config/nvim/plugins/java-script.vim
