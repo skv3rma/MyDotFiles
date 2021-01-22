@@ -1,0 +1,150 @@
+#!/bin/sh
+
+validate_prj() {
+	local prj_name
+	if [ -z "$1" ]
+	then
+		 prj_name="$2"
+	else
+		 prj_name=$1
+	fi
+	echo "$prj_name"
+}
+
+mvncreate-app() {
+	# mvn archetype:generate \
+	# -DgroupId=in.kodecamp \
+	# -DartifactId=$1 \
+	# -DarchetypeGroupId=com.thepracticaldeveloper \
+	# -DarchetypeArtifactId=archetype-java-basic-tpd \
+	# -DarchetypeVersion=1.0.0 -Djava-version=11
+        prj_name=$(validate_prj $1 "app")
+
+	# If directory already exists
+	if [ -d "$prj_name" ]; then
+		echo "❌ Directory with the same name already exists."
+	else
+		echo "##### Creating project : $prj_name #####"
+		mvn archetype:generate \
+		  -DgroupId=in.kodecamp \
+		  -DartifactId=$prj_name \
+		  -DinteractiveMode=false \
+		  -DarchetypeVersion=1.4 \
+		  -DarchetypeArtifactId=maven-archetype-quickstart && cd $prj_name && git init
+	fi
+}
+
+mvncreate-webapp() {
+
+        prj_name=$(validate_prj $1 "webapp")
+
+	# If directory already exists
+	if [ -d "$prj_name" ]; then
+		echo "❌ Directory with the same name already exists."
+	else
+		echo "##### Creating project : $prj_name #####"
+		mvn archetype:generate \
+			-DgroupId=in.kodecamp \
+			-DartifactId=$prj_name \
+			-DarchetypeGroupId=org.apache.maven.archetypes \
+			-DarchetypeArtifactId=maven-archetype-webapp \
+			-DarchetypeVersion=1.4 \
+			-DinteractiveMode=false && cd $prj_name && git init
+	fi
+
+}
+
+mvncreate-jakartaee() {
+
+        prj_name=$(validate_prj $1 "webapp-jakartaee")
+
+	# If directory already exists
+	if [ -d "$prj_name" ]; then
+		echo "❌ Directory with the same name already exists."
+	else
+		echo "##### Creating project : $prj_name #####"
+		mvn archetype:generate \
+		  -DgroupId=in.kodecamp \
+		  -DartifactId=$prj_name \
+		  -DarchetypeGroupId=com.airhacks \
+		  -DarchetypeArtifactId=jakartaee-essentials-archetype \
+		  -DarchetypeVersion=0.0.7 \
+		  -DinteractiveMode=false && cd $prj_name && git init
+	fi
+
+}
+
+mvncreate-jee8() {
+
+        prj_name=$(validate_prj $1 "webapp-jee8")
+
+	# If directory already exists
+	if [ -d "$prj_name" ]; then
+		echo "❌ Directory with the same name already exists."
+	else
+		echo "##### Creating project : $prj_name #####"
+		mvn archetype:generate \
+		  -DgroupId=in.kodecamp \
+		  -DartifactId=$prj_name \
+		  -DarchetypeGroupId=com.airhacks \
+		  -DarchetypeArtifactId=javaee8-essentials-archetype \
+		  -DarchetypeVersion=0.0.4 \
+		  -DinteractiveMode=false && cd $prj_name && git init
+	fi
+}
+
+mvncreate-mp() {
+
+        prj_name=$(validate_prj $1 "webapp-jee8")
+
+	# If directory already exists
+	if [ -d "$prj_name" ]; then
+		echo "❌ Directory with the same name already exists."
+	else
+		echo "##### Creating project : $prj_name #####"
+		mvn archetype:generate \
+		  -DgroupId=in.kodecamp \
+		  -DartifactId=$prj_name \
+		  -DarchetypeGroupId=com.airhacks \
+		  -DarchetypeArtifactId=microprofile-essentials-archetype \
+		  -DarchetypeVersion=0.0.2 \
+		  -DinteractiveMode=false && cd $prj_name && git init
+	fi
+}
+mvncreate-quarkus() {
+
+        prj_name=$(validate_prj $1 "webapp-quarkee")
+
+	# If directory already exists
+	if [ -d "$prj_name" ]; then
+		echo "❌ Directory with the same name already exists."
+	else
+		echo "##### Creating project : $prj_name #####"
+		mvn archetype:generate \
+		  -DgroupId=in.kodecamp \
+		  -DartifactId=$prj_name \
+		  -DarchetypeGroupId=com.airhacks \
+		  -DarchetypeArtifactId=quarkee-archetype \
+		  -DarchetypeVersion=0.0.3 \
+		  -DinteractiveMode=false && cd $prj_name && git init
+	fi
+}
+
+mvncreate-helidon() {
+
+        prj_name=$(validate_prj $1)
+
+	# If directory already exists
+	if [ -d "$prj_name" ]; then
+		echo "❌ Directory with the same name already exists."
+	else
+		echo "##### Creating project : $prj_name #####"
+		mvn archetype:generate \
+		  -DgroupId=in.kodecamp \
+		  -DartifactId=$prj_name \
+		  -DinteractiveMode=false \
+		  -Dversion=1.4 \
+		  -DarchetypeArtifactId=maven-archetype-quickstart && cd $prj_name && git init
+	fi
+}
+
