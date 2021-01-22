@@ -18,6 +18,7 @@ noremap <silent><leader>1 :e ~/.config/nvim/init.vim<CR>
 noremap <silent><leader>2 :e ~/.config/nvim/plugins/plugins.vim<CR>
 noremap <silent><leader>3 :e ~/.config/nvim/plugins/keybindings.vim<CR>
 noremap <silent><leader>4 :e ~/.config/nvim/themes/themes.vim<CR>
+noremap <silent>@ :s/^祿/綠/g<CR><leader>/
 
 "   <Space> - PageDown
 "   -       - PageUp
@@ -80,7 +81,6 @@ inoremap ,,- \033[H\033[2J
 inoremap ,tt #[test]<CR>
 inoremap ,pp println!("");<ESC>2hi
 inoremap ,fn fn test(){}<ESC>hi
-
 
 
 " yanking from current position to end of line

@@ -25,6 +25,7 @@ set mouse=a
 
 " Disable line numbers
 set nonumber
+set nu
 
 " Display relative line no
 set relativenumber

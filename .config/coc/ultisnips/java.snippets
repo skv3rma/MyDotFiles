@@ -260,12 +260,34 @@ public class StudentController {
 }
 endsnippet
 
-snippet fstr "private final String" b
+
+snippet prfi "private final int" b
+private final int ${1};
+endsnippet
+
+snippet prfd "private final int" b
+private final double ${1};
+endsnippet
+
+snippet prfs "private final int" b
+private final String ${1};
+endsnippet
+
+snippet prfss "private final String" b
 private static final String ${1} = "${2}";
 endsnippet
 
-snippet fmt "Format String" b
+snippet prfo "private final String" b
+private final ${1} ${2};
+endsnippet
+
+snippet fmt "Output Format String" b
 System.out.println(String.format("${1}",${2}));
+endsnippet
+
+snippet msgout "Format String" b
+var msgValue = String.format("${2}",${3});
+System.out.println("msgValue : " + msgValue);
 endsnippet
 
 snippet im_annot "imports for annotations" b

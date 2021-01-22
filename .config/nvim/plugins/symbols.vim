@@ -1,6 +1,6 @@
 " Characters from a to z
-inoremap ,,aa 🍎
-inoremap ,,ab 🍏
+inoremap ,,aa 祿
+inoremap ,,ab 綠
 inoremap ,,ba 💡
 inoremap ,,bb 🍻
 inoremap ,,ca ☕
@@ -15,6 +15,7 @@ inoremap ,,ga 🐐
 inoremap ,,gb 🔫
 inoremap ,,ha 🐎
 inoremap ,,hb 🐔
+inoremap ,,ia 🗸
 inoremap ,,ia ✅
 inoremap ,,ib 🔖
 inoremap ,,ja 🍺
@@ -35,6 +36,7 @@ inoremap ,,t 🍅
 inoremap ,,u ☔
 inoremap ,,v 🚎
 inoremap ,,w 🌊
-inoremap ,,x ❌
+inoremap ,,xa ❌
+inoremap ,,xb 𐄂
 inoremap ,,y ⛵
 inoremap ,,z 🦓

@@ -16,7 +16,6 @@
     "coc-markdownlint": ">=1.6.0",
     "coc-marketplace": ">=1.8.0",
     "coc-markmap": ">=0.3.1",
-    "coc-metals": ">=0.9.8",
     "coc-pairs": ">=1.2.21",
     "coc-phpls": ">=2.1.10",
     "coc-prettier": ">=1.1.17",

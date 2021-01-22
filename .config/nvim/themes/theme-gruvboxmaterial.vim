@@ -25,8 +25,9 @@ let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_diagnostic_line_highlight = 1
 " values are 'material' , 'original', 'mix'
 let g:gruvbox_material_palette = 'mix'
-let g:gruvbox_material_statusline_style = 'material'
-let g:gruvbox_material_better_performance = 1
+let g:gruvbox_material_statusline_style = 'mix'
+" 1 for yes 0 for no
+let g:gruvbox_material_better_performance = 0
 let g:gruvbox_material_current_word = 'bold'
 
 colorscheme gruvbox-material

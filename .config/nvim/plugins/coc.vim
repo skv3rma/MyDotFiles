@@ -68,6 +68,7 @@ nmap <silent> <leader>cy <Plug>(coc-type-definition)
 nnoremap <silent> <leader>ca :CocAction<CR>
 nnoremap <silent> <leader>cc :CocCommand<CR>
 nnoremap <silent> <leader>co :OverrideMethod<CR>
+nnoremap <silent> <leader>ci :CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <silent> <leader>cf :Format<CR>
 
 "nnoremap <leader>co :call CocAction('runCommand','')

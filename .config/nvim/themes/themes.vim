@@ -69,6 +69,8 @@ source ~/.config/nvim/themes/theme-gruvboxmaterial.vim
 " source ~/.config/nvim/themes/theme-nightowl.vim
 " source ~/.config/nvim/themes/theme-predawn.vim
 
+" hi! Normal ctermbg=NONE guibg=NONE
+" hi! NonText ctermbg=NONE guibg=NONE
 
 
 

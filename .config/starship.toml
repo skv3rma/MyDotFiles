@@ -44,6 +44,7 @@ min_time_to_notify = 45_000
 style = "bold yellow"
 
 [battery]
+disabled = false
 full_symbol = "🔋"
 charging_symbol = "⚡️"
 discharging_symbol = "💀"
@@ -74,6 +75,8 @@ disabled = false
 
 [aws]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 # [battery]
 # full_symbol = ""
@@ -82,33 +85,47 @@ symbol = " "
 
 [conda]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [dart]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [docker]
 symbol = " "
 
 [elixir]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [elm]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [git_branch]
 symbol = " "
 
 [golang]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [haskell]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [hg_branch]
 symbol = " "
 
 [julia]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [memory_usage]
 disabled = false
@@ -119,33 +136,54 @@ format = " $symbol [${ram}]($style) "
 
 [nim]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [nix_shell]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [nodejs]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [package]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [perl]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [php]
 symbol = "🐘"
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [python]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [ruby]
 symbol = " "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
-# [rust]
-# symbol = " "
+[rust]
+#symbol = " "
+symbol = "🦀 "
+style = "bold red"
+format = "[$symbol$version ]($style) "
 
 [swift]
 symbol = "ﯣ "
+style = "bold blue"
+format = "[$symbol$version ]($style) "
 
 [directory]
 truncation_length = 8

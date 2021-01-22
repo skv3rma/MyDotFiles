@@ -72,6 +72,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-dispatch'
 
 
 " === Language Related and Syntax Highlighting === "

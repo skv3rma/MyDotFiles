@@ -6,6 +6,7 @@ else
     " ordinary neovim
     source ~/.config/nvim/plugins/plugins.vim
     source ~/.config/nvim/plugins/general-settings.vim
+    source ~/.config/nvim/plugins/dispatch.vim
     source ~/.config/nvim/plugins/limelight.vim
     source ~/.config/nvim/plugins/vim-rooter.vim
     source ~/.config/nvim/plugins/coc.vim

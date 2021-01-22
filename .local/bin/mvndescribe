@@ -1,3 +1,0 @@
-#!/bin/bash
-
-mvn help:describe -Dplugin=$1 -Ddetail=true
