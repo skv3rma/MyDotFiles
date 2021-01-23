@@ -1,0 +1,24 @@
+#!/bin/sh
+
+create_new() {
+        touch -- "$1"
+        createdFile="$(basename $1)"
+        echo "🍻 $createdFile created."
+}
+
+if [ $# -lt 1 ]; then
+    echo "😩 Missing files";
+    return 1;
+fi
+
+for f in "$@"; do
+    mkdir -p -- "$(dirname -- "$f")"
+    if [ -f $f ]; then
+        echo "File exists. Taking backup 📪 "
+        current_time=$(date "+%Y%m%d%H%M%S")
+        mv "$f" "$f.bak.$current_time"
+        create_new $f
+    else
+        create_new $f
+    fi
+done
