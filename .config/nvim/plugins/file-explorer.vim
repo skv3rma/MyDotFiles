@@ -19,9 +19,9 @@ source ~/.config/nvim/plugins/fzf.vim
 nnoremap <silent><C-f>     :History<CR>
 nnoremap <silent><leader>. :Files<CR>
 " Search a keyword in the root folder
-nnoremap <silent><leader>@ :Rg<Cr>
+" nnoremap <silent><leader>@ :Rg<Cr>
 " Search a workd in currently open buffer
-nnoremap <silent><leader>@        :BLines<Cr>
+nnoremap <silent>@        :BLines<Cr>
 nnoremap <silent><leader>; :Buffers<CR>
 
 

@@ -2,7 +2,13 @@
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:$HOME/.local/bin
-source $HOME/.local/bin/mvnscripts/mvncreate.sh
+
+# This folder should only contain the custom shell functions
+for f in $HOME/.local/bin/custom_scripts/*;do
+  source "$f"
+done
+
+# export PATH=$PATH:$HOME/.local/bin/custom_scripts
 ############################## Start : Luke Smitht
 # History in cache directory:
 # HISTSIZE=1000
@@ -441,19 +447,12 @@ alias jabba15="jabba use openjdk@1.15"
 alias rnet="sudo systemctl restart NetworkManager"
 alias ski="sk -i"
 alias clock="tty-clock -csbrB"
+alias cls="clear"
 
-mkcd() {
-  mkdir $1
-  cd $1
-}
-
-touchbash() {
-  touch $1
-  chmod +x $1
-}
 
 ########## aliases for DotFiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/MyDotFiles --work-tree=$HOME"
+alias dotfilespush="dotfiles push origin master"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -491,18 +490,6 @@ v() {
   display -resize 800x600 $1
 }
 
-# mktouch() {
-#     if [ $# -lt 1 ]; then
-#         echo "Missing argument";
-#         return 1;
-#     fi
-
-#     for f in "$@"; do
-#         mkdir -p -- "$(dirname -- "$f")"
-#         touch -- "$f"
-#         echo "🗇 Created Successfully."
-#     done
-# }
 
 
 # ZSH_THEME="spaceship"

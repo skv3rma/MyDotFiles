@@ -7,6 +7,8 @@ let g:ag_working_path_mode="r"
 " let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
 let g:ctrlp_use_caching = 0
+" Empty value to disable preview window altogether
+let g:fzf_preview_window = []
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options

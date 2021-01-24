@@ -13,7 +13,13 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter=1
 
 " markdown-preview.vim
+let g:mkdp_auto_close = 1
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_open = 1
 let g:mkdp_refresh_slow=1
-let g:mkdp_markdown_css='~/.config/nvim/github-markdown.css'
+" let g:mkdp_markdown_css='/home/sunil_arc/.config/nvim/darkdown.css'
+let g:mkdp_markdown_css='/home/sunil_arc/.config/nvim/github-markdown.css'
+" let g:mkdp_markdown_css='/home/sunil_arc/.config/nvim/buttondown.css'
+
 
 

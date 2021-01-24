@@ -41,6 +41,7 @@
 
   "java.completion.guessMethodArguments": true,
   "java.completion.enabled": true,
+  "java.completion.overwrite": true,
   "java.foldingRange.enabled": true,
   "java.progressReports.enabled": true,
 
@@ -82,7 +83,7 @@
 
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
-  "explorer.previewAction.onHover": false,
+  "explorer.previewAction.onHover": true,
   "explorer.keyMappings": {
     "<cr>": ["expandable?", "expand", "open"]
   },

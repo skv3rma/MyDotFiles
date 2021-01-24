@@ -18,7 +18,7 @@ noremap <silent><leader>1 :e ~/.config/nvim/init.vim<CR>
 noremap <silent><leader>2 :e ~/.config/nvim/plugins/plugins.vim<CR>
 noremap <silent><leader>3 :e ~/.config/nvim/plugins/keybindings.vim<CR>
 noremap <silent><leader>4 :e ~/.config/nvim/themes/themes.vim<CR>
-noremap <silent>@ :s/^祿/綠/g<CR><leader>/
+noremap <silent>! :s/^祿/綠/g<CR><leader>/
 
 "   <Space> - PageDown
 "   -       - PageUp
@@ -205,6 +205,7 @@ nnoremap <leader><leader>lh i♯ <SPACE> <ESC>
 nnoremap <leader><leader>xn iαxⁿ + βxⁿ-¹ + ... + c <SPACE> <ESC>
 nnoremap <leader><leader>x2 ix² + x +c  <SPACE> <ESC>
 nnoremap <leader><leader>lr i ─────────-> <SPACE> <ESC>
+nnoremap <leader><leader>ln i ───────────────────<SPACE> <ESC>
 nnoremap <leader><leader>la iα <SPACE> <ESC>
 nnoremap <leader><leader>lb iβ <SPACE> <ESC>
 nnoremap <leader><leader>lg iγ <SPACE> <ESC>

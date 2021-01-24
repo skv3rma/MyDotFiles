@@ -7,10 +7,11 @@ else
     source ~/.config/nvim/plugins/plugins.vim
     source ~/.config/nvim/plugins/general-settings.vim
     source ~/.config/nvim/plugins/dispatch.vim
+    source ~/.config/nvim/plugins/java-snippets.vim
     source ~/.config/nvim/plugins/limelight.vim
     source ~/.config/nvim/plugins/vim-rooter.vim
     source ~/.config/nvim/plugins/coc.vim
-    source ~/.config/nvim/plugins/coc-bookmark.vim
+    " source ~/.config/nvim/plugins/coc-bookmark.vim
     source ~/.config/nvim/plugins/file-explorer.vim
 
     " ============================================
@@ -177,6 +178,7 @@ else
     source ~/.config/nvim/plugins/keybindings.vim
     " load font characters"
     source ~/.config/nvim/plugins/symbols.vim
+    source ~/.config/nvim/plugins/md-keys.vim
     source ~/.config/nvim/plugins/async.vim
     " ==================== Language Specific Settings ======
     source ~/.config/nvim/plugins/java-script.vim

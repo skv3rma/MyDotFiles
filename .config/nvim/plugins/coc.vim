@@ -1,3 +1,8 @@
+" set hidden
+" set nobackup
+" set nowritebackup
+" set updatetime=300
+" set shortmess+=c
 " Global coc extensions
 " let g:coc_global_extensions = [
 "   \ 'coc-snippets',
@@ -97,6 +102,14 @@ function! s:show_documentation()
   endif
 endfunction
 
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -148,3 +161,6 @@ let g:coc_snippet_prev = '<C-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')

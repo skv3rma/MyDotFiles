@@ -35,7 +35,7 @@ Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'derekwyatt/vim-scala'
 " Intellisense Engine
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Syntax highlighting for tmux.config file
 Plug 'tmux-plugins/vim-tmux'
@@ -197,12 +197,11 @@ Plug 'mboughaba/i3config.vim'
 Plug 'terryma/vim-multiple-cursors'
 
 " Markdown related plugins
-Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'voldikss/vim-floaterm'
 
 " ================== Miscellenious
+Plug 'voldikss/vim-floaterm'
 " Fancy start up screen
 Plug 'mhinz/vim-startify'
 

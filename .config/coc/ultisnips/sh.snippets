@@ -7,9 +7,10 @@ snippet entr "Watch and run" b
 # using find command: run the any file which has main method in it
 #find src/**/*.java | entr -p $M2_HOME/bin/mvn compile -q exec:java
 
-# using fd command: and using the awk to filter the output
-fd java --type f | entr -p mvnd -q compile exec:java | awk '/stdout/{$1=$2=""; print $0}'
+# Using with MVND using fd command: and using the awk to filter the output
+#fd java --type f | entr -p mvnd -q compile exec:java | awk '/stdout/{$1=$2=""; print $0}'
 
-# IF YOU USE "javac -cp "" -d ./target" or any other way to compile the files
-#fd java --type f | entr -p javac @javac_options @files
+# Using with raw project
+# Note : fd adhres to .gitignore file and ignores the files so search-path is needed
+fd --search-path ./target --type file | entr -c java @java_options Test
 endsnippet

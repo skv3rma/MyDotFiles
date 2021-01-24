@@ -43,7 +43,7 @@ set autoindent
 set smartindent
 
 " line width in characters
-set colorcolumn=101
+set colorcolumn=100
 
 " Don't show last command
 set noshowcmd
@@ -104,6 +104,7 @@ set noshowmode
 set winbl=10
 
 set nobackup
+set nowritebackup
 
 set noswapfile
 

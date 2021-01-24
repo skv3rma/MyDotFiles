@@ -1,0 +1,43 @@
+#!/bin/sh
+
+source_path="src"
+
+mktouchjava() {
+    if [ $# -lt 1 ]; then
+        echo "😩 Missing files";
+        return 1;
+    fi
+
+    # if [ -z $1 ];then
+    #     echo "source folder is missing"
+    #     return 1;
+    # fi
+
+    if [ -z $1 ];then
+        echo "package details are missing"
+        return 1;
+    fi
+
+    if [ -z $2 ];then
+        echo "file name is missing"
+        return 1;
+    fi
+
+    echo "creating file(s)"
+    package=$1
+    file_name=$2
+    package_path=$(echo $package | sed "s/\./\//g")
+
+    echo "$package_path"
+
+    file_path="$source_path/$package_path/$file_name"".java"
+    mkdir -p -- "$(dirname -- "$file_path")"
+    touch -- "$file_path"
+    # echo $file_name
+    echo "" > $file_path
+    echo "package $package;" >> $file_path
+    echo "public final class $file_name {}" >> $file_path
+    tree
+    cat "$file_path"
+}
+# echo "📝 : $createdFiles created Successfully."
