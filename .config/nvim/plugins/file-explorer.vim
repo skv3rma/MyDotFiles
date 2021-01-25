@@ -32,9 +32,9 @@ nnoremap <silent><leader>; :Buffers<CR>
 source ~/.config/nvim/plugins/coc-explorer.vim
 noremap <silent> <space> :CocCommand explorer --sources=file+<CR>
 " create a file at the current file's dir
-noremap <leader>ef :!mktouch %:h/
+noremap <leader>ef :e %:h/
 " create a new directory
-noremap <leader>md :!mktouch %:h/
+noremap <leader>mk :!mktouch %:h/
 " find new file in current project
 " noremap <leader>f :find %:h/
 " Use preset argument to open it

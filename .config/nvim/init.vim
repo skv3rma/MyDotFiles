@@ -7,6 +7,7 @@ else
     source ~/.config/nvim/plugins/plugins.vim
     source ~/.config/nvim/plugins/general-settings.vim
     source ~/.config/nvim/plugins/dispatch.vim
+    source ~/.config/nvim/plugins/autocmds.vim
     source ~/.config/nvim/plugins/java-snippets.vim
     source ~/.config/nvim/plugins/limelight.vim
     source ~/.config/nvim/plugins/vim-rooter.vim

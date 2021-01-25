@@ -21,6 +21,7 @@
     "coc-python": ">=1.2.13",
     "coc-rls": ">=1.1.6",
     "coc-rome": ">=0.3.0",
+    "coc-sh": ">=0.6.0",
     "coc-snippets": ">=2.2.1",
     "coc-sql": ">=0.4.0",
     "coc-toml": ">=1.0.3",

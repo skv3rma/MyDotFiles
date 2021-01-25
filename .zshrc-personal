@@ -316,6 +316,8 @@ alias confdevilspie="vim $HOME/.devilspie/transparency.ds"
 alias confvifm="vim $HOME/.config/vifm/vifmrc"
 
 alias confdwm="vim ~/software_sources/dwm/config.h"
+alias caly="cal -y"
+alias cal3="cal -3"
 
 ############# db tools
 

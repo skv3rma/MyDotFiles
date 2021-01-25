@@ -9,3 +9,61 @@ mkcd() {
     echo "👍 Welcome in new directory"
   fi
 }
+
+source_path="src"
+
+touchjava() {
+    if [ $# -lt 1 ]; then
+        echo "😩 Missing files";
+        return 1;
+    fi
+
+    if [ -z $1 ];then
+        echo "package details are missing"
+        package="."
+        # return 1;
+    fi
+
+    if [ -z $2 ];then
+        echo "file name is missing"
+        return 1;
+    fi
+
+    echo "creating file(s)"
+    package=$1
+    file_name=$2
+    package_path=$(echo $package | sed "s/\./\//g")
+
+    echo "$package_path"
+
+    file_path="$source_path/$package_path/$file_name"".java"
+    mkdir -p -- "$(dirname -- "$file_path")"
+    touch -- "$file_path"
+    # echo $file_name
+    echo "" > $file_path
+    # Checks if the file needs to added in the current directory without package
+    if [ $package != "." ];then
+        echo "package $package;" >> $file_path
+    fi
+    echo "public final class $file_name {}" >> $file_path
+    tree
+    cat "$file_path"
+}
+
+
+touchexec() {
+    if [ $# -lt 1 ]; then
+        echo "😩 Missing filename";
+        return 1;
+    fi
+    touch $1
+    echo "#!/bin/sh" > $1
+    chmod +x $1
+    cat $1
+}
+
+caldate() {
+  cal $1 $2 $(date +"%Y")
+}
+
+
