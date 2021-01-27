@@ -58,6 +58,7 @@ inoremap ,dd $
 inoremap ,c {}<ESC>i
 inoremap ,b []<ESC>i
 inoremap ,p ()<ESC>i
+inoremap ,pp %
 inoremap ,ba <><ESC>i
 inoremap ,bd Box<dyn ><ESC>i
 inoremap ,bn = Box::new();<ESC>hi
@@ -79,7 +80,7 @@ inoremap ,,- \033[H\033[2J
 
 " Rust Related Binding in insert mode
 inoremap ,tt #[test]<CR>
-inoremap ,pp println!("");<ESC>2hi
+" inoremap ,pp println!("");<ESC>2hi
 inoremap ,fn fn test(){}<ESC>hi
 
 
