@@ -229,6 +229,7 @@ Plug 'shmup/vim-sql-syntax'
 " bazel build system support
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
+" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " My Plugins
 " Plug '/home/sunil_arc/.config/nvim/plugins/neovim-calculator'

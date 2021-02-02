@@ -26,6 +26,11 @@ mkgit() {
     echo "🐈 Git directory created and cd'ed into it."
 }
 
+# watch for the given process
+pswatch() {
+    procs --watch-interval 2 $1
+}
+
 source_path="src"
 
 # Creates a java file with the class template at the given package
@@ -67,7 +72,7 @@ touchjava() {
     cat "$file_path"
 }
 
-create-execjar() {
+jpackage-execjar() {
     if [ $# -lt 3 ]; then
         echo "❌ -> Not enough values supplied to create jar.";
         echo "Please supply \n1. jar file name \n2. Main Class Name \n3. Directory of files"
@@ -81,7 +86,7 @@ create-execjar() {
     jar vcfe $1 $2 -C $3 .
 }
 
-create-jar() {
+jpackage-jar() {
     if [ $# -lt 2 ]; then
         echo "❌ -> Not enough values supplied to create jar.";
         echo "Please supply \n1. jar file name \n2. Directory of files"

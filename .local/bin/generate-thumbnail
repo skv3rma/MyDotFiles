@@ -1,27 +1,81 @@
-#/usr/bin/dash
+#!/bin/bash -
 
-clear
+TRAINING_SCREENSHOTS_HOME="$HOME/Projects/trainings/screenshots"
 # lines=$(grep -c "" ./train_java.csv)
 # lines=`cat ./train_java.csv | wc -l`
-fileName="train_java.csv"
-lines=$(wc -l < $HOME/Projects/trainings/$fileName)
+# topicsFilePath="$HOME/Projects/trainings/train_java.csv"
+# lines=$(wc -l < $CURRENT_TRAINING)
 # echo "WC lines : $lines"
 
-selectedTopic=`tail -n +2 $HOME/Projects/trainings/$fileName | sed "s/,/|/g;s/\"//g" | dmenu -l $(($lines - 1)) -nb "#2e3440" -sb "#88c0d0" -sf "#2e3440"`
+# skip the first row
+# replace , with | -> replace " with empty string
+# pass to dmenu
+selectedTopic=`tail -n +2 $HOME/Projects/trainings/train_java.csv \
+	       | sed "s/,/|/g;s/\"//g" \
+	       | dmenu -i -l $(($lines - 1)) -p "Topics: "`
 
-echo $selectedTopic >> $HOME/Projects/trainings/completed_$fileName
+if [ -z $selectedTopic ];then
+	notify-send -u low "❌ Thumbnail creation cancelled."
+	exit 1
+fi
 
-pText=`echo $selectedTopic | awk -F'|' '{ print $2 }'`
-banner "kodecamp"
+# echo $selectedTopic >> $HOME/Projects/trainings/completed_$fileName
+# echo "$selectedTopic"
 
-for text in $pText
-do
-  banner-sm "$text" | lolcat
-done
+# tokenize by | and take the second column value
+pText=`echo $selectedTopic \
+       | awk -F'|' '{ print $2 }' \
+       | sed "s/ /\n/g;s/\"//g"`
 
-pText=$(echo $pText | sed "s/ /_/g")
+# echo "$pText"
 
-sleep 5
 
-exec maim -B -u -m 9 -i "$(xdotool getactivewindow)" $HOME/Projects/trainings/screenshots/$pText-"$(date '+%y%m%d-%H%M-%S').png"
+# replace spaces with -
+screenshotPrefix=`echo $pText | sed "s/\n/-/g;s/ /-/g"`
+# echo $screenshotPrefix
 
+screenshotFile=$screenshotPrefix-"$(date '+%y%m%d').png"
+# echo $screenshotFile
+sleep 2
+
+# take screenshot of the active window
+maim -B -u -m 9 -i "$(xdotool getactivewindow)" \
+	"$TRAINING_SCREENSHOTS_HOME/$screenshotFile"
+
+convert "$TRAINING_SCREENSHOTS_HOME/$screenshotFile" \
+	-filter Gaussian -blur 0x2 "$TRAINING_SCREENSHOTS_HOME/blurred-$screenshotFile"
+
+# possible values : east, west, north, south, northeast, nortwest, northsouth, southeast etc
+drawFrom="center"
+padding="0"
+fill="#cc241d"
+stroke="#b16286"
+# fontFile="$HOME/.local/share/fonts/COOPBL.TTF"
+# fontFile="/home/sunil_arc/.local/share/fonts/hello-ketta-font/HelloKetta-d99oX.ttf"
+fontFile="/home/sunil_arc/.local/share/fonts/impact/impact.ttf"
+lines=$(echo $pText | wc -l)
+point_size=140
+stroke_width=6
+if [ lines > 8 ];then
+	point_size=100
+	stroke_width=3
+fi
+
+### draw on image
+convert -gravity $drawFrom \
+	-font $fontFile \
+	-pointsize $point_size -fill "$fill" \
+        -stroke "$stroke" -strokewidth $stroke_width -draw "text $padding,$padding '$pText'" \
+        -stroke none                      -draw "text $padding,$padding '$pText'" \
+	"$TRAINING_SCREENSHOTS_HOME/blurred-$screenshotFile" \
+	"$TRAINING_SCREENSHOTS_HOME/thumbnail-$screenshotFile"
+### append tech logo image
+convert  "$TRAINING_SCREENSHOTS_HOME/thumbnail-$screenshotFile" \
+	 "$TRAINING_SCREENSHOTS_HOME/assets/java_logo_light.png" -gravity northeast -composite -matte \
+	 "$TRAINING_SCREENSHOTS_HOME/thumbnail-$screenshotFile"
+### append kodecamp logo image
+convert  "$TRAINING_SCREENSHOTS_HOME/thumbnail-$screenshotFile" \
+	 "$TRAINING_SCREENSHOTS_HOME/assets/kodecamp_logo_light.png" -gravity southeast -composite -matte \
+	 "$TRAINING_SCREENSHOTS_HOME/thumbnail-$screenshotFile"
+
+notify-send -u low "👍 Thumbnail Generated Successfully."

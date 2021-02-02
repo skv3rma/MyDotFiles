@@ -205,7 +205,7 @@ nnoremap <leader><leader>lx i✗ <SPACE> <ESC>
 nnoremap <leader><leader>lh i♯ <SPACE> <ESC>
 nnoremap <leader><leader>xn iαxⁿ + βxⁿ-¹ + ... + c <SPACE> <ESC>
 nnoremap <leader><leader>x2 ix² + x +c  <SPACE> <ESC>
-nnoremap <leader><leader>lr i ─────────-> <SPACE> <ESC>
+inoremap <leader><leader>la i --><ESC>2hi
 nnoremap <leader><leader>ln i ───────────────────<SPACE> <ESC>
 nnoremap <leader><leader>la iα <SPACE> <ESC>
 nnoremap <leader><leader>lb iβ <SPACE> <ESC>

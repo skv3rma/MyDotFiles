@@ -30,7 +30,8 @@
       "default": true
     }
   ],
-  "java.jdt.ls.vmargs": "-javaagent:/home/sunil_arc/.config/nvim/lombok.jar -Xbootclasspath/a:/home/sunil_arc/.config/nvim/lombok.jar",
+  "java.jdt.ls.vmargs": "-javaagent:/home/sunil_arc/.config/nvim/lombok.jar -Xbootclasspath/a:/home/sunil_arc/.config/nvim/lombok.jar ‑Xshareclasses:name=CocJavaCache",
+
   "java.errors.incompleteClasspath.severity": "warning",
   "java.signatureHelp.enabled": true,
 
