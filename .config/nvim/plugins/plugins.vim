@@ -73,6 +73,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-rsi'
 
 
 " === Language Related and Syntax Highlighting === "
@@ -229,6 +230,11 @@ Plug 'shmup/vim-sql-syntax'
 " bazel build system support
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
+
+" Dart
+Plug 'dart-lang/dart-vim-plugin'
+" Plug 'natebosch/vim-lsc'
+" Plug 'natebosch/vim-lsc-dart'
 " Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " My Plugins

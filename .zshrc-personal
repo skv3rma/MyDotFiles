@@ -17,7 +17,6 @@ done
 # HIST_STAMPS="%d/%m/%y %T"
 # Basic auto/tab complete:
 
-
 ########## DWM Java App Fix
 export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
@@ -67,6 +66,11 @@ setopt COMPLETE_ALIASES
 _comp_options+=(globdots)		# Include hidden files.
 # completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+setopt prompt_subst
+if (($+TAB)); then
+  PROMPT="%{$fg[green]%}tab ${TAB}%{$reset_color%} $PROMPT"
+fi
 
 # vi mode
 bindkey -v
@@ -167,9 +171,11 @@ export PATH=$PATH:$JAVA_HOME/bin
 
 
 ### ANDROID#####
+export ANDROID_STUDIO_HOME=$HOME/DevTools/android-studio
+export PATH=$PATH:$ANDROID_STUDIO_HOME/bin
 export ANDROID_HOME=$HOME/DevTools/android-sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$HOME/DevTools/android-sdk/tools/bin
+# export PATH=$PATH:$ANDROID_HOME/tools
 
 ### GRADLE ##############
 # export GRADLE_HOME=$HOME/DevTools/gradle-4.3
@@ -245,6 +251,7 @@ export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 # export PATH="$PATH":"~/.pub-cache/bin"
 #### CARGO Rust ####
+export GRAVEYARD=$HOME/.local/share/Trash
 export PATH="$HOME/.cargo/bin:$PATH"
 # export RUST_BACKTRACE="full"
 
@@ -347,22 +354,34 @@ export PATH=$PATH:$GO_HOME
 export RACKET_HOME=~/racket
 export PATH=$PATH:$RACKET_HOME/bin
 
+#################### Flutter & Dart
+export FLUTTER_HOME="$HOME/DevTools/flutter"
+export PATH=$PATH:$FLUTTER_HOME/bin
+export DART_SDK="$HOME/DevTools/flutter/bin"
 
-alias connect2UserDbShell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase"
+################### Databases ##################
+################### H2Db ##################
+alias connecth2-userdb-shell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9091/~/DevTools/Databases/UserDatabase"
+alias connecth2-appdb-shell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9092/~/DevTools/Databases/cmsDatabase;TRACE_LEVEL_FILE=3;"
+alias starth2-appdb-server="$H2Server -tcp -tcpPort 9092 -tcpAllowOthers"
+alias starth2-userdb-server="$H2Server -tcp -tcpPort 9091 -tcpAllowOthers"
+alias show-h2db-logs="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.ConvertTraceFile -traceFile $CURRENT_DB_PATH -script $DB_HOME/log.sql"
+alias run-h2db-script="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript -url jdbc:h2:tcp://localhost/~/DevTools/Databases/cmsDatabase -script ./script.sql"
 
-alias connect2AppDbShell="$H2Shell -user kodecamp -password kodecamp -url jdbc:h2:tcp://localhost:9092/~/DevTools/Databases/cmsDatabase;TRACE_LEVEL_FILE=3;"
+################### mySql/Mariadb ##################
+alias connectmysql-dbserver="mycli -u kodecamp -p 5unil"
+alias startmysql-dbserver="sudo systemctl start mysqld"
+alias stopmysql-dbserver="sudo systemctl stop mysqld"
 
-alias runh2AppDbServer="$H2Server -tcp -tcpPort 9092 -tcpAllowOthers"
+################### postgreSql ##################
+alias connectpgsql-dbserver="pgcli -U kodecamp kodecampdb"
+alias startpgsql-dbserver="sudo systemctl start postgresql-lts.service"
+alias stoppgsql-dbserver="sudo systemctl stop postgresql-lts.service"
 
-alias runh2UserDbServer="$H2Server -tcp -tcpPort 9091 -tcpAllowOthers"
-
-alias showh2Logs="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.ConvertTraceFile -traceFile $CURRENT_DB_PATH -script $DB_HOME/log.sql"
-
-alias runh2Script="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript -url jdbc:h2:tcp://localhost/~/DevTools/Databases/cmsDatabase -script ./script.sql"
 
 
 alias runeclipse="eclipse > /dev/null &"
-alias deployWar="cp $HOME/Projects/java/services/apps.tomee/services/target/services.war $HOME/Projects/java/services/apps.tomee/tomee/webapps"
+alias deploy-war="cp $HOME/Projects/java/services/apps.tomee/services/target/services.war $HOME/Projects/java/services/apps.tomee/tomee/webapps"
 
 
 ############ project directoris
@@ -413,8 +432,21 @@ runpy() {
 
 ########### aliases for System command
 # alias lsd="lsd --blocks name,date,size --date relative"
-alias lcd="lsd -Flart | lolcat"
-alias lc="ls -a | lolcat"
+TREE_IGNORE="cache|log|logs|node_modules|vendor"
+
+alias ls='exa --group-directories-first --header --long'
+alias la='ls -a'
+alias lg='exa --group-directories-first --long --header --git'
+alias lt='exa --group-directories-first --tree -L 2 -I ${TREE_IGNORE}'
+alias ltt='exa --group-directories-first --tree -L 3 -I ${TREE_IGNORE}'
+alias lttt='exa --group-directories-first --tree -L 4 -I ${TREE_IGNORE}'
+alias ltttt='exa --group-directories-first --long --tree -L 5 -I ${TREE_IGNORE}'
+alias treea='tree -a'
+alias treed='tree -d'
+
+
+# alias lcd="lsd -Flart | lolcat"
+# alias lc="ls -a | lolcat"
 alias li="sxiv -t ."
 alias tx="tmux"
 alias icat="kitty +kitten icat"
@@ -422,6 +454,22 @@ alias vim="nvim"
 alias vime="nvim '+CocCommand explorer --sources=file+'"
 alias tree="tree | lolcat"
 alias cat="bat --italic-text always"
+alias ps="procs"
+alias pswatch="procs --watch-interval=1"
+
+# delete file or directories
+alias rip="rip"
+# undo last removal in current directory
+alias ripu="rip -u"
+# interactive removal
+alias ripi="rip -i"
+#ripshow : Print files that were deleted from under the current directory
+alias rips="rip -s"
+# restore all removals in current directory
+alias riprall="rip -su"
+
+# alias tldr="tealdeer"
+
 # alias vifmg="~/.config/vifm/scripts/vifmimg"
 alias vr="~/.config/vifm/scripts/vifmrun"
 alias ..="cd .."
@@ -435,6 +483,8 @@ alias rm="rm -i"
 
 alias cp="cp -iv"
 alias mv="mv -iv"
+# first column is the target and second column is the source
+alias qmv="qmv --option swap"
 alias newsboat="nb"
 alias ws="weather"
 alias wf="curl wttr.in"
@@ -457,6 +507,10 @@ alias cls="clear"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/MyDotFiles --work-tree=$HOME"
 alias dotfilespush="dotfiles push origin master"
 
+########## aliases for mariadb
+alias stop_mysql="sudo systemctl stop mysqld"
+alias start_mysql="sudo systemctl start mysqld"
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -465,10 +519,10 @@ source ~/.config/broot/launcher/bash/br
 ### m and sm command availability
 source ~/.local/bin/utils
 
-# banner "kodecamp" | lolcat
+banner "kodecamp" | lolcat
 
 #################### temp aliases
-alias lets_discuss="banner-bg \"Java Enterprise Edition 8\" | lolcat; banner kodecamp"
+alias lets_discuss="banner-bg \"Dart For Java Programmers\" | lolcat; banner kodecamp"
 
 #################### Suffix aliases ##########################
 alias -s {png,jpg}="sxiv"
@@ -492,9 +546,19 @@ alias vlogo="icat ~/Pictures/github/MyWallpapers/logo_script2.png"
 v() {
   display -resize 800x600 $1
 }
+# pfetch
+alias nfetch="neofetch"
+alias nf="neofetch"
+
+export DOOMDIR="$HOME/.doom.d"
+export PATH=$PATH:"$HOME/.emacs.d/bin"
 
 
+############ Cheat Config ##########
+export CHEAT_USE_FZF=true
 
+########### source
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 # ZSH_THEME="spaceship"
 # source ~/.zsh_spaceship.sh
 
@@ -506,15 +570,3 @@ v() {
 eval $(starship init zsh)
 # end : starship prompt
 # source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
-
-
-# pfetch
-alias nfetch="neofetch"
-alias nf="neofetch"
-
-export DOOMDIR="$HOME/.doom.d"
-export PATH=$PATH:"$HOME/.emacs.d/bin"
-
-
-############ Cheat Config ##########
-export CHEAT_USE_FZF=true

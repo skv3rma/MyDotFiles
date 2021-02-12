@@ -32,7 +32,9 @@ nmap <leader>yy :StripWhitespace<CR>
 " === Search shorcuts === "
 "   <leader><F2> - Find and replace
 "   <leader>/ - Clear highlighted search terms while preserving history
-map <leader>f :%s///<left><left>
+" find and replace in whole file
+map <leader>ff :%s///g<left><left><left>
+map <leader>fl :s///g<left><left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 
@@ -65,6 +67,8 @@ inoremap ,bn = Box::new();<ESC>hi
 inoremap ,h #
 inoremap ,a &
 inoremap ,aa @
+inoremap ,ar ->
+inoremap ,arr =>
 inoremap ,e =
 inoremap ,ee !
 inoremap ,u _
@@ -280,6 +284,10 @@ map <silent><leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
 map <silent><leader>vq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane
 map <silent><leader>vx :VimuxInterruptRunner<CR>
+
+"Visual Mode : Move selected lines up(K) down(J)
+vnoremap J :move '> +1<CR>gv=gv
+vnoremap K :move '< -2<CR>gv=gv
 
 " Removing pythonsense keys // creating problems after removing the plugin
 

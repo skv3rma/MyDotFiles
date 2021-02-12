@@ -21,7 +21,7 @@ nnoremap <silent><leader>. :Files<CR>
 " Search a keyword in the root folder
 " nnoremap <silent><leader>@ :Rg<Cr>
 " Search a workd in currently open buffer
-nnoremap <silent>@        :BLines<Cr>
+nnoremap <silent><leader># :BLines<Cr>
 nnoremap <silent><leader>; :Buffers<CR>
 
 

@@ -26,11 +26,6 @@ mkgit() {
     echo "🐈 Git directory created and cd'ed into it."
 }
 
-# watch for the given process
-pswatch() {
-    procs --watch-interval 2 $1
-}
-
 source_path="src"
 
 # Creates a java file with the class template at the given package
@@ -151,6 +146,20 @@ caldate() {
         year=$3
     fi
     cal $day $month $year
+}
+
+topdf() {
+    local output
+    if [ -z $1 ];then
+        echo "❌ -> missing input(🍎)";
+        return 1
+    fi
+
+    if [ -z $2 ];then
+        echo "⚠ -> missing output(🍷)name. using the input name";
+        output=$1.pdf
+    fi
+   pandoc --pdf-engine=wkhtmltopdf $1.md -o $output
 }
 
 

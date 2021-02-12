@@ -1,7 +1,8 @@
 #!/bin/bash
 # fonts : mono9, mono12,basic,broadway,slant,script,Electornic,Doh,3-D,3D-ASCII
-#toilet -kt -f broadway $1
-figlet -ctk -f ~/.figlet-fonts/Electronic.flf $1
-#figlet -ctk -f ~/.figlet-fonts/mono12.tlf $1
-#figlet -ctk -f slant $1
-#figlet -ctk -f broadway $1
+# figlet -ctk -f ~/.figlet-fonts/Electronic.flf $1
+# figlet -ctk -f ~/.figlet-fonts/mono12.tlf $1
+# figlet -ctk -f ~/.figlet-fonts/mono9.tlf $1
+figlet -ctk -f slant $1
+# figlet -ctk -f broadway $1
+# figlet -ctk -f ~/.figlet-fonts/Doh.flf $1
