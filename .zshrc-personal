@@ -369,14 +369,15 @@ alias show-h2db-logs="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.ConvertT
 alias run-h2db-script="java -cp $H2_HOME/bin/h2-1.4.200.jar org.h2.tools.RunScript -url jdbc:h2:tcp://localhost/~/DevTools/Databases/cmsDatabase -script ./script.sql"
 
 ################### mySql/Mariadb ##################
-alias connectmysql-dbserver="mycli -u kodecamp -p 5unil"
+MYCLIRC_PATH=$HOME/.config/mycli/.myclirc
+alias connectmysql-dbserver="mycli --myclirc $MYCLIRC_PATH -u kodecamp -p 5unil"
 alias startmysql-dbserver="sudo systemctl start mysqld"
 alias stopmysql-dbserver="sudo systemctl stop mysqld"
 
 ################### postgreSql ##################
 alias connectpgsql-dbserver="pgcli -U kodecamp kodecampdb"
-alias startpgsql-dbserver="sudo systemctl start postgresql-lts.service"
-alias stoppgsql-dbserver="sudo systemctl stop postgresql-lts.service"
+alias startpgsql-dbserver="sudo systemctl start postgresql.service"
+alias stoppgsql-dbserver="sudo systemctl stop postgresql.service"
 
 
 
@@ -434,9 +435,10 @@ runpy() {
 # alias lsd="lsd --blocks name,date,size --date relative"
 TREE_IGNORE="cache|log|logs|node_modules|vendor"
 
-alias ls='exa --group-directories-first --header --long'
+alias ls='exa --group-directories-first'
 alias la='ls -a'
-alias lg='exa --group-directories-first --long --header --git'
+alias lg='exa --group-directories-first --long --header'
+alias lgg='exa --group-directories-first --long --header --git'
 alias lt='exa --group-directories-first --tree -L 2 -I ${TREE_IGNORE}'
 alias ltt='exa --group-directories-first --tree -L 3 -I ${TREE_IGNORE}'
 alias lttt='exa --group-directories-first --tree -L 4 -I ${TREE_IGNORE}'
@@ -452,7 +454,7 @@ alias tx="tmux"
 alias icat="kitty +kitten icat"
 alias vim="nvim"
 alias vime="nvim '+CocCommand explorer --sources=file+'"
-alias tree="tree | lolcat"
+alias treec="tree | lolcat"
 alias cat="bat --italic-text always"
 alias ps="procs"
 alias pswatch="procs --watch-interval=1"
@@ -507,13 +509,7 @@ alias cls="clear"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/MyDotFiles --work-tree=$HOME"
 alias dotfilespush="dotfiles push origin master"
 
-########## aliases for mariadb
-alias stop_mysql="sudo systemctl stop mysqld"
-alias start_mysql="sudo systemctl start mysqld"
-
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 source ~/.config/broot/launcher/bash/br
 ### m and sm command availability
