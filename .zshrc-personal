@@ -128,7 +128,7 @@ bindkey '^e' edit-command-line
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
 source ~/.zsh/zsh-abbr/zsh-abbr.zsh
-source ~/.zsh/zsh-expand-all/zsh-expand-all.zsh
+# source ~/.zsh/zsh-expand-all/zsh-expand-all.zsh
 
 #################### End : Luke Smith ####################
 
@@ -583,3 +583,8 @@ eval $(starship init zsh)
 export CHROME_EXECUTABLE=brave
 # export CHROME_EXECUTABLE=firefox
 fpath=(~/.zsh/zsh-completions/src $fpath)
+
+# Note: This should be the last line
+bindkey "^ " _expand_alias
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+zstyle ':completion:*' regular true
