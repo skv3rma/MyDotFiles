@@ -75,6 +75,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-rsi'
 
+Plug 'dbeniamine/cheat.sh-vim'
+
 
 " === Language Related and Syntax Highlighting === "
 
