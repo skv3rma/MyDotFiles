@@ -484,8 +484,6 @@ alias riml="rip -s"
 
 # alias tldr="tealdeer"
 
-# alias vifimg="vifmrun"
-# alias fm="vifm"
 alias ..="cd .."
 alias ...="cd ../../"
 alias brh="br -h"
@@ -585,3 +583,6 @@ zstyle ':completion:*' regular true
 
 ##################### Load lf Icons File
 [ -f "$HOME/.config/lf/lficons" ] && source "$HOME/.config/lf/lficons"
+
+export PATH=$PATH:"$HOME/.config/lf/lfyt"
+

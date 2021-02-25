@@ -2,11 +2,9 @@
 # set previewer ~/.config/lf/preview
 set preview true
 set previewer pistol
-# set hidden false
 set drawbox true
 set icons true
 set ignorecase true
-# set incsearch true
 set smartcase true
 
 # shell options
@@ -206,6 +204,19 @@ cmd fasd_dir ${{
  lf -remote "send $id $cmd \"$res\""
  }}
 
+cmd on-cd %{{
+    # display git repository status in your prompt
+    # source /usr/share/git/completion/git-prompt.sh
+    # GIT_PS1_SHOWDIRTYSTATE=auto
+    # GIT_PS1_SHOWSTASHSTATE=auto
+    # GIT_PS1_SHOWUNTRACKEDFILES=auto
+    # GIT_PS1_SHOWUPSTREAM=auto
+    # GIT_PS1_COMPRESSSPARSESTATE=auto
+    # git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
+    # fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
+    # lf -remote "send $id set promptfmt \"$fmt\""
+    fasd -A "$PWD"
+}}
 
 cmd open_config  ${{
   $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
@@ -274,7 +285,8 @@ map c
 map e
 
 map zi
-map zi :fasd_dir
+map zi fasd_dir
+map go fasd_dir
 # map f :fasd_dir
 
 cmd fzf_jump ${{
@@ -358,6 +370,7 @@ map u unselect
 map <f-2> $printf '%s\n' $fx | vidir -
 
 # Movement
+map gh cd ~/
 map gtr cd ~/.local/share/Trash/files
 map gts cd ~/Projects/trainings/screenshots
 map gs cd ~/Screenshots
