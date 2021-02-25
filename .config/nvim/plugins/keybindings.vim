@@ -51,34 +51,6 @@ cmap w!! w !sudo tee %
 vnoremap <leader>p "_dP
 " Change to normal mode from inser mode
 inoremap ii <ESC>
-" mathematical symbols
-inoremap ,mm +
-inoremap ,m -
-inoremap ,x *
-inoremap ,d /
-inoremap ,dd $
-inoremap ,c {}<ESC>i
-inoremap ,b []<ESC>i
-inoremap ,p ()<ESC>i
-inoremap ,pp %
-inoremap ,ba <><ESC>i
-inoremap ,bd Box<dyn ><ESC>i
-inoremap ,bn = Box::new();<ESC>hi
-inoremap ,h #
-inoremap ,a &
-inoremap ,aa @
-inoremap ,ar ->
-inoremap ,arr =>
-inoremap ,e =
-inoremap ,ee !
-inoremap ,u _
-inoremap ,uu __
-inoremap ,q ?
-inoremap ,. ->
-" Clear console symbol
-inoremap ,,- \033[H\033[2J
-
-
 
 
 
@@ -153,7 +125,6 @@ nmap <silent> <leader>bq :bd!<CR>
 nmap <silent> <leader><leader>n :bn<CR>
 " previous buffer
 nmap <silent> <leader><leader>p :bp<CR>
-nmap <silent> <leader><leader> :bp<CR>
 " first buffer
 nmap <silent> <leader>bf :bfirst<CR>
 " last buffer
@@ -288,6 +259,8 @@ map <silent><leader>vx :VimuxInterruptRunner<CR>
 "Visual Mode : Move selected lines up(K) down(J)
 vnoremap J :move '> +1<CR>gv=gv
 vnoremap K :move '< -2<CR>gv=gv
+
+nnoremap R :%s/\<<C-r><C-w>\>/
 
 " Removing pythonsense keys // creating problems after removing the plugin
 

@@ -136,6 +136,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mhartington/oceanic-next'
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
+" Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'haishanh/night-owl.vim'
 Plug 'chriskempson/base16-vim'
@@ -156,6 +157,7 @@ Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'Brettm12345/moonlight.vim'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'alirezabashyri/molokai-italic'
+Plug 'colepeters/spacemacs-theme.vim'
 " Plug 'rust-lang/rust.vim'
 " Plug 'arzg/vim-rust-syntax-ext'
 " Activate Nord Vim when toggling the NERDTree.
@@ -232,6 +234,7 @@ Plug 'shmup/vim-sql-syntax'
 " bazel build system support
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
+Plug 'metakirby5/codi.vim'
 
 " Dart
 Plug 'dart-lang/dart-vim-plugin'

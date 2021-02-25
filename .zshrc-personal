@@ -2,12 +2,14 @@
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:$HOME/.local/bin
+# export PATH=$PATH:$HOME/.config/vifm/scripts
 
 # This folder should only contain the custom shell functions
 for f in $HOME/.local/bin/custom_scripts/*;do
   source "$f"
 done
 
+source ~/.nnn_config
 # export PATH=$PATH:$HOME/.local/bin/custom_scripts
 ############################## Start : Luke Smitht
 # History in cache directory:
@@ -263,11 +265,6 @@ export GRAVEYARD=$HOME/.local/share/Trash
 export PATH="$HOME/.cargo/bin:$PATH"
 # export RUST_BACKTRACE="full"
 
-cn() {
-  cargo new $1
-  cd $1
-}
-
 #### VS Code ####
 export CODE_HOME="$HOME/DevTools/VSCode-linux-x64"
 export PATH=$CODE_HOME/bin:$PATH
@@ -366,6 +363,9 @@ export PATH=$PATH:$RACKET_HOME/bin
 export FLUTTER_HOME="$HOME/DevTools/flutter"
 export PATH=$PATH:$FLUTTER_HOME/bin
 export DART_SDK="$HOME/DevTools/flutter/bin"
+
+#zoxide data dir
+export _ZO_DATA_DIR=$HOME/.cache/zoxide
 
 ################### Databases ##################
 ################### H2Db ##################
@@ -468,24 +468,24 @@ alias ps="procs"
 alias pswatch="procs --watch-interval=1"
 
 # delete file or directories
-alias rip="rip"
+alias rim="rip"
 
 # undo last removal in current directory
-alias ripu="rip -u"
+alias rimu="rip -u"
 
 # restore all removals in current directory
-alias ripua="rip -su"
+alias rimua="rip -su"
 
 # interactive removal
-alias ripi="rip -i"
+alias rimi="rip -i"
 
 #ripshow : Print files that were deleted from under the current directory
-alias ripl="rip -s"
+alias riml="rip -s"
 
 # alias tldr="tealdeer"
 
-# alias vifmg="~/.config/vifm/scripts/vifmimg"
-alias fm="vifm"
+# alias vifimg="vifmrun"
+# alias fm="vifm"
 alias ..="cd .."
 alias ...="cd ../../"
 alias brh="br -h"
@@ -493,6 +493,7 @@ alias brf="br -f"
 alias brd="br -d"
 alias bra="br -hfds"
 alias ch="cheat -c"
+# alias rm='echo "🔥 This is not the command you are looking for."; false'
 alias rm="rm -i"
 
 alias cp="cp -iv"
@@ -527,7 +528,7 @@ source ~/.config/broot/launcher/bash/br
 ### m and sm command availability
 source ~/.local/bin/utils
 
-banner "kodecamp" | lolcat
+# banner "kodecamp" | lolcat
 
 #################### temp aliases
 alias lets_discuss="banner-bg \"Dart For Java Programmers\" | lolcat; banner kodecamp"
@@ -537,13 +538,8 @@ alias -s {png,jpg}="sxiv"
 alias -s {md,txt,csv,h,c,html,css,js,ts}="nvim"
 alias -s {mkv,mp4,avi}="celluloid"
 
-eval "$(lua ~/.config/z.lua/z.lua --init zsh)"
+# eval "$(lua ~/.config/z.lua/z.lua --init zsh)"
 
-alias zi="z -I"
-alias z..="z -b"
-alias z.="z -c"
-alias zl="z -l"
-alias zr="z -t"
 alias t="tldr"
 alias tm="dvtm -m ^a"
 alias setw="nitrogen $HOME/Pictures/github/MyWallpapers"
@@ -551,10 +547,6 @@ alias amped='export EDITOR="amp"'
 alias vlogo="icat ~/Pictures/github/MyWallpapers/logo_script2.png"
 
 ######################### Image Magic #########################
-v() {
-  display -resize 800x600 $1
-}
-# pfetch
 alias nfetch="neofetch"
 alias nf="neofetch"
 
@@ -576,6 +568,8 @@ export CHEAT_USE_FZF=true
 # }
 # precmd_functions+=(blastoff)
 eval $(starship init zsh)
+eval "$(zoxide init zsh)"
+eval "$(fasd --init auto)"
 # end : starship prompt
 # source $HOME/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 ############ Flutter Dev
@@ -588,3 +582,6 @@ fpath=(~/.zsh/zsh-completions/src $fpath)
 bindkey "^ " _expand_alias
 zstyle ':completion:*' completer _expand_alias _complete _ignored
 zstyle ':completion:*' regular true
+
+##################### Load lf Icons File
+[ -f "$HOME/.config/lf/lficons" ] && source "$HOME/.config/lf/lficons"

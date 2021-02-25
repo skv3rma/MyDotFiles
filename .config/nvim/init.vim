@@ -1,4 +1,5 @@
 "these files should be loaded in the sequence
+set exrc
 if exists('g:vscode')
     " VSCode extension
 
@@ -162,7 +163,7 @@ else
     source ~/.config/nvim/plugins/floaterm.vim
 
     " similar to rainbow brackets
-    source ~/.config/nvim/plugins/rainbow.vim
+    " source ~/.config/nvim/plugins/rainbow.vim
 
     " displays leader key mappings on press of leader key
     source ~/.config/nvim/plugins/which-key.vim
@@ -185,5 +186,6 @@ else
     " ==================== Language Specific Settings ======
     source ~/.config/nvim/plugins/java-script.vim
     source ~/.config/nvim/plugins/misc.vim
+    " source ~/.config/nvim/plugins/transparent.vim
 
 endif

@@ -94,5 +94,15 @@
   "rust.show_hover_context": true,
   "rust-client.channel": "stable",
   "bookmark.sign": "🔖",
-  "bookmark.signHl": "Todo"
+  "bookmark.signHl": "Todo",
+  "html.enable": true,
+  "html.filetypes": ["html", "handlebars", "htmldjango", "blade", "xhtml"],
+  "html.suggest.html5": true,
+  "html.validate.scripts": true,
+  "html.validate.styles": true,
+  "html.autoClosingTags": true,
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "javascript": "javascriptreact"
+  }
 }
