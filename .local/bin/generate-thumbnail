@@ -1,6 +1,6 @@
 #!/bin/bash -
 
-TRAINING_SCREENSHOTS_HOME="$HOME/Projects/trainings/screenshots"
+TRAINING_SCREENSHOTS_HOME="$HOME/Pictures/Trainings/screenshots"
 # lines=$(grep -c "" ./train_java.csv)
 # lines=`cat ./train_java.csv | wc -l`
 # topicsFilePath="$HOME/Projects/trainings/train_java.csv"

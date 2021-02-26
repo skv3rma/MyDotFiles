@@ -499,7 +499,6 @@ alias mv="mv -iv"
 # first column is the target and second column is the source
 alias qmv="qmv --option swap"
 alias newsboat="nb"
-alias ws="weather"
 alias wf="curl wttr.in"
 alias dad="dragon-drag-and-drop -a -x"
 alias sf="surf ~/.surf/html/homepage.html"
