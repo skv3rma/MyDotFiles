@@ -1,6 +1,6 @@
-#!/bin/bash -
+#!/bin/bash
 
-TRAINING_SCREENSHOTS_HOME="$HOME/Pictures/Trainings/screenshots"
+TRAINING_SCREENSHOTS_HOME="$HOME/Pictures/training-resources/screenshots"
 # lines=$(grep -c "" ./train_java.csv)
 # lines=`cat ./train_java.csv | wc -l`
 # topicsFilePath="$HOME/Projects/trainings/train_java.csv"
@@ -14,7 +14,9 @@ selectedTopic=`tail -n +2 $HOME/Projects/trainings/train_java.csv \
 	       | sed "s/,/|/g;s/\"//g" \
 	       | dmenu -i -l $(($lines - 1)) -p "Topics: "`
 
-if [ -z $selectedTopic ];then
+# echo "selected topic : $selectedTopic"
+
+if [ -z "$selectedTopic" ];then
 	notify-send -u low "❌ Thumbnail creation cancelled."
 	exit 1
 fi
@@ -27,7 +29,7 @@ pText=`echo $selectedTopic \
        | awk -F'|' '{ print $2 }' \
        | sed "s/ /\n/g;s/\"//g"`
 
-# echo "$pText"
+echo "$pText"
 
 
 # replace spaces with -

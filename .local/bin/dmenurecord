@@ -14,7 +14,7 @@ mkdir -p $HOME/Videos/MyRecordings
 updateicon() { \
 	echo "$1" > /tmp/recordingicon
 	# pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
-	notify-send -u low "$1"
+	# notify-send -u low "$1"
 }
 
 killrecording() {
@@ -22,7 +22,7 @@ killrecording() {
 	# kill with SIGTERM, allowing finishing touches.
 	kill -15 "$recpid"
 	rm -f /tmp/recordingpid
-	updateicon "❌ Recording Stopped"
+	updateicon " 雷"
 	# pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
 	# even after SIGTERM, ffmpeg may still run, so SIGKILL it.
 	sleep 3
@@ -41,7 +41,7 @@ screencast60() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Videos/MyRecordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-	updateicon "⏺️🎙️ Recording Started"
+	updateicon "   "
 }
 
 screencast30() { \
@@ -55,7 +55,7 @@ screencast30() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Videos/MyRecordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-	updateicon "⏺️🎙️ Recording Started"
+	updateicon "   "
 }
 
 screencast15() { \
@@ -69,7 +69,7 @@ screencast15() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Videos/MyRecordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-	updateicon "⏺️🎙️ Recording Started"
+	updateicon "   "
 }
 
 screencast5() { \
@@ -83,7 +83,7 @@ screencast5() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Videos/MyRecordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-	updateicon "⏺️🎙️ Recording Started"
+	updateicon "   "
 }
 
 screencast1() { \
@@ -97,7 +97,7 @@ screencast1() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Videos/MyRecordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-	updateicon "⏺️🎙️ Recording Started"
+	updateicon "   "
 }
 
 video() { ffmpeg \
@@ -107,7 +107,7 @@ video() { ffmpeg \
  	-c:v libx264 -qp 0 -r 30 \
 	"$HOME/Videos/MyRecordings/video-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-	updateicon "⏺️ Recording Started"
+	updateicon "   "
  }
 
 webcamhidef() { ffmpeg \
@@ -135,7 +135,7 @@ audio() { \
 	-c:a flac \
 	"$HOME/Videos/MyRecordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
 	echo $! > /tmp/recordingpid
-	updateicon "🎙️ Recording Started"
+	updateicon "  "
 }
 
 askrecording() { \
