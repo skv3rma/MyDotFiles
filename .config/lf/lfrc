@@ -19,13 +19,24 @@ set filesep "\n"  # default already
 
 # symbols to use before script
 # & => async
-# $ => in shell
-# % => shell pipe
+# $ => in shell (blocking)
+# % => shell pipe (runs in shell and pipes the command into ui)
 # ! => shell wait
 
 # Custom Functions
+# dynamically change the no of columns based on terminal width
+%{{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
 # displays the progress bar while copying/moving
-cmd paste %{{
+cmd paste &{{
     set -- $(lf -remote load)
     mode="$1"
     shift
@@ -41,7 +52,19 @@ cmd paste %{{
     esac
     lf -remote "send load"
     lf -remote "send clear"
-    echo "🗸 moved successfully"
+}}
+
+# & is used means this is async in nature
+cmd paste-async &{{
+    set -- $(lf -remote load)
+    mode="$1"
+    shift
+    case "$mode" in
+        copy) cp -rn -- "$@" .;;
+        move) mv -n -- "$@" .;;
+    esac
+    lf -remote "send load"
+    lf -remote "send clear"
 }}
 
 
@@ -91,84 +114,82 @@ cmd open &{{
         text/*|application/json) $EDITOR "$f";;
         image/*) sxiv-rifle "$f";;
         application/pdf) zathura "$f";;
-        video/*) mpv "$f";;
-        *) xdg-open "$f" ;;
+        video/*) exec setsid -f -- mpv -- "$f" </dev/null 1>&0 2>&0;;
+            *) xdg-open "$f" ;;
     esac
 }}
 
-cmd open-with %"$@" $fx
-map ` push :open-with<space>
-map o push :open-with<space>
 
 # create a newdir with selected entries
 cmd move-to %{{
-    fail_color=$'\033[31;1m'
-    pass_color=$'\033[32;1m'
-    color_end=$'\033[0m'
     set -f
     if [ -d "$1" ];then
-      printf "❌ $fail_color $1 : Already exist $color_end"
+      printf "❌ $FAIL_COLOR $1 : Already exist $COLOR_END"
       exit 1
     fi
     mkdir -- "$1"
     mv -- $fx "$1"
-    printf "$pass_color ✅ '$1' : created successfully."
+    printf "$PASS_COLOR ✅ '$1' : created successfully. $COLOR_END"
 }}
 
 cmd export-as %{{
-  fail_color=$'\033[31;1m'
-  pass_color=$'\033[32;1m'
-  color_end=$'\033[0m'
   if [ -f "$1" ];then
-    printf "$fail_color ❌ $1 Already exists."
+    printf "$FAIL_COLOR ❌ $1 Already exists."
   fi
 
   for f in $fx;do
     echo "$f" >> "$1"
   done
-  printf "$pass_color 🗸 Selection exported in => 'exported_data' $color_end"
+  printf "$PASS_COLOR 🗸 Selection exported in => 'exported_data' $COLOR_END"
 }}
 
 cmd export-as-xported %{{
-  fail_color=$'\033[31;1m'
-  pass_color=$'\033[32;1m'
-  color_end=$'\033[0m'
 
   for f in $fx;do
     echo "$f" >> xported_data
   done
-  printf "$pass_color 🗸 Selection appended in => 'xported_data' $color_end"
+  printf "$PASS_COLOR 🗸 $COLOR_END Selection appended in => 'xported_data' $COLOR_END"
 }}
 
-cmd mkdir %{{
-  mkdir -p $1
-  printf "🗸 directory $1 created."
+cmd mkdirs %{{
+  mkdir -p "$@"
+  dirs=$(echo "$@" | sed "s/\s/,/g")
+  printf "🗸 Dir(s) $PASS_COLOR ( $dirs ) $COLOR_END created."
 }}
 
 cmd list_images %{{
   sxiv -t .
 }}
 
-cmd mkfile %{{
-  mktouch $1
-  printf "file $1 created."
+cmd mkfiles %{{
+  mktouch "$@"
+  files=$(echo "$@" | sed "s/\s/,/g")
+  printf "🗸 file(s) $PASS_COLOR ( $files ) $COLOR_END created."
 }}
 
-cmd cpfilepath %{{
+cmd cpfilepath &{{
   echo "$f" | xclip -sel clip
-  printf "Path Copied : $f"
+  printf "$PASS_COLOR 🗸 Path Copied : $f"
 }}
 
-cmd chmod ${{
-  printf "Mode Bits: "
-  read ans
+cmd cpdirpath &{{
+  echo "$PWD" | xclip -sel clip
+  printf "$PASS_COLOR 🗸 Current Directory Path Copied."
+}}
 
+# when called with no params => 755
+cmd chmod %{{
+  bits="755"
+  if [ "$#" -eq 1 ];then
+      bits="$1"
+  fi
   for file in "$fx"
   do
-    chmod $ans $file
+    chmod "$bits" $file
   done
 
   lf -remote 'send reload'
+  printf "$PASS_COLOR 🗸 Changed made to selected files."
 }}
 
 cmd sudomkfile %{{
@@ -178,10 +199,6 @@ cmd sudomkfile %{{
 }}
 
 cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
-# cmd cpfilepath %printf "$f" | xclip -sel clip
-cmd aj %lf -remote "send $id cd '$(autojump $1)'"
-map a push :aj<space>
-
 cmd broot_jump ${{
   f=$(mktemp)
   res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
@@ -215,19 +232,13 @@ cmd on-cd %{{
     # git=$(__git_ps1 " [GIT BRANCH:> %s]") || true
     # fmt="\033[32;1m%u@%h\033[0m:\033[34;1m%w\033[0m\033[33;1m$git\033[0m"
     # lf -remote "send $id set promptfmt \"$fmt\""
+    # adds entry into fasd database, which can be used by using key ';;'
     fasd -A "$PWD"
 }}
 
 cmd open_config  ${{
   $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
 }}
-
-cmd dragon %dragon-drag-and-drop -a -x $fx
-cmd dragon-stay %dragon-drag-and-drop -a $fx
-cmd dragon-individual %dragon-drag-and-drop $fx
-cmd cpdragon %cpdragon
-cmd mvdragon %mvdragon
-cmd dlfile %dlfile
 
 # Archive bindings
 cmd unarchive ${{
@@ -240,13 +251,8 @@ cmd unarchive ${{
   esac
 }}
 
-cmd zip %zip -r "$f" "$f"
-cmd tar %tar cvf "$f.tar" "$f"
-cmd targz %tar cvzf "$f.tar.gz" "$f"
-cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
-
 # Trash cli bindings
-cmd trash ${{
+cmd trash %{{
   files=$(printf "$fx" | tr '\n' ';')
   while [ "$files" ]; do
     # extract the substring from start of string up to delimiter.
@@ -265,13 +271,20 @@ cmd trash ${{
   done
 }}
 
-cmd clear_trash %trash-empty
 
 cmd restore_trash ${{
   trash-restore
 }}
 
-cmd stripspace %stripspace "$f"
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else
+        cmd="select"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
 
 # vim like bindings
 # Remove some defaults
@@ -289,15 +302,24 @@ map zi fasd_dir
 map go fasd_dir
 # map f :fasd_dir
 
-cmd fzf_jump ${{
-    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
-    if [ -d "$res" ]; then
-        cmd="cd"
-    else
-        cmd="select"
-    fi
-    lf -remote "send $id $cmd \"$res\""
-}}
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd dragon-stay %dragon-drag-and-drop -a $fx
+cmd dragon-individual %dragon-drag-and-drop $fx
+cmd cpdragon %cpdragon
+cmd mvdragon %mvdragon
+cmd dlfile %dlfile
+# cmd cpfilepath %printf "$f" | xclip -sel clip
+cmd aj %lf -remote "send $id cd '$(autojump $1)'"
+map a push :aj<space>
+cmd open-with %"$@" $fx
+map ` push :open-with<space>
+map o push :open-with<space>
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+cmd clear_trash %trash-empty
+cmd stripspace %stripspace "$f"
 map ;
 map ; :fzf_jump
 # File Openers
@@ -336,21 +358,22 @@ map ss stripspace
 map . set hidden!
 map DD delete
 map p paste
+map P paste-async
 map x
 map X
-map X cut
+map x cut
 map y copy
 map Y cpfilepath
 map <enter> open
 # reset mapping for a
 map a
-map a push :mkfile<space>
+map a push :mkfiles<space>
 map mr sudomkfile
 map A
-map A push :mkdir<space>
+map A push :mkdirs<space>
 map ms push :mkscript<space>
 # make the selection
-map x push $chmod +x $fx
+map X push :chmod<space>
 
 map br $vimv $fx
 
@@ -366,75 +389,32 @@ map C
 map c clear
 map C clear
 map u unselect
+# map <esc>
+# map <esc> clear
 # bulk rename
 map <f-2> $printf '%s\n' $fx | vidir -
 
 # Movement
 map gh cd ~/
-map gtr cd ~/.local/share/Trash/files
-map gts cd ~/Projects/trainings/screenshots
-map gs cd ~/Screenshots
-map gpg cd ~/Pictures/github/MyWallpapers
-map gtd cd ~/Pictures/annotated-wallpapers
 
-map gv. cd ~/videos
-map gva cd ~/videos/anime
+# Downloads related gd
+map gd cd ~/Downloads
+map gD cd ~/Downloads/@Firefox
 
-map gy. cd ~/videos/youtube
-map gyt cd ~/videos/youtube/ToUpload
-map gyu cd ~/videos/youtube/Uploaded
-map gya cd ~/videos/youtube/asset
-map go. cd ~/videos/podcast
-map got cd ~/videos/podcast/ToUpload
-map gou cd ~/videos/podcast/Uploaded
+map gt cd ~/Downloads/Telegram\ Desktop
+map gT cd ~/.local/share/Trash/files
+map gp cd ~/Pictures
+map gP cd ~/Projects
+map gs cd ~/Pictures/Screenshots
+map gS cd ~/software_sources
+map gw cd ~/Pictures/github/MyWallpapers
 
-map gp. cd ~/Pictures
-map gpm cd ~/pictures/mpvscreenshots
-map gpa cd ~/pictures/Anime
-map gps cd ~/pictures/screenshots
-
-map gw. cd ~/pictures/Wallpapers
-map gww cd ~/pictures/Wallpapers/Wallpapers
-map gwm cd ~/pictures/Wallpapers/MobileWallpapers
-
-map gt. cd ~/documents/Textbooks
-map gt1 cd ~/documents/Textbooks/1stYear
-map gt2 cd ~/documents/Textbooks/2ndYear
-map gt3 cd ~/documents/Textbooks/3rdYear
-map gu3 cd ~/documents/Uni/3rdYear
-map gd cd ~/documents
-
-map gD cd ~/Downloads
-map ge cd ~/desktop
-
-map gs. cd ~/scripts
-map gsl cd ~/scripts/lf
-map gsa cd ~/scripts/alsa
-map gsi cd ~/scripts/i3
-map gse cd ~/scripts/lemonbar
-map gsp cd ~/scripts/polybar
-map gsb cd ~/scripts/bspwm
-map gsu cd ~/scripts/pulse
-map gdt cd ~/scripts/transmission
-
-map gr. cd ~/repos
-map grb cd ~/repos/bookmenu
-map grf cd ~/repos/cleanfullscreen
-map grm cd ~/repos/dmenu
-map grd cd ~/repos/dotfiles
-map gri cd ~/repos/init
-map grk cd ~/repos/kanban-board
-map grl cd ~/repos/lbryurlconvert
-map grP cd ~/repos/PerlProjects
-map grr cd ~/repos/reading-list
-map grs cd ~/repos/st
-map grw cd ~/repos/website
+map gv cd ~/Videos
+map gV cd ~/Videos/MyRecordings
+map gs cd ~/.local/bin
+map gS cd ~/.local/bin/custom_scripts
+map ga cd ~/.local/share/applications
 
 map gc cd ~/.config
-map gC cd ~/.local/share/cell
-map gl cd ~/.local
-map gE cd /etc
-map gU. cd /usr
-map gUs cd /usr/share
 
 map \;j cd ~
