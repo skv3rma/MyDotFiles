@@ -32,7 +32,6 @@ Plug 'easymotion/vim-easymotion'
 " Tmux/Neovim movement integration
 Plug 'christoomey/vim-tmux-navigator'
 
-
 Plug 'derekwyatt/vim-scala'
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -40,29 +39,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Syntax highlighting for tmux.config file
 Plug 'tmux-plugins/vim-tmux'
 
-
-" Denite - Fuzzy finding, buffer management
-"Plug 'Shougo/denite.nvim'
-" if has('nvim')
-"   Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/denite.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-
 " Snippet support
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-
-" gtags
-" Plug 'jsfaint/gen_tags.vim'
 
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
 Plug 'Shougo/deol.nvim'
 Plug 'airblade/vim-rooter'
-
 
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
@@ -76,7 +60,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-rsi'
 
 Plug 'dbeniamine/cheat.sh-vim'
-
 
 " === Language Related and Syntax Highlighting === "
 
@@ -230,6 +213,8 @@ Plug 'benmills/vimux'
 
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'shmup/vim-sql-syntax'
+Plug 'superevilmegaco/Screenshot.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 " bazel build system support
 Plug 'google/vim-maktaba'

@@ -1,0 +1,106 @@
+! Nord Color Scheme
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Gruvbox Material Dark Variables
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! backgrounds
+#define gruvboxmedium #282828
+#define gruvboxhard #1d2021
+#define gruvboxsoft #32302f
+
+#define gruvbox0 #32302f
+#define gruvbox8 #32302f
+#define gruvbox1 #ea6962
+#define gruvbox9 #ea6962
+#define gruvbox2 #a9b665
+#define gruvbox10 #a9b665
+#define gruvbox3 #e78a4e
+#define gruvbox11 #e78a4e
+#define gruvbox4 #7daea3
+#define gruvbox12 #7daea3
+#define gruvbox5 #d3869b
+#define gruvbox13 #d3869b
+#define gruvbox6 #89b482
+#define gruvbox14 #89b482
+#define gruvbox7 #d4be98
+#define gruvbox15 #d4be98
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Gruvbox Material Dark Theme
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! St settings
+*.St.background: gruvboxhard
+*.St.foreground: gruvbox15
+*.St.color0:  gruvbox0
+*.St.color8:  gruvbox8
+*.St.color1:  gruvbox1
+*.St.color9:  gruvbox9
+*.St.color2:  gruvbox2
+*.St.color10: gruvbox10
+*.St.color3:  gruvbox3
+*.St.color11: gruvbox11
+*.St.color4:  gruvbox4
+*.St.color12: gruvbox12
+*.St.color5:  gruvbox5
+*.St.color13: gruvbox13
+*.St.color6:  gruvbox6
+*.St.color14: gruvbox14
+*.St.color7:  gruvbox7
+*.St.color15: gruvbox15
+
+*.st.cursorColor: gruvbox7
+*.St.cwscale:0.9
+*.St.chscale:1.0
+*.St.alpha:0.8
+!*.St.fading: 35
+!*.St.fadeColor: nord3
+/* *.font: "JetBrainsMono Nerd Font:pixelsize=18:antialias=true:autohint=true" */
+/* fontalt0:"JetBrainsMono Nerd Font:pixelsize=16:antialias=true:autohint=true" */
+/* *.St.color0: nord1 */
+/* *.St.color1: nord11 */
+/* *.St.color2: nord14 */
+/* *.St.color3: nord13 */
+/* *.St.color4: nord9 */
+/* *.St.color5: nord15 */
+/* *.St.color6: nord8 */
+/* *.St.color7: nord5 */
+/* *.St.color8: nord3 */
+/* *.St.color9: nord11 */
+/* *.St.color10: nord14 */
+/* *.St.color11: nord13 */
+/* *.St.color12: nord9 */
+/* *.St.color13: nord15 */
+/* *.St.color14: nord7 */
+/* *.St.color15: nord6 */
+
+! dwm settings
+*.dwm.normbordercolor: gruvboxhard
+*.dwm.selbordercolor: gruvbox5
+
+*.dwm.normbgcolor: gruvboxhard
+*.dwm.normfgcolor: gruvbox7
+*.dwm.selbgcolor: gruvbox5
+*.dwm.selfgcolor: gruvboxhard
+!!*.font: JetBrainsMono-Regular 20
+
+!! Set a default font and font size as below:
+*.Sxiv.font: JetBrainsMono-Regular:size=14
+*.Sxiv.background: gruvboxhard
+*.Sxiv.foreground: gruvbox5
+

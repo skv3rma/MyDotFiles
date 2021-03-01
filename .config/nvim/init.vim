@@ -7,6 +7,7 @@ else
     " ordinary neovim
     source ~/.config/nvim/plugins/plugins.vim
     source ~/.config/nvim/plugins/general-settings.vim
+    source ~/.config/nvim/plugins/treesitter-settings.vim
     source ~/.config/nvim/plugins/lsc.vim
     source ~/.config/nvim/plugins/dispatch.vim
     source ~/.config/nvim/plugins/autocmds.vim
@@ -14,7 +15,7 @@ else
     source ~/.config/nvim/plugins/limelight.vim
     source ~/.config/nvim/plugins/vim-rooter.vim
     source ~/.config/nvim/plugins/coc.vim
-    " source ~/.config/nvim/plugins/coc-bookmark.vim
+    source ~/.config/nvim/plugins/coc-bookmark.vim
     source ~/.config/nvim/plugins/file-explorer.vim
 
     " ============================================

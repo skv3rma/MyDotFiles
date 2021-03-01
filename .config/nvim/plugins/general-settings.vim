@@ -52,7 +52,8 @@ set noshowcmd
 set clipboard=unnamed
 
 " Hides buffers instead of closing them
-"set hidden
+set hidden
+set autowriteall
 
 " === TAB/Space settings === "
 " Insert spaces when TAB is pressed.
@@ -129,3 +130,4 @@ if exists('$TMUX')
     let &t_SI .= "\e[=1c"
     let &t_EI .= "\e[=2c"
  endif
+
