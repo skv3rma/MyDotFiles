@@ -12,7 +12,7 @@ TRAINING_SCREENSHOTS_HOME="$HOME/Pictures/training-resources/screenshots"
 # pass to dmenu
 selectedTopic=`tail -n +2 $HOME/Projects/trainings/train_java.csv \
 	       | sed "s/,/|/g;s/\"//g" \
-	       | dmenu -i -l $(($lines - 1)) -p "Topics: "`
+	       | dmenu -l $(($lines - 1)) -p "Topics: "`
 
 # echo "selected topic : $selectedTopic"
 

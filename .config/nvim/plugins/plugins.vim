@@ -166,6 +166,7 @@ Plug 'frazrepo/vim-rainbow'
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'bling/vim-bufferline '
 
 " file explorer
 " Plug 'lambdalisue/fern.vim'
@@ -213,19 +214,24 @@ Plug 'benmills/vimux'
 
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'shmup/vim-sql-syntax'
-Plug 'superevilmegaco/Screenshot.nvim'
+
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " bazel build system support
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
 Plug 'metakirby5/codi.vim'
+Plug 'delphinus/vim-auto-cursorline'
 
 " Dart
 Plug 'dart-lang/dart-vim-plugin'
 " Plug 'natebosch/vim-lsc'
 " Plug 'natebosch/vim-lsc-dart'
-" Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
 " My Plugins
 " Plug '/home/sunil_arc/.config/nvim/plugins/neovim-calculator'

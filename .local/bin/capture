@@ -1,0 +1,13 @@
+#!/bin/sh
+
+picdirname="$HOME/Pictures/codeshots"
+mkdir -p "/tmp/codeshots"
+
+[ ! -d "$picdirname" ]  && mkdir -p "$picdirname"
+scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f /tmp/codeshots' --select
+# sleep 1s
+for f in $(ls "/tmp/codeshots");do
+  convert "/tmp/codeshots/$f" -bordercolor "#d3869b" -border 2 "$picdirname/bordered-$f"
+  trash-put "/tmp/codeshots/$f"
+done
+notify-send "Screenshot is saved in $picdirname" --icon=scrot

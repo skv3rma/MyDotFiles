@@ -22,6 +22,9 @@ SAVEHIST=10000
 HISTFILE=~/.zsh_history
 HIST_STAMPS="%d/%m/%y %T"
 
+#################### MDP Settings
+export MDP_LIST_OPEN1="    " MDP_LIST_OPEN2="    " MDP_LIST_OPEN3="    "
+export MDP_LIST_HEAD1=" ■  " MDP_LIST_HEAD2=" ●  " MDP_LIST_HEAD3=" ▫  "
 # Basic auto/tab complete:
 
 ########## DWM Java App Fix
@@ -43,7 +46,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 export WINIT_HIDPI_FACTOR=1.0
-export EDITOR="nvim"
+export EDITOR="$HOME/DevTools/nvim-0.5/bin/nvim"
 export READER="zathura"
 export TERMINAL="kitty"
 export TERM="xterm-256color"
@@ -465,8 +468,12 @@ alias treed='tree -d'
 alias li="sxiv -t ."
 alias tx="tmux"
 alias icat="kitty +kitten icat"
-alias vim="nvim"
-alias vime="nvim '+CocCommand explorer --sources=file+'"
+# alias vim="nvim"
+alias neovim="$HOME/DevTools/nvim-0.5/bin/nvim"
+alias vim="$HOME/DevTools/nvim-0.5/bin/nvim"
+alias nvim="$HOME/DevTools/nvim-0.5/bin/nvim"
+# alias vime="nvim '+CocCommand explorer --sources=file+'"
+alias vime="$HOME/DevTools/nvim-0.5/bin/nvim '+CocCommand explorer --sources=file+'"
 alias treec="tree | lolcat"
 alias cat="bat --italic-text always"
 alias ps="procs"
@@ -519,6 +526,11 @@ alias ski="sk -i"
 alias clock="tty-clock -csbrB"
 alias cls="clear"
 
+# nnn file browser
+alias n='nnn -cdD'
+alias n3='nnn -cdD'
+alias nt="tmux new-session nnn -cdD"
+
 
 ########## aliases for DotFiles
 alias dotfiles="/usr/bin/git --git-dir=$HOME/MyDotFiles --work-tree=$HOME"
@@ -544,7 +556,8 @@ alias -s {mkv,mp4,avi}="celluloid"
 
 alias t="tldr"
 alias tm="dvtm -m ^a"
-alias setw="nitrogen $HOME/Pictures/github/MyWallpapers"
+# alias setw="nitrogen $HOME/Pictures/github/MyWallpapers"
+alias setw="sxiv -t $HOME/Pictures/github/MyWallpapers"
 alias amped='export EDITOR="amp"'
 alias vlogo="icat ~/Pictures/github/MyWallpapers/logo_script2.png"
 

@@ -24,45 +24,46 @@ rotate() {
 
 backg() {
 	nitrogen --set-scale --save "$file"
-	notify-send -u low -i info "Wallpaper Changed. $file"
+	notify-send -u low -i info "Wallpaper Changed. $file" --icon=sxiv
 }
 
 sxiv_setbg() {
   # echo "file : $1"
   if [ -z "$1" ]
   then
-    notify-send -i error -u critical "File is not supplied"
+    notify-send -i error -u critical "File is not supplied" --icon=sxiv
     exit 1
   fi
   nitrogen --set-zoom-fill --save "$1"
-  notify-send -u low -i info "wallpaper changed"
+  notify-send -u low -i info "wallpaper changed" --icon=sxiv
 }
 
 sxiv_moveto() {
   # echo "$1"
-  output_dir=$(ls -d $HOME/Pictures/* | dmenu -i -l 10 -p "Move To: ")
+  output_dir=$(ls -d $HOME/Pictures/* | dmenu -l 10 -p "Move To: ")
   # echo "$output_dir"
+  if [ -z "$output_dir"];then
+    return
+  fi
   for f in $1;do
     mv "$f" "$output_dir"
   done
   # echo "🗸 Images Moved Successfully."
-	notify-send -u low -i info "Wallpapers Moved => $output_dir"
+	notify-send -u low -i info "Image Moved to $output_dir" --icon=sxiv
 }
 
 export -f sxiv_moveto
 export -f sxiv_setbg
 
 case "$1" in
-"C-x")      xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard ;;
-"C-c")      while read file; do xclip -selection clipboard -target image/png "$file"; done ;;
-"C-e")      while read file; do urxvt -bg "#444" -fg "#eee" -sl 0 -title "$file" -e sh -c "exiv2 pr -q -pa '$file' | less" & done ;;
-"C-g")      tr '\n' '\0' | xargs -0 gimp & ;;
-"C-r")      while read file; do rawtherapee "$file" & done ;;
+"y")      xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard && notify-send "File path copied." --icon=sxiv ;;
+"Y")      while read file; do xclip -selection clipboard -target image/jpg "$file"; done ;;
+"e")      tr '\n' '\0' | xargs -0 gimp & ;;
+# "C-r")      while read file; do rawtherapee "$file" & done ;;
 "C-comma")  rotate 270 ;;
 "C-period") rotate  90 ;;
 "C-slash")  rotate 180 ;;
-# "C-b") tr '\n' '\0' | xargs -0 'sxiv_setbg' & ;;
-"C-b") tr '\n' '\0' | xargs -0 -I {} bash -c 'sxiv_setbg {}' & ;;
+"b") tr '\n' '\0' | xargs -0 -I {} bash -c 'sxiv_setbg {}' & ;;
 # "C-v") tr '\n' ' ' | xargs -0 -I {} bash -c 'sxiv_moveto {"$*"}' & ;;
-"C-v") tr '\n' ' ' | xargs -I {} bash -c 'sxiv_moveto "{}"' & ;;
+"v") tr '\n' ' ' | xargs -I {} bash -c 'sxiv_moveto "{}"' & ;;
 esac

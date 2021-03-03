@@ -34,17 +34,19 @@
 #define gruvbox11 #e78a4e
 #define gruvbox4 #7daea3
 #define gruvbox12 #7daea3
-#define gruvbox5 #d3869b
-#define gruvbox13 #d3869b
+#define gruvbox5 #bf616a
+#define gruvbox13 #bf616a
 #define gruvbox6 #89b482
 #define gruvbox14 #89b482
-#define gruvbox7 #d4be98
-#define gruvbox15 #d4be98
+#define gruvbox7 #f9f5d7
+#define gruvbox15 #f9f5d7
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! Gruvbox Material Dark Theme
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! St settings
+!
+! syntax : name.Class.resource: value
 *.St.background: gruvboxhard
 *.St.foreground: gruvbox15
 *.St.color0:  gruvbox0
@@ -64,7 +66,7 @@
 *.St.color7:  gruvbox7
 *.St.color15: gruvbox15
 
-*.st.cursorColor: gruvbox7
+*.St.cursorColor: gruvbox7
 *.St.cwscale:0.9
 *.St.chscale:1.0
 *.St.alpha:0.8
@@ -90,17 +92,22 @@
 /* *.St.color15: nord6 */
 
 ! dwm settings
-*.dwm.normbordercolor: gruvboxhard
-*.dwm.selbordercolor: gruvbox5
+dwm.normbgcolor: gruvboxhard
+dwm.normbordercolor: gruvboxhard
+dwm.normfgcolor: gruvboxhard
 
-*.dwm.normbgcolor: gruvboxhard
-*.dwm.normfgcolor: gruvbox7
-*.dwm.selbgcolor: gruvbox5
-*.dwm.selfgcolor: gruvboxhard
+dwm.selbgcolor: gruvbox1
+dwm.selbordercolor: gruvbox1
+dwm.selfgcolor: gruvboxhard
 !!*.font: JetBrainsMono-Regular 20
 
 !! Set a default font and font size as below:
-*.Sxiv.font: JetBrainsMono-Regular:size=14
-*.Sxiv.background: gruvboxhard
-*.Sxiv.foreground: gruvbox5
+Sxiv.font: JetBrainsMono-Regular:size=14
+Sxiv.background: gruvboxhard
+Sxiv.foreground: gruvbox5
 
+!*.dmenu.font : font or font set
+*.dmenu.background : gruvboxhard
+*.dmenu.foreground : gruvbox7
+*.dmenu.selbackground : gruvbox5
+*.dmenu.selforeground : gruvboxhard

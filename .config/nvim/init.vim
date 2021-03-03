@@ -7,7 +7,9 @@ else
     " ordinary neovim
     source ~/.config/nvim/plugins/plugins.vim
     source ~/.config/nvim/plugins/general-settings.vim
+    source ~/.config/nvim/plugins/cursorline.vim
     source ~/.config/nvim/plugins/treesitter-settings.vim
+    source ~/.config/nvim/plugins/telescope.vim
     source ~/.config/nvim/plugins/lsc.vim
     source ~/.config/nvim/plugins/dispatch.vim
     source ~/.config/nvim/plugins/autocmds.vim

@@ -9,22 +9,28 @@ scriptencoding utf-8
 
 let g:mapleader=','
 
-"search down into subfolders
-" Provides tab completion
 set encoding=utf-8
 
 " path support for all subdirectories
 set path+=**
-syntax enable
+
+" automatic file type detection
 filetype plugin on
+
+" enable syntax highlight
+syntax enable
+
 
 " save files on buffer change
 set autowrite
+
 " Set relative line number
 set mouse=a
 
+" Treat word separated with '-' as a single word
+set iskeyword+=-
+
 " Disable line numbers
-set nonumber
 set nu
 
 " Display relative line no
@@ -53,7 +59,6 @@ set clipboard=unnamed
 
 " Hides buffers instead of closing them
 set hidden
-set autowriteall
 
 " === TAB/Space settings === "
 " Insert spaces when TAB is pressed.
@@ -107,13 +112,13 @@ set winbl=10
 set nobackup
 set nowritebackup
 
-set noswapfile
+" set noswapfile
 
 " Set backups
 if has('persistent_undo')
   set undofile
-  set undolevels=3000
-  set undoreload=10000
+  set undolevels=1000
+  set undoreload=5000
 endif
 
 " Load custom snippets from snippets folder

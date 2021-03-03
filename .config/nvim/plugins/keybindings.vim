@@ -33,8 +33,8 @@ nmap <leader>yy :StripWhitespace<CR>
 "   <leader><F2> - Find and replace
 "   <leader>/ - Clear highlighted search terms while preserving history
 " find and replace in whole file
-map <leader>ff :%s///g<left><left><left>
-map <leader>fl :s///g<left><left><left>
+map <leader>sf :%s///g<left><left><left>
+map <leader>sl :s///g<left><left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
 
@@ -239,7 +239,7 @@ function! ToggleWindowHorizontalVerticalSplit()
   endif
 endfunction
 
-" Toggle Split Type
+" Toggle Window Split Type
 nnoremap <silent> <leader><leader>wt :call ToggleWindowHorizontalVerticalSplit()<cr>
 " Prompt for a command to run
 map <silent><leader>vp :VimuxPromptCommand<CR>
