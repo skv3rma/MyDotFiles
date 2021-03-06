@@ -30,11 +30,11 @@ set mouse=a
 " Treat word separated with '-' as a single word
 set iskeyword+=-
 
-" Disable line numbers
-set nu
+" enable line numbers with relative line nu
+set nu rnu
 
 " Display relative line no
-set relativenumber
+" set relativenumber
 
 "set wildmenu
 set cursorline
@@ -65,7 +65,7 @@ set hidden
 set expandtab
 
 " Change number of spaces that a <Tab> counts for during editing ops
-set softtabstop=2
+set tabstop=2 softtabstop=2
 
 " Indentation amount for < and > commands.
 set shiftwidth=2
@@ -103,6 +103,8 @@ set autoread
 set splitbelow
 set splitright
 
+set completeopt=menuone,noinsert,noselect
+
 " Don't dispay mode in command line (airilne already shows it)
 set noshowmode
 
@@ -115,11 +117,11 @@ set nowritebackup
 " set noswapfile
 
 " Set backups
-if has('persistent_undo')
-  set undofile
-  set undolevels=1000
-  set undoreload=5000
-endif
+" if has('persistent_undo')
+"   set undofile
+"   set undolevels=1000
+"   set undoreload=5000
+" endif
 
 " Load custom snippets from snippets folder
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'

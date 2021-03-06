@@ -26,8 +26,8 @@
 
 #define gruvbox0 #32302f
 #define gruvbox8 #32302f
-#define gruvbox1 #ea6962
-#define gruvbox9 #ea6962
+#define gruvbox1 #cc241d
+#define gruvbox9 #cc241d
 #define gruvbox2 #a9b665
 #define gruvbox10 #a9b665
 #define gruvbox3 #e78a4e
@@ -69,7 +69,7 @@
 *.St.cursorColor: gruvbox7
 *.St.cwscale:0.9
 *.St.chscale:1.0
-*.St.alpha:0.8
+*.St.alpha:0.7
 !*.St.fading: 35
 !*.St.fadeColor: nord3
 /* *.font: "JetBrainsMono Nerd Font:pixelsize=18:antialias=true:autohint=true" */
@@ -92,22 +92,22 @@
 /* *.St.color15: nord6 */
 
 ! dwm settings
-dwm.normbgcolor: gruvboxhard
-dwm.normbordercolor: gruvboxhard
-dwm.normfgcolor: gruvboxhard
+*.dwm.normbgcolor: gruvboxhard
+*.dwm.normbordercolor: gruvboxhard
+*.dwm.normfgcolor: gruvboxhard
 
-dwm.selbgcolor: gruvbox1
-dwm.selbordercolor: gruvbox1
-dwm.selfgcolor: gruvboxhard
+*.dwm.selbgcolor: gruvbox1
+*.dwm.selbordercolor: gruvbox1
+*.dwm.selfgcolor: gruvbox7
 !!*.font: JetBrainsMono-Regular 20
 
 !! Set a default font and font size as below:
 Sxiv.font: JetBrainsMono-Regular:size=14
 Sxiv.background: gruvboxhard
-Sxiv.foreground: gruvbox5
+Sxiv.foreground: gruvbox9
 
 !*.dmenu.font : font or font set
 *.dmenu.background : gruvboxhard
 *.dmenu.foreground : gruvbox7
-*.dmenu.selbackground : gruvbox5
-*.dmenu.selforeground : gruvboxhard
+*.dmenu.selbackground : gruvbox1
+*.dmenu.selforeground : gruvbox7

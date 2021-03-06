@@ -112,31 +112,43 @@ function! Toggle_transparent_background()
 endfunction
 nnoremap <C-x><C-t> :call Toggle_transparent_background()<CR>
 
-" buffer switching fuzzy finder
-" Switch to buffer by providing unique keyword of file name
-nnoremap <leader>b :b<Space>
 nnoremap <leader>q :q<CR>
 
+" ====================== buffer switching fuzzy finder
+" Switch to buffer by providing unique keyword of file name
+nnoremap <leader>bb :b<Space>
 " quit buffer
-nmap <silent> <leader>bd :bd<CR>
+noremap <silent> <leader>bd :bd<CR>
 " quit buffer without saving changes
-nmap <silent> <leader>bq :bd!<CR>
+noremap <silent> <leader>bq :bd!<CR>
 " next buffer
-nmap <silent> <leader><leader>n :bn<CR>
+noremap <silent> <leader>bn :bn<CR>
 " previous buffer
-nmap <silent> <leader><leader>p :bp<CR>
+noremap <silent> <leader>bp :bp<CR>
 " first buffer
-nmap <silent> <leader>bf :bfirst<CR>
+noremap <silent> <leader>bf :bfirst<CR>
 " last buffer
-nmap <silent> <leader>bl :blast<CR>
+noremap <silent> <leader>bl :blast<CR>
 " close all buffers excepts this one
-nmap <silent> <leader>bo :BufOnly<CR>
+noremap <silent> <leader>bo :BufOnly<CR>
+
+"========================= buffer creation
+" open a new buffer
+noremap <leader>ef :e<Space>
+" create a file at the current file's dir
+noremap <leader>ee :e %:h/
+" create a new directory
+noremap <leader>mk :!mktouch %:h/
+
 
 "Save File
-nnoremap <silent> <leader>z :w<CR>
+nnoremap <silent> <leader>zz :w<CR>
+
+"Save File and quit
+nnoremap <silent> <leader>zq :wq<CR>
 
 " Save all files
-" nnoremap <silent> <leader>zz :wa<CR>
+nnoremap <silent> <leader>za :wa<CR>
 
 nnoremap <silent> <F3> :set hlsearch!<CR>
 
@@ -260,6 +272,7 @@ map <silent><leader>vx :VimuxInterruptRunner<CR>
 vnoremap J :move '> +1<CR>gv=gv
 vnoremap K :move '< -2<CR>gv=gv
 
+" Replace the word under cursor in entire file
 nnoremap R :%s/\<<C-r><C-w>\>/
 
 " Removing pythonsense keys // creating problems after removing the plugin

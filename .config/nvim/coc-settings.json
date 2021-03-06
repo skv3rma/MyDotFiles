@@ -93,8 +93,6 @@
   "rust.full_docs": true,
   "rust.show_hover_context": true,
   "rust-client.channel": "stable",
-  "bookmark.sign": "🔖",
-  "bookmark.signHl": "Todo",
   "html.enable": true,
   "html.filetypes": ["html", "handlebars", "htmldjango", "blade", "xhtml"],
   "html.suggest.html5": true,
@@ -104,5 +102,12 @@
   "emmet.includeLanguages": {
     "vue-html": "html",
     "javascript": "javascriptreact"
+  },
+  "Lua.hint.enable": true,
+  "Lua.hint.setType": true,
+  "Lua.hint.paramName": true,
+  "Lua.hint.paramType": true,
+  "Lua.runtime.special": {
+    "include": "require"
   }
 }

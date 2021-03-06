@@ -20,11 +20,16 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" Sensible default
+" Plug 'tpope/vim-sensible'
+
 " === Editing Plugins === "
 " Trailing whitespace highlighting & automatic fixing
 Plug 'ntpeters/vim-better-whitespace'
+
 " auto-close brackets plugin
 Plug 'rstacruz/vim-closer'
+
 " css helper plugin
 Plug 'rstacruz/vim-hyperstyle'
 " Improved motion in Vim
@@ -44,8 +49,8 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
 " Print function signatures in echo area
-Plug 'Shougo/echodoc.vim'
-Plug 'Shougo/deol.nvim'
+" Plug 'Shougo/echodoc.vim'
+" Plug 'Shougo/deol.nvim'
 Plug 'airblade/vim-rooter'
 
 " === Git Plugins === "
@@ -163,9 +168,6 @@ Plug 'sapphirecat/blursave-vim'
 Plug 'junegunn/limelight.vim'
 Plug 'frazrepo/vim-rainbow'
 
-" Customized vim status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 " Plug 'bling/vim-bufferline '
 
 " file explorer
@@ -174,7 +176,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 
 " Icons
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'}
 
@@ -190,14 +192,18 @@ Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " ================== Miscellenious
+" Plug 'ptzz/lf.vim'
 Plug 'voldikss/vim-floaterm'
 " Fancy start up screen
 Plug 'mhinz/vim-startify'
 
 Plug 'liuchengxu/vim-which-key'
 
+Plug 'liuchengxu/vim-clap'
+Plug 'voldikss/clap-floaterm'
+
 " On-demand lazy load
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 " Fade inactive window/buffer
 Plug 'TaDaa/vimade'
@@ -214,13 +220,30 @@ Plug 'benmills/vimux'
 
 Plug 'jeetsukumaran/vim-pythonsense'
 Plug 'shmup/vim-sql-syntax'
-
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Plug 'christianchiarulli/nvcode-color-schemes.vim'
+
+" Install the LSP and auto completion plugins.
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+
+" status line
+Plug 'glepnir/galaxyline.nvim'
+
+Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
+" Plug 'ryanoasis/vim-devicons' Icons without colours
+Plug 'akinsho/nvim-bufferline.lua'
+
+
+" Customized vim status line
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+
 
 " bazel build system support
 Plug 'google/vim-maktaba'

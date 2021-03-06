@@ -31,6 +31,6 @@ let g:gruvbox_material_better_performance = 0
 let g:gruvbox_material_current_word = 'bold'
 
 colorscheme gruvbox-material
-let g:airline_theme='gruvbox_material'
+" let g:airline_theme='gruvbox_material'
 
-highlight CursorLine cterm=NONE ctermbg=NONE guibg=#434343
+" highlight CursorLine cterm=NONE ctermbg=NONE guibg=#434343

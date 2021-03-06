@@ -24,9 +24,9 @@
 
     /* =========gruvbox dark theme ======= */
     foreground: #ebdbb2;
-    background-alt:#98971a;
-    background: #1d2021af;
-    foreground-alt:#98971a;
+    background-alt:#cc241d;
+    background: #1d20219f;
+    foreground-alt:#ebdbb2;
 
     /* ======= nord theme ============*/
     /* background: #4c566a44; */
@@ -35,7 +35,8 @@
     /* foreground-alt:#2e3440; */
 
     /* border-color: @background-alt; */
-    border-color: #434343;
+    /* border-color: #434343; */
+    border-color: #cc241d;
     spacing: 3;
 }
 

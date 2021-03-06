@@ -50,3 +50,10 @@ function! s:fzf_statusline()
 endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+nnoremap <silent><leader>fh :History<CR>
+nnoremap <silent><leader>ff :Files<CR>
+nnoremap <silent><leader>fc :Commands<CR>
+nnoremap <silent><leader>fw :BLines<Cr>
+nnoremap <silent><leader>fb :Buffers<CR>
+nnoremap <silent><leader>fs :Colors<CR>
