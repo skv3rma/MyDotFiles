@@ -530,6 +530,7 @@ alias cls="clear"
 alias n='nnn -cdD'
 alias n3='nnn -cdD'
 alias nt="tmux new-session nnn -cdD"
+alias kitty="kitty -o --font-size=18 --single-instance"
 
 
 ########## aliases for DotFiles
