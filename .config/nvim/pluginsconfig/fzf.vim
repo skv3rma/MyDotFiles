@@ -1,59 +1,69 @@
-" ignore these directories
-" Make CtrlP use ag for listing the files. Way faster and no useless files.
-" This will only work if you have installed 'silver search' sudo apt-get
-" install ag
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
-let g:ag_working_path_mode="r"
-" let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
-let g:ctrlp_use_caching = 0
-" Empty value to disable preview window altogether
-let g:fzf_preview_window = []
+" - Popup window
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 1.0 } }
+" hidden by default, ctrl-/ to toggle
+" preview window at the top
+let g:fzf_preview_window = ['up:60%:wrap', 'ctrl-/']
+" preview window at the right
+" let g:fzf_preview_window = ['right:60%', 'ctrl-/']
 
-" Customize fzf colors to match your color scheme
-" - fzf#wrap translates this to a set of `--color` options
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-" enable this line if the problem is related to search root path
-"================= Automatically Change current working directory to project root
-" function! <SID>AutoProjectRootCD()
-"   try
-"     if &ft != 'help'
-"       ProjectRootCD
-"     endif
-"   catch
-"     " Silently ignore invalid buffers
-"   endtry
-" endfunction
-
-" autocmd BufEnter * call <SID>AutoProjectRootCD()
-" disable status line
-function! s:fzf_statusline()
-  " Override statusline as you like
-  highlight fzf1 ctermfg=161 ctermbg=251
-  highlight fzf2 ctermfg=23 ctermbg=251
-  highlight fzf3 ctermfg=237 ctermbg=251
-  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 
-autocmd! User FzfStatusLine call <SID>fzf_statusline()
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
-nnoremap <silent><leader>fh :History<CR>
-nnoremap <silent><leader>ff :Files<CR>
+" Path completion with custom source command
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd')
+inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
+
+" Word completion with custom spec with popup layout option
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'window': { 'width': 0.2, 'height': 0.9, 'xoffset': 1 }})
+
+if has('nvim') && !exists('g:fzf_layout')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
+
+" autocmd! User FzfStatusLine call <SID>fzf_statusline()
+
+" autocmd! FileType fzf set laststatus=0 noshowmode noruler
+"   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+" setup a command ProjectFiles
+command! ProjectFiles execute 'FZFFiles' s:find_git_root()
+
+nnoremap <silent><leader>fh :FZFHistory<CR>
+nnoremap <silent><leader>fr :FZFHistory<CR>
+nnoremap <silent><leader>fs :RG<CR>
+nnoremap <silent><leader>ff :FZFFiles<CR>
 nnoremap <silent><leader>fc :Commands<CR>
-nnoremap <silent><leader>fw :BLines<Cr>
+" Lines in the current buffer
+nnoremap <silent><leader>fw :FZFBLines<Cr>
+nnoremap <silent><leader>fa :FZFBLines<Cr>
+" Lines in loaded buffers
+nnoremap <silent><leader>fl :FZFBLines<Cr>
 nnoremap <silent><leader>fb :Buffers<CR>
-nnoremap <silent><leader>fs :Colors<CR>
+nnoremap <silent><leader>fq :FZFQuickFix<CR>
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+nnoremap <silent><leader>; :Buffers<CR>
+nnoremap <silent><leader>. :ProjectFiles<CR>

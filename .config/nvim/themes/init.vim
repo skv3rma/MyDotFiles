@@ -35,7 +35,8 @@ set t_ZR=^[[23m
 " source ~/.config/nvim/themes/theme-tomorrow.vim
 " source ~/.config/nvim/themes/theme-codedark.vim
 " source ~/.config/nvim/themes/theme-nord.vim
-" source ~/.config/nvim/themes/theme-one.vim
+" source ~/.config/nvim/themes/theme-dogrun.vim
+source ~/.config/nvim/themes/theme-one.vim
 " source ~/.config/nvim/themes/themes-palenight.vim
 " source ~/.config/nvim/themes/theme-oceanicnext.vim
 " source ~/.config/nvim/themes/theme-iceberg-dark.vim
@@ -59,15 +60,7 @@ set t_ZR=^[[23m
 
 " =================== GRUVBOX THEMES
 " source ~/.config/nvim/themes/theme-gruvbox.vim
-source ~/.config/nvim/themes/theme-gruvboxmaterial.vim
-" source ~/.config/nvim/themes/theme-nvcode.vim
-" source ~/.config/nvim/themes/theme-github.vim
-" source ~/.config/nvim/themes/theme-paper.vim
-" source ~/.config/nvim/themes/theme-breve.vim
-" source ~/.config/nvim/themes/theme-embark.vim
-
-"
-" source ~/.config/nvim/themes/theme-nightowl.vim
+" source ~/.config/nvim/themes/theme-gruvboxmaterial.vim
 " source ~/.config/nvim/themes/theme-predawn.vim
 
 " hi! Normal ctermbg=NONE guibg=NONE

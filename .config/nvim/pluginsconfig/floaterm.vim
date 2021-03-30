@@ -3,20 +3,21 @@
 let g:floaterm_autoinsert=1
 let g:floaterm_width=1.0
 let g:floaterm_height=1.0
-let g:floaterm_wintitle=0
+let g:floaterm_wintitle=1
 let g:floaterm_title='[$1 | $2]'
 let g:floaterm_autoclose=1
 let g:floaterm_autohide=2
 let g:floaterm_position='center'
+let g:floaterm_rootmarkers=['.project', '.git', '.hg', '.svn', '.root', '.gitignore']
 
 " Configuration example
 
 " Set floaterm window's background to
-hi Floaterm  guibg=#282828
+" hi Floaterm  guibg=#161616 guifg=NONE ctermbg=black ctermfg=white
 
 " Set floating window border line color to cyan, and background to orange
-hi FloatermBorder guibg=#282828 guifg=#eeeeee
-hi FloatermNC guibg=#2e3440 guifg=NONE
+" hi FloatermBorder guibg=#434343 guifg=#ff00ff
+" hi FloatermNC guibg=#2e3440 guifg=NONE ctermbg=black ctermfg=white
 
 
 

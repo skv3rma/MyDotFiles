@@ -56,7 +56,7 @@ set noshowcmd
 
 " Yank and paste with the system clipboard
 set clipboard=unnamed
-
+set clipboard=unnamedplus
 " Hides buffers instead of closing them
 set hidden
 
@@ -117,17 +117,18 @@ set nowritebackup
 " set noswapfile
 
 " Set backups
-" if has('persistent_undo')
-"   set undofile
-"   set undolevels=1000
-"   set undoreload=5000
-" endif
+if has('persistent_undo')
+  set undofile
+  set undolevels=1000
+  set undoreload=5000
+endif
 
 " Load custom snippets from snippets folder
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 
 " Hide conceal markers
 let g:neosnippet#enable_conceal_markers = 0
+let g:loaded_netrw= 1
 
 " Tmux cursor shape(on mode change) related fix
 if exists('$TMUX')

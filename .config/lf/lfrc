@@ -32,7 +32,7 @@ set filesep "\n"  # default already
     elif [ $w -le 160 ]; then
         lf -remote "send $id set ratios 1:2:3"
     else
-        lf -remote "send $id set ratios 1:2:3:5"
+        lf -remote "send $id set ratios 1:2:3"
     fi
 }}
 # displays the progress bar while copying/moving

@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/sunil_arc/Projects/java/testapp'
+let g:netrw_dirhist_0='/home/sunil_arc/Projects/java/testapp/src/m.app'
+let g:netrw_dirhist_9='/home/sunil_arc/Projects/java/testapp/src'
+let g:netrw_dirhist_8='/home/sunil_arc/Projects/java/testapp'
+let g:netrw_dirhist_7='/home/sunil_arc/Projects/dart/dartfun/bin/src'
+let g:netrw_dirhist_6='/home/sunil_arc/Projects/dart/dartfun/bin'
+let g:netrw_dirhist_5='/home/sunil_arc/net.downloadhelper.coapp-1.3.0'
+let g:netrw_dirhist_4='/home/sunil_arc/Books/MyBooks/javafun01.md'
+let g:netrw_dirhist_3='/home/sunil_arc/.jbang/cache/projects/app.java_jbang_b18da356b6e46493077041c112d6a3a1b611ad38b4bb285c1cf2a77c3c081b35/app'
+let g:netrw_dirhist_2='/home/sunil_arc/.jbang/cache/projects/app.java_jbang_642452dbb01c0acab56c4c9d7dbaadf143775f09b524badee69e88cfcc3847bb/app'

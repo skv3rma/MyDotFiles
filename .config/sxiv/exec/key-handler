@@ -56,14 +56,14 @@ export -f sxiv_moveto
 export -f sxiv_setbg
 
 case "$1" in
-"y")      xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard && notify-send "File path copied." --icon=sxiv ;;
-"Y")      while read file; do xclip -selection clipboard -target image/jpg "$file"; done ;;
-"e")      tr '\n' '\0' | xargs -0 gimp & ;;
-# "C-r")      while read file; do rawtherapee "$file" & done ;;
-"C-comma")  rotate 270 ;;
-"C-period") rotate  90 ;;
-"C-slash")  rotate 180 ;;
-"b") tr '\n' '\0' | xargs -0 -I {} bash -c 'sxiv_setbg {}' & ;;
-# "C-v") tr '\n' ' ' | xargs -0 -I {} bash -c 'sxiv_moveto {"$*"}' & ;;
-"v") tr '\n' ' ' | xargs -I {} bash -c 'sxiv_moveto "{}"' & ;;
+  "y")      xclip -in -filter | tr '\n' ' ' | xclip -in -selection clipboard && notify-send "File path copied." --icon=sxiv ;;
+  "Y")      while read file; do xclip -selection clipboard -target image/jpg "$file"; done ;;
+  "e")      tr '\n' '\0' | xargs -0 gimp & ;;
+  # "C-r")      while read file; do rawtherapee "$file" & done ;;
+  "C-comma")  rotate 270 ;;
+  "C-period") rotate  90 ;;
+  "C-slash")  rotate 180 ;;
+  "b") tr '\n' '\0' | xargs -0 -I {} bash -c 'sxiv_setbg {}' & ;;
+  # "C-v") tr '\n' ' ' | xargs -0 -I {} bash -c 'sxiv_moveto {"$*"}' & ;;
+  "v") tr '\n' ' ' | xargs -I {} bash -c 'sxiv_moveto "{}"' & ;;
 esac

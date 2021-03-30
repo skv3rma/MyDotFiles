@@ -6,56 +6,52 @@ local extension = require('galaxyline.provider_extensions')
 -- My home page https://github.com/denstiny
 
 gl.short_line_list = {
-    'LuaTree',
-    'vista',
-		'floaterm',
-    'dbui',
-    'startify',
-    'term',
-    'nerdtree',
-    'fugitive',
-    'fugitiveblame',
-    'plug',
-    'coc',
-    'coc-explorer'
+  'floaterm',
+  'dbui',
+  'startify',
+  'term',
+  'fugitive',
+  'fugitiveblame',
+  'plug',
+  'coc-explorer'
 }
 
 -- VistaPlugin = extension.vista_nearest
 
 local colors = {
-    bg = '282c34',
-    line_bg = '7D0AB2',
-    fg = '#8FBCBB',
-		NameColor = '#161616',
-    fg_green = '#b8bb26',
-		cocColor = '#1592A5',
-    yellow = '#fabd2f',
-    cyan = '#008080',
-    darkblue = '#081633',
-    green = '#98971a',
-    orange = '#FF8800',
-    purple = '#5d4d7a',
-    magenta = '#8f3f71',
-    blue = '#51afef';
-    red = '#ec5f67'
+  bg = '282c34',
+  line_bg = '7D0AB2',
+  fg = '#8FBCBB',
+  NameColor = '#2e3440',
+  fg_green = '#65a380',
+  cocColor = '#1592A5',
+  yellow = '#fabd2f',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#AB47BC',
+  orange = '#FF8800',
+  purple = '#5d4d7a',
+  magenta = '#c678dd',
+  blue = '#88c0d0';
+  red = '#bf616a'
 }
 
 local function lsp_status(status)
-    shorter_stat = ''
-    for match in string.gmatch(status, "[^%s]+")  do
-        err_warn = string.find(match, "^[WE]%d+", 0)
-        if not err_warn then
-            shorter_stat = shorter_stat .. ' ' .. match
-        end
+  shorter_stat = ''
+  for match in string.gmatch(status, "[^%s]+")  do
+    err_warn = string.find(match, "^[WE]%d+", 0)
+    if not err_warn then
+      shorter_stat = shorter_stat .. ' ' .. match
     end
-    return shorter_stat
+  end
+  return shorter_stat
 end
 
 
 local function get_coc_lsp()
   local status = vim.fn['coc#status']()
   if not status or status == '' then
-      return ''
+    return ''
   end
   return lsp_status(status)
 end
@@ -70,7 +66,7 @@ end
 local function get_current_func()
   local has_func, func_name = pcall(vim.fn.nvim_buf_get_var,0,'coc_current_function')
   if not has_func then return end
-      return func_name
+    return func_name
   end
 
 function get_function_info()
@@ -83,9 +79,9 @@ end
 local function trailing_whitespace()
     local trail = vim.fn.search("\\s$", "nw")
     if trail ~= 0 then
-        return ' '
+      return ' '
     else
-        return nil
+      return nil
     end
 end
 
@@ -96,7 +92,7 @@ TrailingWhiteSpace = trailing_whitespace
 function has_file_type()
     local f_type = vim.bo.filetype
     if not f_type or f_type == '' then
-        return false
+      return false
     end
     return true
 end
@@ -149,7 +145,9 @@ gls.left[2] = {
       }
       local vim_mode = vim.fn.mode()
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
-      return alias[vim_mode] .. ' '
+      -- return alias[vim_mode] .. '  '
+      return alias[vim_mode] .. '   '
+
     end,
     highlight = {colors.red,colors.line_bg,'bold'},
   },
@@ -217,7 +215,7 @@ gls.left[9] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
-    icon = ' ',
+    icon = '   ',
     highlight = {colors.green,colors.line_bg},
   }
 }
@@ -225,7 +223,7 @@ gls.left[10] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = checkwidth,
-    icon = ' ',
+    icon = '   ',
     highlight = {colors.orange,colors.line_bg},
   }
 }
@@ -233,7 +231,7 @@ gls.left[11] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = checkwidth,
-    icon = ' ',
+    icon = '   ',
     highlight = {colors.red,colors.line_bg},
   }
 }
@@ -241,8 +239,6 @@ gls.left[12] = {
   LeftEnd = {
     provider = function() return '' end,
     separator = ' ',
-
-
     separator_highlight = {colors.bg,colors.line_bg},
     highlight = {colors.line_bg,colors.line_bg}
   }
@@ -259,7 +255,7 @@ gls.left[13] = {
 gls.left[14] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
-    icon = '   ',
+    icon = '  ',
     highlight = {colors.red,colors.bg}
   }
 }
@@ -282,7 +278,7 @@ gls.left[17] = {
     CocStatus = {
      provider = CocStatus,
      highlight = {colors.cocColor,colors.bg},
-     icon = '  🗱'
+     icon = '  🗱 '
     }
 }
 
@@ -366,7 +362,9 @@ gls.short_line_left[1] = {
       }
       local vim_mode = vim.fn.mode()
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim_mode])
-      return alias[vim_mode] .. '  '
+
+      -- return alias[vim_mode] .. '   '
+      return alias[vim_mode] .. '   '
     end,
     highlight = {colors.red,colors.line_bg,'bold'},
   },

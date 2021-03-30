@@ -47,49 +47,55 @@
 ! St settings
 !
 ! syntax : name.Class.resource: value
-*.St.background: gruvboxhard
-*.St.foreground: gruvbox15
-*.St.color0:  gruvbox0
-*.St.color8:  gruvbox8
-*.St.color1:  gruvbox1
-*.St.color9:  gruvbox9
-*.St.color2:  gruvbox2
-*.St.color10: gruvbox10
-*.St.color3:  gruvbox3
-*.St.color11: gruvbox11
-*.St.color4:  gruvbox4
-*.St.color12: gruvbox12
-*.St.color5:  gruvbox5
-*.St.color13: gruvbox13
-*.St.color6:  gruvbox6
-*.St.color14: gruvbox14
-*.St.color7:  gruvbox7
-*.St.color15: gruvbox15
+/* *.St.background: gruvboxhard */
+/* *.St.foreground: gruvbox15 */
+/* *.St.color0:  gruvbox0 */
+/* *.St.color8:  gruvbox8 */
+/* *.St.color1:  gruvbox1 */
+/* *.St.color9:  gruvbox9 */
+/* *.St.color2:  gruvbox2 */
+/* *.St.color10: gruvbox10 */
+/* *.St.color3:  gruvbox3 */
+/* *.St.color11: gruvbox11 */
+/* *.St.color4:  gruvbox4 */
+/* *.St.color12: gruvbox12 */
+/* *.St.color5:  gruvbox5 */
+/* *.St.color13: gruvbox13 */
+/* *.St.color6:  gruvbox6 */
+/* *.St.color14: gruvbox14 */
+/* *.St.color7:  gruvbox7 */
+/* *.St.color15: gruvbox15 */
 
-*.St.cursorColor: gruvbox7
-*.St.cwscale:0.9
-*.St.chscale:1.0
-*.St.alpha:0.7
+/* *.St.cursorColor: gruvbox7 */
+/* *.St.cwscale:0.9 */
+/* *.St.chscale:1.0 */
+/* *.St.alpha:0.7 */
+
 !*.St.fading: 35
 !*.St.fadeColor: nord3
 /* *.font: "JetBrainsMono Nerd Font:pixelsize=18:antialias=true:autohint=true" */
 /* fontalt0:"JetBrainsMono Nerd Font:pixelsize=16:antialias=true:autohint=true" */
-/* *.St.color0: nord1 */
-/* *.St.color1: nord11 */
-/* *.St.color2: nord14 */
-/* *.St.color3: nord13 */
-/* *.St.color4: nord9 */
-/* *.St.color5: nord15 */
-/* *.St.color6: nord8 */
-/* *.St.color7: nord5 */
-/* *.St.color8: nord3 */
-/* *.St.color9: nord11 */
-/* *.St.color10: nord14 */
-/* *.St.color11: nord13 */
-/* *.St.color12: nord9 */
-/* *.St.color13: nord15 */
-/* *.St.color14: nord7 */
-/* *.St.color15: nord6 */
+*.St.color0: nord1
+*.St.color1: nord11
+*.St.color2: nord14
+*.St.color3: nord13
+*.St.color4: nord9
+*.St.color5: nord15
+*.St.color6: nord8
+*.St.color7: nord5
+*.St.color8: nord3
+*.St.color9: nord11
+*.St.color10: nord14
+*.St.color11: nord13
+*.St.color12: nord9
+*.St.color13: nord15
+*.St.color14: nord7
+*.St.color15: nord6
+*.St.cwscale:0.9
+*.St.chscale:1.0
+*.St.alpha:0.7
+*.St.fading: 35
+*.St.fadeColor: nord3
 
 ! dwm settings
 *.dwm.normbgcolor: gruvboxhard
@@ -103,11 +109,16 @@
 
 !! Set a default font and font size as below:
 Sxiv.font: JetBrainsMono-Regular:size=14
-Sxiv.background: gruvboxhard
-Sxiv.foreground: gruvbox9
+Sxiv.background: nord0
+Sxiv.foreground: nord8
 
 !*.dmenu.font : font or font set
-*.dmenu.background : gruvboxhard
-*.dmenu.foreground : gruvbox7
-*.dmenu.selbackground : gruvbox1
-*.dmenu.selforeground : gruvbox7
+/* *.dmenu.background : gruvboxhard */
+/* *.dmenu.foreground : gruvbox7 */
+/* *.dmenu.selbackground : gruvbox1 */
+/* *.dmenu.selforeground : gruvbox7 */
+
+*.dmenu.background : nord0
+*.dmenu.foreground : nord8
+*.dmenu.selbackground : nord8
+*.dmenu.selforeground : nord0

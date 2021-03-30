@@ -85,3 +85,5 @@ let g:airline_symbols.linenr = ''
 catch
   echo 'Airline not installed. It should work after running :PlugInstall'
 endtry
+
+let g:airline_theme='one'

@@ -23,20 +23,20 @@
     background-color: transparent;
 
     /* =========gruvbox dark theme ======= */
-    foreground: #ebdbb2;
-    background-alt:#cc241d;
-    background: #1d20219f;
-    foreground-alt:#ebdbb2;
+    /* foreground: #ebdbb2; */
+    /* background-alt:#cc241d; */
+    /* background: #1d20219f; */
+    /* foreground-alt:#ebdbb2; */
 
     /* ======= nord theme ============*/
-    /* background: #4c566a44; */
-    /* background-alt:#8fbbbc; */
-    /* foreground: #d8dee9; */
-    /* foreground-alt:#2e3440; */
+    background: #4c566a44;
+    background-alt:#8fbbbc;
+    foreground: #d8dee9;
+    foreground-alt:#2e3440;
 
     /* border-color: @background-alt; */
-    /* border-color: #434343; */
-    border-color: #cc241d;
+    border-color: #88c0d0;
+    /* border-color: #cc241d; */
     spacing: 3;
 }
 

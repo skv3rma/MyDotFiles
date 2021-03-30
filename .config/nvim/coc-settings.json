@@ -1,4 +1,32 @@
 {
+  "suggest.completionItemKindLabels": {
+    "method": "  ",
+    "function": "  ",
+    "variable": "[]",
+    "field": "  ",
+    "typeParameter": "<>",
+    "constant": "  ",
+    "class": " פּ ",
+    "interface": " 蘒",
+    "struct": "  ",
+    "event": "  ",
+    "operator": "  ",
+    "module": "  ",
+    "property": "  ",
+    "enum": " 練",
+    "reference": "  ",
+    "keyword": "  ",
+    "file": "  ",
+    "folder": " ﱮ ",
+    "color": "  ",
+    "unit": " 塞 ",
+    "snippet": "  ",
+    "text": "  ",
+    "constructor": "  ",
+    "value": "  ",
+    "enumMember": "  "
+  },
+
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "coc.preferences.formatOnSaveFiletypes": [
@@ -14,6 +42,7 @@
   "diagnostic.errorSign": "✗",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "¡",
+
   "java.home": "/usr/lib/jvm/java-15-j9",
   "java.configuration.runtimes": [
     {
@@ -30,26 +59,21 @@
       "default": true
     }
   ],
-  "java.jdt.ls.vmargs": "-javaagent:/home/sunil_arc/.config/nvim/lombok.jar -Xbootclasspath/a:/home/sunil_arc/.config/nvim/lombok.jar ‑Xshareclasses:name=CocJavaCache",
-
+  "java.jdt.ls.vmargs": "-javaagent:/home/sunil_arc/.config/nvim/lombok.jar",
   "java.errors.incompleteClasspath.severity": "warning",
   "java.signatureHelp.enabled": true,
-
   "java.format.enabled": true,
   "java.format.settings.url": "/home/sunil_arc/.config/nvim/MyEclipseFormatter.xml",
   "java.format.settings.profile": "MyEclipse",
   "java.format.onType.enabled": true,
-
   "java.completion.guessMethodArguments": true,
   "java.completion.enabled": true,
   "java.completion.overwrite": true,
   "java.foldingRange.enabled": true,
   "java.progressReports.enabled": true,
-
   "java.maven.downloadSources": true,
   "java.autobuild.enabled": true,
   "java.configuration.updateBuildConfiguration": "automatic",
-
   "java.codeGeneration.useBlocks": true,
   "java.codeGeneration.generateComments": true,
   "java.referencesCodeLens.enabled": true,
@@ -84,6 +108,7 @@
 
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
+
   "rust.build_on_save": true,
   "rust.build_lib": true,
   "rust.wait_to_build": 1500,
@@ -93,6 +118,7 @@
   "rust.full_docs": true,
   "rust.show_hover_context": true,
   "rust-client.channel": "stable",
+
   "html.enable": true,
   "html.filetypes": ["html", "handlebars", "htmldjango", "blade", "xhtml"],
   "html.suggest.html5": true,
@@ -103,10 +129,14 @@
     "vue-html": "html",
     "javascript": "javascriptreact"
   },
+  "Lua.color.mode": "Semantic",
   "Lua.hint.enable": true,
   "Lua.hint.setType": true,
   "Lua.hint.paramName": true,
   "Lua.hint.paramType": true,
+  "Lua.intelliSense.searchDepth": 6,
+  "Lua.diagnostics.severity": {},
+  "Lua.telemetry.enable": false,
   "Lua.runtime.special": {
     "include": "require"
   }

@@ -41,30 +41,45 @@ inoremap ,,y ⛵
 inoremap ,,z 🦓
 
 " special ascii mathematical symbols
-inoremap ,mm +
-inoremap ,m -
+inoremap ,ma +
+inoremap ,mm -
+inoremap ,md /
+inoremap ,mx *
+inoremap ,mp %
+
 inoremap ,x *
-inoremap ,d /
-inoremap ,dd $
-inoremap ,c {}<ESC>i
-inoremap ,b []<ESC>i
-inoremap ,p ()<ESC>i
-inoremap ,pp %
-inoremap ,ba <><ESC>i
-inoremap ,bd Box<dyn ><ESC>i
-inoremap ,bn = Box::new();<ESC>hi
+inoremap ,do $
+inoremap ,ca ^<ESC>i
+inoremap ,cc {}<ESC>i
+inoremap ,bb []<ESC>i
+inoremap ,pp ()<ESC>i
+inoremap ,ab <><ESC>i
+inoremap ,d $
 inoremap ,h #
-inoremap ,a &
-inoremap ,aa @
+inoremap ,am &
+inoremap ,at @
 inoremap ,ar ->
 inoremap ,arr =>
-inoremap ,e =
-inoremap ,ee !
+inoremap ,ed ==
+inoremap ,ee =
+inoremap ,ec !
 inoremap ,u _
-inoremap ,uu __
+inoremap ,du __
 inoremap ,q ?
-inoremap ,. ->
 " Clear console symbol
 inoremap ,,- \033[H\033[2J
 
+
+" latin Symbols
+inoremap <leader><leader>xn iαxⁿ + βxⁿ-¹ + ... + c <SPACE> <ESC>
+inoremap <leader><leader>x2 ix² + x +c  <SPACE> <ESC>
+inoremap <leader><leader>ln ───────────────────<SPACE>
+
+" Toilet text in vim
+" Plug 'gyim/vim-boxdraw' ->
+nnoremap <leader><leader>ts :.!toilet -w 200 -f small<CR> <ESC>
+nnoremap <leader><leader>tb :.!toilet -w 200 -f slant<CR> <ESC>
+
+" box draw around text
+nnoremap <leader><leader>tr :.!toilet -w 200 -f term -F border<CR>
 

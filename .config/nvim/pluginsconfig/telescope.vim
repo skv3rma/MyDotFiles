@@ -1,4 +1,4 @@
-lua require("mytelescope")
+lua require("pluginsconfig.mytelescope")
 " Find files using Telescope command-line sugar.
 " nnoremap <leader>ff <cmd>Telescope find_files<cr>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -29,6 +29,7 @@ nnoremap <silent><leader>fm :lua require('telescope.builtin').file_browser()<CR>
 
 " Lists Git files in current directory.
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+" nnoremap <silent><leader>. :lua require('telescope.builtin').git_files()<CR>
 
 " nnoremap <silent><leader>fh :lua require('telescope.builtin').help_tags()<CR>
 " nnoremap <leader>vrc :lua require('theprimeagen.telescope').search_dotfiles()<CR>

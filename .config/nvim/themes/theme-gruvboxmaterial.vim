@@ -21,7 +21,7 @@ let g:gruvbox_material_transparent_background = 0
 
 let g:gruvbox_material_background = 'medium'
 " reverse highlight on visual selection
-let g:gruvbox_material_visual = 'reverse'
+" let g:gruvbox_material_visual = 'reverse'
 let g:gruvbox_material_diagnostic_line_highlight = 1
 " values are 'material' , 'original', 'mix'
 let g:gruvbox_material_palette = 'mix'
@@ -31,6 +31,5 @@ let g:gruvbox_material_better_performance = 0
 let g:gruvbox_material_current_word = 'bold'
 
 colorscheme gruvbox-material
-" let g:airline_theme='gruvbox_material'
 
 " highlight CursorLine cterm=NONE ctermbg=NONE guibg=#434343

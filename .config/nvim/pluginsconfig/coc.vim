@@ -1,41 +1,44 @@
-" set hidden
-" set nobackup
-" set nowritebackup
-" set updatetime=300
-" set shortmess+=c
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
 " Global coc extensions
-" let g:coc_global_extensions = [
-"   \ 'coc-snippets',
-"   \ 'coc-actions',
-"   \ 'coc-sh',
-"   \ 'coc-java-debug',
-"   \ 'coc-java',
-"   \ 'coc-lists',
-"   \ 'coc-emmet',
-"   \ 'coc-tasks',
-"   \ 'coc-pairs',
-"   \ 'coc-tsserver',
-"   \ 'coc-floaterm',
-"   \ 'coc-fzf-preview',
-"   \ 'coc-html',
-"   \ 'coc-css',
-"   \ 'coc-cssmodules',
-"   \ 'coc-stylelintplus',
-"   \ 'coc-emoji',
-"   \ 'coc-bookmark',
-"   \ 'coc-yaml',
-"   \ 'coc-pyright',
-"   \ 'coc-explorer',
-"   \ 'coc-svg',
-"   \ 'coc-prettier',
-"   \ 'coc-vimlsp',
-"   \ 'coc-xml',
-"   \ 'coc-yank',
-"   \ 'coc-json',
-"   \ 'coc-marketplace',
-"   \ ]
-  " \ 'coc-tabnine',
-  " \ 'coc-highlight',
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-actions',
+  \ 'coc-sh',
+  \ 'coc-java-debug',
+  \ 'coc-java',
+  \ 'coc-lists',
+  \ 'coc-emmet',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-cssmodules',
+  \ 'coc-stylelintplus',
+  \ 'coc-emoji',
+  \ 'coc-yaml',
+  \ 'coc-pyright',
+  \ 'coc-explorer',
+  \ 'coc-svg',
+  \ 'coc-prettier',
+  \ 'coc-xml',
+  \ 'coc-yank',
+  \ 'coc-json',
+  \ 'coc-marketplace',
+  \ 'coc-explorer',
+  \ 'coc-tabnine',
+  \ 'coc-highlight',
+  \ 'coc-rls',
+  \ 'coc-phpls',
+  \ 'coc-rust-analyzer',
+  \ 'coc-lua',
+  \ 'coc-highlight',
+  \ 'coc-kotlin-dev',
+  \ 'coc-ultisnips'
+  \ ]
 " === Coc.nvim === "
 " use <tab> for trigger completion and navigate to next complete item
 function! s:check_back_space() abort
@@ -58,13 +61,13 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OverrideMethod   :call     CocAction('runCommand', 'source.overrideMethods')
+command! -nargs=0 OverrideMethod   :call CocAction('runCommand', 'source.overrideMethods')
 
 nmap <silent> <leader>cd <Plug>(coc-definition)
 nmap <silent> <leader>cr <Plug>(coc-references)
@@ -82,7 +85,7 @@ nnoremap <silent> <leader>cf :Format<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent>K :call <SID>show_documentation()<CR>
 
 " function! s:show_documentation()
 "   if (index(['vim','help'], &filetype) >= 0)
@@ -122,12 +125,12 @@ nnoremap <leader>rf :CocCommand workspace.renameCurrentFile<CR>
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-vmap <silent> <leader>a  <Plug>(coc-codeaction-selected)<CR>
-nmap <silent> <leader>a  <Plug>(coc-codeaction-selected)<CR>
+vmap <silent><leader>a  <Plug>(coc-codeaction-selected)<CR>
+nmap <silent><leader>a  <Plug>(coc-codeaction-selected)<CR>
 " Remap keys for applying codeAction to the current line.
-nmap <silent> <leader>ac  <Plug>(coc-codeaction)<CR>
+nmap <silent><leader>ac  <Plug>(coc-codeaction)<CR>
 " Apply AutoFix to problem on the current line.
-nmap <silent> <leader>qf  <Plug>(coc-fix-current)<CR>
+nmap <silent><leader>qf  <Plug>(coc-fix-current)<CR>
 
 " === NeoSnippet === "
 " Map <C-k> as shortcut to activate snippet if available
@@ -148,10 +151,10 @@ hi! link CocInfoSign Type
 
 " Snippets
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
+" imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+" vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<C-j>'

@@ -15,9 +15,9 @@ noremap U <C-r>
 
 " Open Vim Related Configs
 noremap <silent><leader>1 :e ~/.config/nvim/init.vim<CR>
-noremap <silent><leader>2 :e ~/.config/nvim/plugins/plugins.vim<CR>
-noremap <silent><leader>3 :e ~/.config/nvim/plugins/keybindings.vim<CR>
-noremap <silent><leader>4 :e ~/.config/nvim/themes/themes.vim<CR>
+noremap <silent><leader>2 :e ~/.config/nvim/pluginsconfig/init.vim<CR>
+noremap <silent><leader>3 :e ~/.config/nvim/pluginsconfig/keybindings.vim<CR>
+noremap <silent><leader>4 :e ~/.config/nvim/themes/init.vim<CR>
 noremap <silent>! :s/^祿/綠/g<CR><leader>/
 
 "   <Space> - PageDown
@@ -27,13 +27,12 @@ noremap <silent>! :s/^祿/綠/g<CR><leader>/
 
 " === vim-better-whitespace === "
 "   <leader>y - Automatically remove trailing whitespace
-nmap <leader>yy :StripWhitespace<CR>
+nmap <silent><leader>yy :StripWhitespace<CR>
 
 " === Search shorcuts === "
-"   <leader><F2> - Find and replace
-"   <leader>/ - Clear highlighted search terms while preserving history
-" find and replace in whole file
+" find and replace in a file
 map <leader>sf :%s///g<left><left><left>
+" find and replace in a line
 map <leader>sl :s///g<left><left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
@@ -45,10 +44,35 @@ cmap w!! w !sudo tee %
 " Generate jsdoc for function under cursor
 "nmap <leader>z :JsDoc<CR>
 
+" yanking from current position to end of line
+nnoremap Y y$
+" yanking and pasting to and from system clipboard and vim
+" nnoremap <leader>y "+y
+" nnoremap <leader>Y "+Y
+" nnoremap <leader>p "+p
+" nnoremap <leader>P "+P
+" copy and paste
+vmap <C-c> "+yi
+vmap <C-x> "+c
+vmap <C-v> c<ESC>"+p
+imap <C-v> <ESC>"+pa
+
+function! ClipboardYank()
+  call system('xclip -i -selection clipboard', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('xclip -o -selection clipboard')
+endfunction
+
+vnoremap <silent><leader>y :call ClipboardYank()<cr>
+" vnoremap <silent> d d:call ClipboardYank()<cr>
+nnoremap <silent><leader>p :call ClipboardPaste()<cr>p
+
+
 " Delete current visual selection and dump in black hole buffer before pasting
 " Used when you want to paste over something without it getting copied to
 " Vim's default buffer
-vnoremap <leader>p "_dP
+" vnoremap <leader>p "_dP
 " Change to normal mode from inser mode
 inoremap ii <ESC>
 
@@ -60,13 +84,6 @@ inoremap ,tt #[test]<CR>
 inoremap ,fn fn test(){}<ESC>hi
 
 
-" yanking from current position to end of line
-nnoremap Y y$
-" yanking and pasting to and from system clipboard and vim
-nnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
 " hide colorcolumn(dl = disable line)
 nnoremap <silent> <leader>dl :set colorcolumn=0<CR>
 " display colorcolumn (el = enable line)
@@ -134,9 +151,9 @@ noremap <silent> <leader>bo :BufOnly<CR>
 
 "========================= buffer creation
 " open a new buffer
-noremap <leader>ef :e<Space>
+noremap <leader>ee :e<Space>
 " create a file at the current file's dir
-noremap <leader>ee :e %:h/
+noremap <leader>ef :e %:h/
 " create a new directory
 noremap <leader>mk :!mktouch %:h/
 
@@ -159,16 +176,16 @@ noremap <silent> <C-Left>  :vertical resize -3<CR>
 noremap <silent> <C-Up>    :resize +3<CR>
 noremap <silent> <C-Down>  :resize -3<CR>
 
+" zi = zoom in
+noremap <silent><leader>zi <c-w>_ \| <c-w>\|
+" zi = zoom out
+noremap <silent><leader>zo <c-w>=
+
 " Split navigation
 noremap <silent><leader>h :wincmd h<CR>
 noremap <silent><leader>j :wincmd j<CR>
 noremap <silent><leader>k :wincmd k<CR>
 noremap <silent><leader>l :wincmd l<CR>
-
-
-" vifm
-noremap <silent><leader>v :Vifm<CR>
-
 
 " toggle background
 nnoremap <silent> <C-d>   :set background=dark<CR>
@@ -183,32 +200,6 @@ nnoremap <leader>ss :SSave<CR>
 " `SPC l l` - list sessions / switch to different project
 nnoremap <leader>sc :SClose<CR>
 
-" latin Symbols
-nnoremap <leader><leader>l i+----------+<SPACE><ESC>
-nnoremap <leader><leader>sl :normal 12i<SPACE><CR>
-nnoremap <leader><leader>bl i+----------+<ESC>o+----------+<SPACE><ESC>
-nnoremap <leader><leader>lo i✓ <SPACE> <ESC>
-nnoremap <leader><leader>lx i✗ <SPACE> <ESC>
-nnoremap <leader><leader>lh i♯ <SPACE> <ESC>
-nnoremap <leader><leader>xn iαxⁿ + βxⁿ-¹ + ... + c <SPACE> <ESC>
-nnoremap <leader><leader>x2 ix² + x +c  <SPACE> <ESC>
-inoremap <leader><leader>la i --><ESC>2hi
-nnoremap <leader><leader>ln i ───────────────────<SPACE> <ESC>
-nnoremap <leader><leader>la iα <SPACE> <ESC>
-nnoremap <leader><leader>lb iβ <SPACE> <ESC>
-nnoremap <leader><leader>lg iγ <SPACE> <ESC>
-
-" line draw commands
-nnoremap <leader><leader>- :normal 20i─<CR> <ESC>
-nnoremap <leader><leader>= :normal 20i=<CR> <ESC>
-
-" Toilet text in vim
-" Plug 'gyim/vim-boxdraw' ->
-nnoremap <leader><leader>ts :.!toilet -w 200 -f small<CR> <ESC>
-nnoremap <leader><leader>tb :.!toilet -w 200 -f slant<CR> <ESC>
-
-" box draw around text
-nnoremap <leader><leader>tr :.!toilet -w 200 -f term -F border<CR>
 
 " nmap <leader>ll <Plug>(Limelight)
 " xmap <leader>ll <Plug>(Limelight)
@@ -252,36 +243,26 @@ function! ToggleWindowHorizontalVerticalSplit()
 endfunction
 
 " Toggle Window Split Type
-nnoremap <silent> <leader><leader>wt :call ToggleWindowHorizontalVerticalSplit()<cr>
+nnoremap <silent><leader><leader>wt :call ToggleWindowHorizontalVerticalSplit()<cr>
 " Prompt for a command to run
-map <silent><leader>vp :VimuxPromptCommand<CR>
+nnoremap <silent><leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-map <silent><leader>vl :VimuxRunLastCommand<CR>
+nnoremap <silent><leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-map <silent><leader>vi :VimuxInspectRunner<CR>
+nnoremap <silent><leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
-map <silent><leader>vz :VimuxZoomRunner<CR>
+nnoremap <silent><leader>vz :VimuxZoomRunner<CR>
 " Run the current file with rspec
-map <silent><leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+nnoremap <silent><leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
 " Close vim tmux runner opened by VimuxRunCommand
-map <silent><leader>vq :VimuxCloseRunner<CR>
+nnoremap <silent><leader>vq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane
-map <silent><leader>vx :VimuxInterruptRunner<CR>
+nnoremap <silent><leader>vx :VimuxInterruptRunner<CR>
 
-"Visual Mode : Move selected lines up(K) down(J)
+" Visual Mode : Move selected lines up(K) down(J)
 vnoremap J :move '> +1<CR>gv=gv
 vnoremap K :move '< -2<CR>gv=gv
 
 " Replace the word under cursor in entire file
 nnoremap R :%s/\<<C-r><C-w>\>/
 
-" Removing pythonsense keys // creating problems after removing the plugin
-
-" select whole class
-" map ac <Nop>
-" select whole function
-" map af <Nop>
-" select inside class or class body
-" map ic <Nop>
-" select inside function or function body
-" map if <Nop>
