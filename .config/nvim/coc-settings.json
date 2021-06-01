@@ -84,10 +84,7 @@
   "xml.format.preserveEmptyContent": true,
   "xml.format.splitAttributes": false,
 
-  "python.jediEnabled": false,
-  "python.autoComplete.addBrackets": true,
   "python.venvPath": "/home/sunil_arc/.local/share/virtualenvs",
-  "python.terminal.activateEnvironment": true,
 
   "languageserver": {
     "intelephense": {

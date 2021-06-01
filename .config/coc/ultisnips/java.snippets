@@ -265,7 +265,7 @@ snippet prfi "private final int" b
 private final int ${1};
 endsnippet
 
-snippet prfd "private final int" b
+snippet prfd "private final double" b
 private final double ${1};
 endsnippet
 
@@ -277,15 +277,23 @@ snippet prfss "private final String" b
 private static final String ${1} = "${2}";
 endsnippet
 
-snippet prfo "private final String" b
+snippet prfo "private final Object" b
 private final ${1} ${2};
 endsnippet
 
-snippet fmt "Output Format String" b
+snippet printa "Output Format String" b
 System.out.println(String.format("${1}",${2}));
 endsnippet
 
-snippet msgout "Format String" b
+snippet printb "Output Format String" b
+System.out.println(String.format("${1}",${2},${3}));
+endsnippet
+
+snippet soutfmt "Output Format String" b
+System.out.println(String.format("${1}",${2}));
+endsnippet
+
+snippet soutmsg "Format String" b
 var msgValue = String.format("${2}",${3});
 System.out.println("msgValue : " + msgValue);
 endsnippet

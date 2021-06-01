@@ -175,6 +175,7 @@ Plug 'shmup/vim-sql-syntax'
 
 " Dart
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'karb94/neoscroll.nvim'
 
 " Initialize plugin system
 call plug#end()

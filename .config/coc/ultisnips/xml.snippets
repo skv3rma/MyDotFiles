@@ -28,14 +28,23 @@
 #             MAVEN DEPENDENCIES                  #
 ###################################################
 
-snippet prop-essentials "Description" b
-<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<maven.compiler.source>1.11</maven.compiler.source>
-<maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
+snippet prop-min "Description" b
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.11</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+</properties>
+endsnippet
 
-<version.h2db>1.4.200</version.h2db>
+snippet prop-withdb "Description" b
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.11</maven.compiler.source>
+    <maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
 
-<version.junit>5.6.2</version.junit>
+    <version.h2db>1.4.200</version.h2db>
+    <version.junit>5.6.2</version.junit>
+</properties>
 endsnippet
 
 snippet prop-complete "dependency version" b

@@ -168,4 +168,8 @@ topdf() {
    pandoc --pdf-engine=wkhtmltopdf $1.md -o $output
 }
 
+chx() {
+   chmod +x $1
+}
+
 

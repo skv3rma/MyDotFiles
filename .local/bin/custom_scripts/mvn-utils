@@ -31,6 +31,12 @@ mvncreate-app() {
 		  -DinteractiveMode=false \
 		  -DarchetypeVersion=1.4 \
 		  -DarchetypeArtifactId=maven-archetype-quickstart && cd $prj_name && git init
+
+		echo "=> Creating .gitignore and run file"
+
+		wget https://raw.githubusercontent.com/kodecamp/gitignores/main/java/.gitignore
+
+		wget https://raw.githubusercontent.com/kodecamp/gitignores/main/java/run
 	fi
 }
 

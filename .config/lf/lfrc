@@ -236,8 +236,8 @@ cmd on-cd %{{
     fasd -A "$PWD"
 }}
 
-cmd open_config  ${{
-  $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
+cmd open-config  ${{
+  $EDITOR $HOME/.config/lf/lfrc
 }}
 
 # Archive bindings
@@ -288,6 +288,7 @@ cmd fzf_jump ${{
 
 # vim like bindings
 # Remove some defaults
+# reset keymapping
 map m
 map o
 map n
@@ -296,8 +297,9 @@ map '"'
 map d
 map c
 map e
-
 map zi
+
+# remapping
 map zi fasd_dir
 map go fasd_dir
 # map f :fasd_dir
@@ -396,6 +398,7 @@ map <f-2> $printf '%s\n' $fx | vidir -
 
 # Movement
 map gh cd ~/
+map 0 cd ~/
 
 # Downloads related gd
 map gd cd ~/Downloads
@@ -405,12 +408,11 @@ map gt cd ~/Downloads/Telegram\ Desktop
 map gT cd ~/.local/share/Trash/files
 map gp cd ~/Pictures
 map gP cd ~/Projects
-map gs cd ~/Pictures/Screenshots
-map gS cd ~/software_sources
 map gw cd ~/Pictures/github/MyWallpapers
 
 map gv cd ~/Videos
-map gV cd ~/Videos/MyRecordings
+map gV cd ~/dwhelper
+map gr cd ~/Videos/MyRecordings
 map gs cd ~/.local/bin
 map gS cd ~/.local/bin/custom_scripts
 map ga cd ~/.local/share/applications
