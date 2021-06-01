@@ -1,4 +1,4 @@
-
+config.load_autoconfig(False)
 c.tabs.padding = {'bottom': 3, 'left': 3, 'right': 3, 'top': 3}
 
 c.tabs.position = 'top'
@@ -375,8 +375,8 @@ c.colors.tabs.selected.odd.fg = nord['base3']
 ## color)
 ## Type: QtColor
 # c.colors.webpage.bg = 'white'
-c.fonts.default_family = "IBM Plex Mono Medium"
-#c.fonts.default_family = "Jetbrains Mono Medium"
+# c.fonts.default_family = "IBM Plex Mono Medium"
+c.fonts.default_family = "Jetbrains Mono Medium"
 c.fonts.default_size = "12pt"
 
 config.source('nord-qutebrowser.py')
