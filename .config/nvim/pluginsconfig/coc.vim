@@ -1,7 +1,7 @@
 set hidden
 set nobackup
 set nowritebackup
-set updatetime=300
+set updatetime=600
 set shortmess+=c
 " Global coc extensions
 let g:coc_global_extensions = [
@@ -10,6 +10,7 @@ let g:coc_global_extensions = [
   \ 'coc-sh',
   \ 'coc-java-debug',
   \ 'coc-java',
+  \ 'coc-java-dependency',
   \ 'coc-lists',
   \ 'coc-emmet',
   \ 'coc-pairs',
@@ -36,22 +37,9 @@ let g:coc_global_extensions = [
   \ 'coc-rust-analyzer',
   \ 'coc-lua',
   \ 'coc-highlight',
-  \ 'coc-kotlin-dev',
-  \ 'coc-ultisnips'
+  \ 'coc-kotlin-dev'
   \ ]
 " === Coc.nvim === "
-" use <tab> for trigger completion and navigate to next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -69,16 +57,20 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OverrideMethod   :call CocAction('runCommand', 'source.overrideMethods')
 
-nmap <silent> <leader>cd <Plug>(coc-definition)
-nmap <silent> <leader>cr <Plug>(coc-references)
-nmap <silent> <leader>ci <Plug>(coc-implementation)
-nmap <silent> <leader>cy <Plug>(coc-type-definition)
+nnoremap <silent> <leader>cd <Plug>(coc-definition)
+nnoremap <silent> <leader>cr <Plug>(coc-references)
+nnoremap <silent> <leader>ci <Plug>(coc-implementation)
+nnoremap <silent> <leader>cy <Plug>(coc-type-definition)
 nnoremap <silent> <leader>ca :CocAction<CR>
 nnoremap <silent> <leader>cc :CocCommand<CR>
 nnoremap <silent> <leader>co :OverrideMethod<CR>
 nnoremap <silent> <leader>ci :CocAction('runCommand', 'editor.action.organizeImport')<CR>
 nnoremap <silent> <leader>cf :Format<CR>
 
+" Find symbol of current document.
+nnoremap <silent><nowait> <leader>cs  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <leader>ct  :<C-u>CocList -I symbols<cr>
 "nnoremap <leader>co :call CocAction('runCommand','')
 
 " Use <c-space> to trigger completion.
@@ -118,8 +110,7 @@ augroup end
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
+nnoremap <leader>rn <Plug>(coc-rename)
 " Rename current file
 nnoremap <leader>rf :CocCommand workspace.renameCurrentFile<CR>
 
@@ -132,12 +123,9 @@ nmap <silent><leader>ac  <Plug>(coc-codeaction)<CR>
 " Apply AutoFix to problem on the current line.
 nmap <silent><leader>qf  <Plug>(coc-fix-current)<CR>
 
-" === NeoSnippet === "
-" Map <C-k> as shortcut to activate snippet if available
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
 
+
+" === CocSnippet === "
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
@@ -150,11 +138,24 @@ hi! link CocWarningSign Number
 hi! link CocInfoSign Type
 
 " Snippets
+" use <tab> for trigger completion and navigate to next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 " Use <C-l> for trigger snippet expand.
-" imap <C-l> <Plug>(coc-snippets-expand)
+imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-" vmap <C-j> <Plug>(coc-snippets-select)
+vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<C-j>'

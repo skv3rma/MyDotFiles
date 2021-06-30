@@ -1,5 +1,27 @@
 #!/bin/sh
 
+mvnhelp() {
+	if [ -z "$1" ]
+	then
+		$plugin="maven-help-plugin"
+	else
+		$plugin=$1
+	fi
+	mvn help:describe -Dplugin=org.apache.maven.plugins:$plugin
+}
+
+
+mvndescmd() {
+	if [ -z "$1" ]
+	then
+		$plugin="maven-help-plugin"
+	else
+		$plugin=$1
+	fi
+	mvn help:describe -Dplugin=org.apache.maven.plugins:$plugin
+
+}
+
 validate_prj() {
 	local prj_name
 	if [ -z "$1" ]
@@ -29,8 +51,9 @@ mvncreate-app() {
 		  -DgroupId=in.kodecamp \
 		  -DartifactId=$prj_name \
 		  -DinteractiveMode=false \
-		  -DarchetypeVersion=1.4 \
-		  -DarchetypeArtifactId=maven-archetype-quickstart && cd $prj_name && git init
+		  -DarchetypeGroupId=org.apache.maven.archetypes \
+		  -DarchetypeVersion=1.3 \
+		  -DarchetypeArtifactId=maven-archetype-simple && cd $prj_name && git init
 
 		echo "=> Creating .gitignore and run file"
 

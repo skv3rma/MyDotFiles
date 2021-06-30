@@ -122,6 +122,7 @@
   "html.validate.scripts": true,
   "html.validate.styles": true,
   "html.autoClosingTags": true,
+  "emmet.showExpandedAbbreviation": true,
   "emmet.includeLanguages": {
     "vue-html": "html",
     "javascript": "javascriptreact"

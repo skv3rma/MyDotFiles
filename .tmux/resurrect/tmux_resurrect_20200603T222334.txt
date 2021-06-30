@@ -1,6 +1,0 @@
-pane	jdbc	1	:code	1	:*	1	:/home/sunil_arc/Projects/java/trainings/jdbc-concepts	1	nvim	:nvim +CocCommand explorer --sources=file+
-pane	jdbc	1	:code	1	:*	2	:/home/sunil_arc/Projects/java/trainings/jdbc-concepts	0	zsh	:entr /home/sunil_arc/DevTools/apache-maven-3.6.0/bin/mvn -q exec:java
-pane	jdbc	2	:h2shell	0	:-	1	:/home/sunil_arc	1	zsh	:
-window	jdbc	1	1	:*	96c5,172x40,0,0{104x40,0,0,1,67x40,105,0,2}
-window	jdbc	2	0	:-	ad40,172x40,0,0,3
-state	jdbc	

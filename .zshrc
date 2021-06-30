@@ -28,6 +28,7 @@ alias cd..='cd ..'
 alias pdw="pwd"
 alias udpate='sudo pacman -Syyu'
 alias upate='sudo pacman -Syyu'
+alias claer="clear"
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
@@ -215,5 +216,6 @@ export SDKMAN_DIR="/home/sunil_arc/.sdkman"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"

@@ -24,15 +24,15 @@ inoremap ,,lb 🔎
 inoremap ,,ma 🗸
 inoremap ,,mb ✅
 inoremap ,,mc 🔖
-inoremap ,,o 🧡
-inoremap ,,p 🍐
-inoremap ,,q ⛄
-inoremap ,,r 🚀
+inoremap ,,oa 🧡
+inoremap ,,ob 🍐
+inoremap ,,rb ⛄
+inoremap ,,ra 🚀
 inoremap ,,sa 🌞
 inoremap ,,sb ⧈
 inoremap ,,ss ■
-inoremap ,,t 🍅
-inoremap ,,u ☔
+inoremap ,,ta 🍅
+inoremap ,,tb ☔
 inoremap ,,v 🚎
 inoremap ,,w 🌊
 inoremap ,,xa ❌
@@ -63,11 +63,11 @@ inoremap ,arr =>
 inoremap ,ed ==
 inoremap ,ee =
 inoremap ,ec !
-inoremap ,u _
-inoremap ,du __
+inoremap ,uu _
+inoremap ,ud __
 inoremap ,q ?
 " Clear console symbol
-inoremap ,,- \033[H\033[2J
+inoremap ,,p \033[H\033[2J
 
 
 " latin Symbols

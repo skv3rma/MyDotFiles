@@ -36,7 +36,6 @@ map <leader>sf :%s///g<left><left><left>
 map <leader>sl :s///g<left><left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-
 " Allows you to save files you opened without write permissions via sudo
 cmap w!! w !sudo tee %
 
@@ -249,7 +248,7 @@ nnoremap <silent><leader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
 nnoremap <silent><leader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-nnoremap <silent><leader>vi :VimuxInspectRunner<CR>
+" nnoremap <silent><leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
 nnoremap <silent><leader>vz :VimuxZoomRunner<CR>
 " Run the current file with rspec
@@ -259,9 +258,15 @@ nnoremap <silent><leader>vq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane
 nnoremap <silent><leader>vx :VimuxInterruptRunner<CR>
 
+nnoremap <silent><leader>vi :Vista coc<CR>
+nnoremap <silent><leader>vd :Vista!!<CR>
+
 " Visual Mode : Move selected lines up(K) down(J)
 vnoremap J :move '> +1<CR>gv=gv
 vnoremap K :move '< -2<CR>gv=gv
+
+vnoremap > >gv
+vnoremap < <gv
 
 " Replace the word under cursor in entire file
 nnoremap R :%s/\<<C-r><C-w>\>/

@@ -31,16 +31,18 @@
 snippet prop-min "Description" b
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.11</maven.compiler.source>
-    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+    <version.jdk>11</version.jdk>
+    <maven.compiler.source>${version.jdk}</maven.compiler.source>
+    <maven.compiler.target>${version.jdk}</maven.compiler.target>
 </properties>
 endsnippet
 
 snippet prop-withdb "Description" b
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.11</maven.compiler.source>
-    <maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
+    <version.jdk>11</version.jdk>
+    <maven.compiler.source>${version.jdk}</maven.compiler.source>
+    <maven.compiler.target>${version.jdk}</maven.compiler.target>
 
     <version.h2db>1.4.200</version.h2db>
     <version.junit>5.6.2</version.junit>
@@ -50,18 +52,19 @@ endsnippet
 snippet prop-complete "dependency version" b
 <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  <maven.compiler.source>1.11</maven.compiler.source>
-  <maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
+    <version.jdk>11</version.jdk>
+    <maven.compiler.source>${version.jdk}</maven.compiler.source>
+    <maven.compiler.target>${version.jdk}</maven.compiler.target>
 
-  <version.jpa>2.2</version.jpa>
-  <version.eclipselink>2.7.6</version.eclipselink>
+    <version.jpa>2.2</version.jpa>
+    <version.eclipselink>2.7.6</version.eclipselink>
 
-  <version.cdi>2.0</version.cdi>
-  <version.weld>3.1.1.Final</version.weld>
+    <version.cdi>2.0</version.cdi>
+    <version.weld>3.1.1.Final</version.weld>
 
-  <version.h2db>1.4.200</version.h2db>
+    <version.h2db>1.4.200</version.h2db>
 
-  <version.junit>5.6.2</version.junit>
+    <version.junit>5.6.2</version.junit>
 </properties>
 endsnippet
 
@@ -174,7 +177,7 @@ snippet finalname "name of the application as artifact id" b
 <finalName>${project.artifactId}</finalName>
 endsnippet
 
-snippet plugin-mvnsurefire "Description" b
+snippet plug-mvnsurefire "Description" b
 
 <!-- running junit 5 tests -->
 <plugin>
@@ -191,7 +194,7 @@ snippet plugin-mvnsurefire "Description" b
 
 endsnippet
 
-snippet plugin-mvnexec "Description" b
+snippet plug-mvnexec "Description" b
 <!-- for running java command -->
 <plugin>
   <groupId>org.codehaus.mojo</groupId>
@@ -222,7 +225,26 @@ snippet plugin-mvnexec "Description" b
 </plugin>
 endsnippet
 
-snippet plugin-mvncompiler "maven compiler plugin" b
+
+snippet plug-mvnexec-mod "Description" b
+<!-- run this command from targeted submodule -->
+<plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>exec-maven-plugin</artifactId>
+  <version>1.6.0</version>
+  <configuration>
+      <executable>java</executable>
+      <arguments>
+          <argument>--module-path</argument>
+          <modulepath/>
+          <argument>--module</argument>
+          <argument>in.kodecamp.modules.app/in.kodecamp.app.App</argument>
+      </arguments>
+  </configuration>
+</plugin>
+endsnippet
+
+snippet plug-mvncomp "maven compiler plugin" b
 
 <!-- maven-compiler-plugin -->
 <plugin>
@@ -243,8 +265,9 @@ snippet pomjdk15 "JDK 15 Related POM Configuration" b
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.15</maven.compiler.source>
-    <maven.compiler.target>${maven.compiler.soruce}</maven.compiler.target>
+    <version.jdk>15</version.jdk>
+    <maven.compiler.source>${version.jdk}</maven.compiler.source>
+    <maven.compiler.target>${version.jdk}</maven.compiler.target>
 
     <version.jpa>2.2</version.jpa>
     <version.eclipselink>2.7.6</version.eclipselink>

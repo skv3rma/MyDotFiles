@@ -8,6 +8,7 @@ HISTCONTROL=ignoreboth
 HISTFILE=~/.zsh_history
 HIST_STAMPS="%d/%m/%y %T"
 
+# command line tab completion menu
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
@@ -43,7 +44,7 @@ bindkey -s '^o' 'lfcd\n'
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^E' edit-command-line
 
 # sources the system env variables
 source ~/.system_exports
@@ -54,6 +55,9 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
 source ~/.zsh/zsh-abbr/zsh-abbr.zsh
+
+# Append a command directly
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 # source ~/.zsh/almostontop/almostontop.plugin.zsh
 
 # source ~/.zsh/zsh-expand-all/zsh-expand-all.zsh
@@ -227,8 +231,9 @@ alias j11dcevm="export JAVA_HOME=$JDK11_DCEVM"
 
 alias mcp="mvn clean package"
 alias mtr="mvn clean package tomee:run"
-alias mkins="sudo make install"
-alias mkdwm="sudo make install"
+alias mvndesc="mvn help:describe -Dplugin= -Ddetail=false"
+alias mvndescdetails="mvn help:describe -Dplugin= -Ddetail=true"
+alias mvneffpom="mvn help:effective-pom"
 
 ################################# configs ####################################
 alias confbash="vim $HOME/.bashrc-personal"
@@ -339,7 +344,7 @@ alias runjavatest="find target/ | entr $M2_HOME/bin/mvn -q test"
 ########## aliases for python ########
 
 alias esh="pipenv shell"
-alias runpymain="find ./* | entr python main.py"
+alias runpymain="find ./*.py | entr python main.py"
 
 # runpymain() {
 #   find ./* | entr $(pipenv --venv)/bin/python main.py
@@ -359,7 +364,9 @@ alias lg='exa --group-directories-first --long --header'
 alias lgg='exa --group-directories-first --long --header --git'
 alias lt='exa --group-directories-first --tree -L 2 -I ${TREE_IGNORE}'
 alias ltt='exa --group-directories-first --tree -L 3 -I ${TREE_IGNORE}'
-alias lttt='exa --group-directories-first --tree -L 4 -I ${TREE_IGNORE}'
+alias l3t='exa --group-directories-first --tree -L 4 -I ${TREE_IGNORE}'
+alias l4t='exa --group-directories-first --tree -L 5 -I ${TREE_IGNORE}'
+alias l5t='exa --group-directories-first --tree -L 6 -I ${TREE_IGNORE}'
 alias ltttt='exa --group-directories-first --long --tree -L 5 -I ${TREE_IGNORE}'
 alias treea='tree -a'
 alias treed='tree -d'
@@ -420,7 +427,7 @@ alias newsboat="nb"
 alias wf="curl wttr.in"
 alias dad="dragon-drag-and-drop -a -x"
 alias surf="surf ~/.surf/html/homepage.html"
-alias lvim="/usr/local/bin/vis"
+alias lvim="amp"
 alias po="poweroff"
 alias jabba11="jabba use openjdk@1.11.0-2"
 alias jabba15="jabba use openjdk@1.15"
@@ -464,6 +471,12 @@ alias tm="dvtm -m ^a"
 alias setw="sxiv -t $HOME/Pictures/github/MyWallpapers"
 alias amped='export EDITOR="amp"'
 alias vlogo="icat ~/Pictures/github/MyWallpapers/logo_script2.png"
+
+
+#################### Git Aliases ##########################
+alias gmv="git mv "
+alias grm="git rm "
+
 
 ######################### Image Magic #########################
 alias nfetch="neofetch"
@@ -511,3 +524,18 @@ export PATH=$PATH:"$HOME/.config/lf/lfyt"
 #################### Lua Module Path settings
 # sets LUA_PATH and LUA_CPATH
 eval "$(luarocks path)"
+
+
+# alias break5="termdown --font big 300s"
+# alias break10="termdown --font big 600s"
+# alias break15="termdown --font big 900s"
+
+alias break5="countdown 300s && echo 'Let's back to work !"
+alias break10="countdown 600s && echo 'Let's back to work !"
+alias cpclip="xclip -sel clip"
+alias jekyllserve="bundle exec jekyll serve --livereload"
+
+export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+export GEM_HOME=$HOME/.gem
+
+

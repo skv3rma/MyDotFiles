@@ -272,7 +272,7 @@ cmd trash %{{
 }}
 
 
-cmd restore_trash ${{
+cmd trash-restore ${{
   trash-restore
 }}
 
@@ -320,7 +320,7 @@ cmd zip %zip -r "$f" "$f"
 cmd tar %tar cvf "$f.tar" "$f"
 cmd targz %tar cvzf "$f.tar.gz" "$f"
 cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
-cmd clear_trash %trash-empty
+cmd trash-clear %trash-empty
 cmd stripspace %stripspace "$f"
 map ;
 map ; :fzf_jump
@@ -337,11 +337,11 @@ map au unarchive
 
 # Trash Mappings
 map dd trash
-map tc clear_trash
-map tr restore_trash
+map tc trash-clear
+map tr trash-restore
 
 
-map im list_images
+map li list_images
 
 # Broot Mapping
 # map f fzf_jump

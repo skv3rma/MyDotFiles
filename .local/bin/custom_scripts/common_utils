@@ -30,7 +30,7 @@ source_path="src"
 
 # Creates a java file with the class template at the given package
 # @param 1 package (. for current)
-# @param 2 Class Name
+# @param 2 Class Name (without java extension)
 touchjava() {
     if [ $# -lt 2 ]; then
         echo "❌ -> 📦 name or 🖹 name is missing";
@@ -55,9 +55,13 @@ touchjava() {
     file_name=$2
     package_path=$(echo $package | sed "s/\./\//g")
 
-    file_path="$source_path/$package_path/$file_name"".java"
-    mkdir -p -- "$(dirname -- "$file_path")"
-    touch -- "$file_path"
+    file_path="$PWD/$package_path/$file_name"".java"
+    echo "$file_path"
+    # return 1;
+
+    # mkdir -p -- "$(dirname -- "$file_path")"
+    # touch -- "$file_path"
+    mktouch "$file_path"
     # Checks if the file needs to added in the current directory without package
     if [ $package != "." ];then
         echo "package $package;" > $file_path
@@ -65,6 +69,27 @@ touchjava() {
     echo "public final class $file_name {  }" >> $file_path
     tree
     cat "$file_path"
+}
+
+clsjava() {
+   rm -rf target
+}
+
+# 1  -> project name
+# 2  -> package name
+# .. -> module names
+mkjavaprj() {
+   mkdir $1
+   cd $1
+   mkdir -p src/in.kodecamp.dtos \
+      src/in.kodecamp.daos \
+      src/in.kodecamp.services \
+      src/in.kodecamp.app
+   mktouch src/in.kodecamp.dtos/module-info.java \
+           src/in.kodecamp.daos/module-info.java \
+           src/in.kodecamp.services/module-info.java \
+           src/in.kodecamp.app/module-info.java
+   echo "☕ Java Projects Created Successfully."
 }
 
 jpackage-execjar() {

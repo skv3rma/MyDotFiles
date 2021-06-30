@@ -120,10 +120,16 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 " === Language Servers === "
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'uzxmx/vim-widgets'
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
+
 " Snippet support
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'norcalli/snippets.nvim'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
+" Plug 'norcalli/snippets.nvim'
 " === Javascript Plugins === "
 " Typescript syntax highlighting
 " Plug 'HerringtonDarkholme/yats.vim'
@@ -151,23 +157,21 @@ Plug 'psf/black', { 'branch': 'stable' }
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'wadackel/vim-dogrun'
 
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 " Markdown related plugins
-
-Plug 'godlygeek/tabular' | Plug 'plasticboy/vim-markdown'
+"" tabular plugin is used to format tables
+Plug 'godlygeek/tabular'
+" JSON front matter highlight plugin
+Plug 'elzr/vim-json'
+Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'parkr/vim-jekyll'
 
 " ================== Miscellenious
 Plug 'voldikss/vim-floaterm'
-" Plug 'ptzz/lf.vim'
-Plug 'mcchrish/nnn.vim'
 " Fancy start up screen
 Plug 'mhinz/vim-startify'
 Plug 'liuchengxu/vim-which-key'
 
-" Fade inactive window/buffer
-Plug 'TaDaa/vimade'
 " Plug 'chrisbra/unicode.vim'
 
 Plug 'jeetsukumaran/vim-pythonsense'
@@ -176,6 +180,10 @@ Plug 'shmup/vim-sql-syntax'
 " Dart
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'karb94/neoscroll.nvim'
+Plug 'liuchengxu/vista.vim'
+" Plug 'blueyed/vim-diminactive'
+Plug 'gabrielpoca/replacer.nvim'
+Plug 'kevinhwang91/nvim-bqf'
 
 " Initialize plugin system
 call plug#end()

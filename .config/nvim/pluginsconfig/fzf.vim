@@ -5,7 +5,7 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 " - Popup window
-let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 1.0 } }
+let g:fzf_layout = { 'window': { 'width': 1.0, 'height': 0.9 } }
 " hidden by default, ctrl-/ to toggle
 " preview window at the top
 let g:fzf_preview_window = ['up:60%:wrap', 'ctrl-/']
@@ -59,11 +59,11 @@ nnoremap <silent><leader>fa :FZFBLines<Cr>
 " Lines in loaded buffers
 nnoremap <silent><leader>fl :FZFBLines<Cr>
 nnoremap <silent><leader>fb :Buffers<CR>
+nnoremap <silent><leader>; :Buffers<CR>
 nnoremap <silent><leader>fq :FZFQuickFix<CR>
 
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
 
-nnoremap <silent><leader>; :Buffers<CR>
 nnoremap <silent><leader>. :ProjectFiles<CR>

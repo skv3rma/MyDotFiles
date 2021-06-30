@@ -6,7 +6,6 @@ else
     " ordinary neovim
     source ~/.config/nvim/pluginsconfig/general-settings.vim
     source ~/.config/nvim/pluginsconfig/init.vim
-    source ~/.config/nvim/pluginsconfig/nnn.vim
 
     source ~/.config/nvim/pluginsconfig/dispatch.vim
     source ~/.config/nvim/pluginsconfig/autocmds.vim
@@ -31,8 +30,10 @@ else
     source ~/.config/nvim/pluginsconfig/floaterm.vim
     source ~/.config/nvim/pluginsconfig/fern.vim
     source ~/.config/nvim/pluginsconfig/lfconfig.vim
+    source ~/.config/nvim/pluginsconfig/replacer.vim
+
     " fade inactive split window/buffer
-    source ~/.config/nvim/pluginsconfig/vimade.vim
+    " source ~/.config/nvim/pluginsconfig/vimade.vim
     source ~/.config/nvim/pluginsconfig/startify.vim
     source ~/.config/nvim/pluginsconfig/goyo.vim
     " python object for motion
