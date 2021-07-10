@@ -26,11 +26,12 @@ mkgit() {
     echo "🐈 Git directory created and cd'ed into it."
 }
 
-source_path="src"
+source_path="src/main/java"
 
 # Creates a java file with the class template at the given package
 # @param 1 package (. for current)
 # @param 2 Class Name (without java extension)
+
 touchjava() {
     if [ $# -lt 2 ]; then
         echo "❌ -> 📦 name or 🖹 name is missing";
@@ -40,13 +41,13 @@ touchjava() {
     # check for empty package
     if [ -z $1 ];then
         echo "package details are missing"
-        echo "❌ -> missing 📦 details";
+        echo "❌ -> missing 📦(package) details";
         return 1
     fi
 
     # check for empty file
     if [ -z $2 ];then
-        echo "❌ -> missing 🖹 name";
+       echo "❌ -> missing 🖹(file) name";
         return 1;
     fi
 
@@ -55,7 +56,7 @@ touchjava() {
     file_name=$2
     package_path=$(echo $package | sed "s/\./\//g")
 
-    file_path="$PWD/$package_path/$file_name"".java"
+    file_path="$PWD/$source_path/$package_path/$file_name"".java"
     echo "$file_path"
     # return 1;
 
@@ -78,17 +79,15 @@ clsjava() {
 # 1  -> project name
 # 2  -> package name
 # .. -> module names
-mkjavaprj() {
-   mkdir $1
-   cd $1
-   mkdir -p src/in.kodecamp.dtos \
-      src/in.kodecamp.daos \
-      src/in.kodecamp.services \
-      src/in.kodecamp.app
-   mktouch src/in.kodecamp.dtos/module-info.java \
-           src/in.kodecamp.daos/module-info.java \
-           src/in.kodecamp.services/module-info.java \
-           src/in.kodecamp.app/module-info.java
+java-create() {
+   src_dir="src/main/java"
+   mkdir -p $src_dir/in.kodecamp.dtos \
+            $src_dir/in.kodecamp.daos \
+            $src_dir/in.kodecamp.app
+
+   mktouch $src_dir/in.kodecamp.dtos/module-info.java \
+           $src_dir/in.kodecamp.daos/module-info.java \
+           $src_dir/in.kodecamp.app/module-info.java
    echo "☕ Java Projects Created Successfully."
 }
 
@@ -137,14 +136,20 @@ touchexec() {
 # param 1 : file type
 rmtype() {
     # exit if no type is given
+    if [ $# -lt 2 ]; then
+        echo "❌ -> missing 1. dir 2. file type";
+        return 1;
+    fi
+
     if [ -z $1 ];then
         echo "❌ -> missing 🖹 type";
         return 1
     fi
     # fd adheres to .gitignore
     # so --hiddent and --no-ignore is included in the search optoin
-    for file in $(fd --hidden --no-ignore --base-directory . --type f -e $1); do
-        rm $file
+    for file in $(fd --hidden --no-ignore --base-directory $1 --type f -e $2 --exec realpath); do
+        echo "deleting $file"
+        trash-put $file
     done
 }
 
@@ -187,7 +192,7 @@ topdf() {
     fi
 
     if [ -z $2 ];then
-        echo "⚠ -> missing output(🍷)name. using the input name";
+       echo "⚠ -> missing output(🍷)name. using the input name(🍎)";
         output=$1.pdf
     fi
    pandoc --pdf-engine=wkhtmltopdf $1.md -o $output
@@ -196,5 +201,16 @@ topdf() {
 chx() {
    chmod +x $1
 }
+
+# mpv url
+mpvurl() {
+   mpv "$1"
+}
+
+showdef() {
+   declare -f $1
+}
+
+
 
 

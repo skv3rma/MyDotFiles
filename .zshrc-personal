@@ -533,7 +533,7 @@ eval "$(luarocks path)"
 alias break5="countdown 300s && echo 'Let's back to work !"
 alias break10="countdown 600s && echo 'Let's back to work !"
 alias cpclip="xclip -sel clip"
-alias jekyllserve="bundle exec jekyll serve --livereload"
+alias bundleserve="bundle exec jekyll serve --livereload"
 
 export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 export GEM_HOME=$HOME/.gem

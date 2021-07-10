@@ -127,6 +127,7 @@
     "vue-html": "html",
     "javascript": "javascriptreact"
   },
+
   "Lua.color.mode": "Semantic",
   "Lua.hint.enable": true,
   "Lua.hint.setType": true,

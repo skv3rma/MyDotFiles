@@ -3,6 +3,6 @@
 # figlet -ctk -f ~/.figlet-fonts/Electronic.flf $1
 # figlet -ctk -f ~/.figlet-fonts/mono12.tlf $1
 # figlet -ctk -f ~/.figlet-fonts/mono9.tlf $1
-figlet -ctk -f slant $1
-# figlet -ctk -f broadway $1
+# figlet -ctk -f slant $1
+figlet -ctk -f broadway $1
 # figlet -ctk -f ~/.figlet-fonts/Doh.flf $1

@@ -53,11 +53,9 @@ Plug 'ntpeters/vim-better-whitespace'
 " Improved motion in Vim
 Plug 'easymotion/vim-easymotion'
 
-" Syntax highlighting for tmux.config file
-" Plug 'tmux-plugins/vim-tmux'
-
 " Tmux/Neovim movement integration
 Plug 'christoomey/vim-tmux-navigator'
+"
 Plug 'airblade/vim-rooter'
 " gcc and <motion>gcc command
 Plug 'tpope/vim-commentary'
@@ -111,12 +109,6 @@ Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 
 " === Language Related and Syntax Highlighting === "
-" A collection of language packs for Vim
-" Plug 'sheerun/vim-polyglot'
-" css helper plugin
-" Plug 'rstacruz/vim-hyperstyle'
-" Plug 'derekwyatt/vim-scala'
-
 " === Language Servers === "
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -184,6 +176,13 @@ Plug 'liuchengxu/vista.vim'
 " Plug 'blueyed/vim-diminactive'
 Plug 'gabrielpoca/replacer.nvim'
 Plug 'kevinhwang91/nvim-bqf'
+
+" Telescope Dependencies
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+" Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 
 " Initialize plugin system
 call plug#end()
