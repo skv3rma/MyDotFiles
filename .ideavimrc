@@ -1,0 +1,115 @@
+" Remap leader key to ,
+set clipboard=unnamed
+set clipboard+=ideaput
+set relativenumber
+set number
+set visualbell
+set surround
+set highlightedyank
+set ideamarks
+set ideajoin
+set commentary
+set argtextobj
+set textobj-entire
+set vim-paragraph-motion
+set textobj-indent
+set exchange
+
+sethandler <C-h> n:ide
+sethandler <C-v> i:ide
+
+let mapleader=","
+
+" mapping number keypad symbols
+
+inoremap ,ee =
+inoremap ,ed ==
+inoremap ,q ?
+inoremap ,ma +
+inoremap ,mm -
+inoremap ,mx *
+inoremap ,mp %
+inoremap ,d $
+inoremap ,cc {}<ESC>i
+inoremap ,bb []<ESC>i
+inoremap ,pp ()<ESC>i
+inoremap ,ar ->
+inoremap ld (item) -><ESC>A
+
+
+" switch from insert mode to normal mode
+inoremap ii <ESC>
+
+" save current
+nnoremap <leader>zz :w<CR>
+" save all
+nnoremap <leader>za :wa<CR>
+" save and quit
+nnoremap <leader>zq :wq<CR>
+" quit without saveing
+nnoremap <leader>q :q!<CR>
+
+nnoremap <leader>y :action $Copy<CR>
+nnoremap <leader>p :action $Paste<CR>
+
+nnoremap <F3> :set hlsearch!<CR>
+"nnoremap <leader>f :action Find<CR>
+nnoremap <leader>ac :action Generate<CR>
+nnoremap <leader>nc :action NewClass<CR>
+nnoremap <leader>nf :action NewFile<CR>
+nnoremap <leader>nd :action NewDir<CR>
+nnoremap <leader>rf :action RenameFile<CR>
+nnoremap <leader>rp :action Run<CR>
+nnoremap <leader>rr :action RunClass<CR>
+nnoremap <leader>ff <C-n>
+nnoremap <leader><leader> A;<ESC>
+
+
+map <leader>r :action RenameElement<CR>
+" Ctrl + F12 in idea.
+map s <Action>(SelectIn)
+"map <leader>s <Action>(FileStructurePopup)
+map <leader>S <action>(StructuralSearchActions)
+map <leader>gi <action>(GotoImplementation)
+map <leader>gd <action>(GotoImplementation)
+map K <action>(QuickJavaDoc)
+" Jump to next/previous error, show error description
+" https://stackoverflow.com/questions/13346245/keyboard-shortcut-to-display-error-in-intellij
+map <leader>e <action>(ShowErrorDescription)
+" Alt + F7 in idea. 
+" Find usages in file is Ctrl + F7. 
+" Alt + E, then F, then U (through the menu bar) also seems to work fine.
+"map <leader>f <action>(FindUsages)
+map <leader>F <action>(HighlightUsagesInFile)lt + 1>
+" Alt + Insert in idea.
+map <leader>ac <action>(Generate)
+" F12 
+map <leader>w <action>(HideAllWindows)
+map <leader>W <action>(JumpToLastWindow)
+" Possibly redundant given "Run Anything" DoubleCtrl
+map <leader>R <action>(Refactorings.QuickListPopupAction)
+map <leader>a <action>(AnalyzeActionsPopup)
+
+" I like using space for jumping to the next error or issue
+" map <Space> <Action>(ActivateProjectToolWindow)
+map <Space> <Alt + 1>
+map <leader><Space> <action>(GotoNextError)
+" Kind of makes more sense to use Backspace to go back... but could it be assigned a better action?
+"map <Leader><Space> <Action>(GotoPreviousError)
+"map <BS> <Action>(GotoPreviousError)
+map <BS> <action>(GotoRelated)
+
+
+" The default C-o and C-i behaviours have certain inconsistencies with
+" Vim which I can't quite pinpoint.
+" I'm using the default IntelliJ behaviours instead.
+map <C-o> <action>(Back)
+map <C-i> <action>(Forward)
+map g; <action>(JumpToLastChange)
+map g, <action>(JumpToNextChange)
+
+" go to previous tab
+noremap <leader>h gT
+" go to next tab
+noremap <leader>l gt
+noremap <leader>g <Alt+Insert>
